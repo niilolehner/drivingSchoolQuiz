@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2022 at 08:52 PM
+-- Generation Time: May 04, 2022 at 12:10 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db101`
+-- Database: `db102`
 --
 
 -- --------------------------------------------------------
@@ -32,6 +32,28 @@ CREATE TABLE `achievements` (
   `PopText` text NOT NULL,
   `PopImage` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `achievements`
+--
+
+INSERT INTO `achievements` (`AchievementID`, `PopText`, `PopImage`) VALUES
+(1, '5x vastaussarja! (oikein peräkkäin)', ''),
+(2, '15x vastaussarja! (oikein peräkkäin)', ''),
+(3, '30x vastaussarja! (oikein peräkkäin)', ''),
+(4, '50x vastaussarja! (oikein peräkkäin)', ''),
+(5, 'Ensimmäinen visa suoritettu!', ''),
+(6, '5 visaa suoritettu!', ''),
+(7, '10 visaa suoritettu!', ''),
+(8, '20 visaa suoritettu!', ''),
+(9, '50 visaa suoritettu!', ''),
+(10, '100 visaa suoritettu!', ''),
+(11, '200 visaa suoritettu!', ''),
+(12, 'Salama (suoritit visan alle X minuutissa, 100% oikein)', ''),
+(13, 'Hitaasti, mutta varmasti... (visaan vastaaminen kesti yli X minuuttia, 100% oikein)', ''),
+(14, 'Surullinen Panda (suoritti visan 100% väärin)', ''),
+(15, 'Keksihirviö (salainen saavutus, opettaja voi myöntää sen)', ''),
+(16, 'Maraton (kaikki saavutukset kerätty)', '');
 
 -- --------------------------------------------------------
 
@@ -128,7 +150,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `achievements`
 --
 ALTER TABLE `achievements`
-  MODIFY `AchievementID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `AchievementID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `quizqa`
