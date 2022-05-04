@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2022 at 01:32 PM
+-- Generation Time: May 04, 2022 at 02:30 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -88,7 +88,42 @@ INSERT INTO `quizqa` (`QaID`, `Question`, `RightAnswer`, `WrongAnswer1`, `WrongA
 (12, 'Milloin voit ohittaa toisen ajoneuvon oikealta?', 'Kun olet yksisuuntaisella kadulla', 'Kun edessä oleva ajoneuvo antaa merkin kääntyä vasemmalle', 'Kun hitaampi ajoneuvo kulkee kaksiajoradan vasemmalla kaistalla'),
 (13, 'Valitset väärän reitin ja huomaat olevasi yksisuuntaisella kadulla. Mitä sinun pitäisi tehdä?', 'Jatka tien päähän', 'Käänny ympäri', 'Peruuttaa'),
 (14, 'Ajat alas pitkää, jyrkkää mäkeä. Huomaat yhtäkkiä, että jarrut eivät toimi normaalisti. Mikä on tavallinen syy tähän?', 'Jarrujen ylikuumeneminen', 'Hidas kuljettajan reaktioaika', 'Huono jarrut'),
-(15, 'Mitä sinun tulee tehdä risteyksessä, kun keltainen valo vilkkuu?', 'Valmistautua pysähtymään', 'Vaihda kaistaa', 'Koventaa vauhtia');
+(15, 'Mitä sinun tulee tehdä risteyksessä, kun keltainen valo vilkkuu?', 'Valmistautua pysähtymään', 'Vaihda kaistaa', 'Koventaa vauhtia'),
+(16, 'Miten toimit kun ajat taajamassa 60km/h nopeusrajoitus alueella ja huomaat että edessäsi oleva linja-auto on aikomassa poistua pysäkiltä?', 'Hiljennän ja pysäytän tarvittaessa jotta linja-auto pääsee pysäkiltä', 'Vilkautan valoja ja kiihdytän ohittamisen nopeuttamiseksi', 'En anna tietä koska minulla on etuajo-oikeus'),
+(17, 'Mikä on kuivalla ajoradalla ajettaessa tyypillinen pysähtymismatka ajoneuvolla jonka nopeus on 80km/h?', 'Noin 50 metriä', '33 metriä', '23 metriä'),
+(18, 'Mikä seuraavista on järkevä järjestys kun olet lähtemässä ajamaan autolla?', 'Ensin kannattaa säätää penkki sopivaan asentoon. Seuraavaksi pelien säätö jonka jälkeen turvavyö kiinni', 'Ensiksi turvavyö kiinni. Sen jälkeen peilien säätö. Viimeisenä penkki oikeaan asentoon', 'Ensiksi peilien säätö. Sen jälkeen penkki oikeaan asentoon. Lopuksi turvavyö kiinni'),
+(19, 'Voitko vaikuttaa alkoholin poistumiseen verestä?', 'En voi vaikuttaa alkoholin poistumiseen verestä', 'Voin, juomalla runsaasti vettä', 'Saunomalla'),
+(20, 'Miten alkoholi vaikuttaa kuljettajaan?', 'Kuljettaja voi unohtaa toimintatavat joita yleensä käyttää liikenteessä', 'Alkoholi vaikuttaa enemmän kokemattomiin kuljettajiin', 'Alkoholilla ei ole vaikutusta kokeneelle kuljettajalle muodostuneisiin rutiineihin ja toimintatapoihin'),
+(21, 'Mikä seuraavista on vaikeimmin havaittavissa oleva tienkäyttäjä risteyksessä?', 'Moottoripyöräilijä', 'Henkilöauto', 'Traktori'),
+(22, 'Mitä teet jos maantiellä taaksesi alkaa syntyä jonoa?', 'Annat takana ajaville tilaa mennä ohitsesi seuraavassa turvallisessa paikassa', 'Laitat takasumuvalon päälle', 'Et välitä takana ajavista'),
+(23, 'Miten jarrutat moottorin avulla?', 'Vapautat kaasun ylös ja annat kytkimen olla ylhäällä', 'Vaihdat pienemmälle ja jarrutat samalla kevyesti', 'Vaihdat isommalle vaihteelle ja painat kaasua'),
+(24, 'Mikä seuraavista pitää paikkansa?', 'Hätävilkkua käytetään silloin kun auto on jouduttu pysäköimään vaaralliseen paikkaan', 'Hätävilkkua kuuluu käyttää silloin kun autoa hinataan', 'Hätävilkkua voi käyttää silloin kun ajat muita tienkäyttäjiä kovempaa'),
+(25, 'Kuinka pitkä on kuljettajan reaktioaika?', '1-1,5 sekuntia', '2-4 sekuntia', 'Alle sekunnin'),
+(26, 'Miten pitkäksi ajaksi törkeästä rattijuopumuksesta voidaan tuomita vankeuteen?', 'Enintään 2 vuodeksi', 'Enintään puoleksi vuodeksi', 'Enintään vuodeksi'),
+(27, 'Ketkä seuraavista ovat erityisesti vaarassa kun peruutat ajoneuvollasi?', 'Lapset', 'Pyöräilijät', 'Toiset ajoneuvot'),
+(28, 'Miksi risteyksissä tulisi varoa erityisesti kaksipyöräisiä tienkäyttäjiä?', 'Niitä on vaikeampi havaita kuin isompia ajoneuvoa', 'Ne eivät välttämättä huomaa sinua', 'Ne voivat tehdä yllättäviä pysähdyksiä'),
+(29, 'Mitä voi aiheutua jos ajat liian lähellä edellä ajavaa ajoneuvoa?', 'Peräänajon riski kasvaa', 'Edellä ajava voi sokaistua ajoneuvosi valoista', 'Moottori voi ylikuumentua'),
+(30, 'Mikä vaikutus on jarrutusmatkaan jos ajonopeus laskee 60 km/h:sta 45 km/h:iin?', 'Jarrutusmatka lyhenee noin puolella', 'Ei vaikutusta jarrutusmatkaan', 'Jarrutusmatka lyhenee noin neljänneksellä'),
+(31, 'Millä tavoin kuljettaja oppii hyödyntämään ääreisnäköä liikenteessä?', 'Vain kokemuksen karttuessa', 'Harjoittelemalla ääreisnäköä', 'Harjoittelemalla ongelmatilanteita'),
+(32, 'Moottorikäyttöisen ajoneuvon kuljettaja määrätään ajokieltoon jos...', 'Kuljettaja on syyllistynyt törkeään liikenneturvallisuuden vaarantamiseen', 'Kuljettaja on ylittänyt sallitun ajonopeuden maantiellä 10:llä kilometillä tunnissa aiheuttamatta vaaraa muille', 'Kuljettaja on saanut viidesti parkkisakot kuluvan vuoden aikana'),
+(33, 'Miksi risteyksissä tulisi varoa erityisesti kaksipyöräisiä tienkäyttäjiä?', 'Niitä on vaikeampi havaita kuin isompia ajoneuvoa', 'Ne voivat tehdä yllättäviä pysähdyksiä', 'Ne eivät välttämättä huomaa sinua'),
+(34, 'Milloin ei tulisi koskaan ohittaa pyöräilijää?', 'Juuri ennen kuin käännyt oikealle', 'Hiekkatiellä', 'Risteyksen jälkeen'),
+(35, 'Olet kääntymässä risteyksessä vasemmalle. Sinulle palaa pyöreä vihreä valo. Ketä seuraavista väistät?', 'Suoraan edestä lähestyviä ajoneuvoja sekä risteävää kevyttä liikennettä', 'Oikealta lähestyviä ajoneuvoja', 'Vasemmalta lähestyviä ajoneuvoja'),
+(36, 'Miten toimit kun ajat autokoulun ajoneuvon perässä joka yllättäen pysähtyy risteyksessä vaikka valot ovat vihreät?', 'Ole kärsivällinen ja varaudu siihen että he voivat tehdä virheitä liikenteessä', 'Pysy riittävän lähellä jotta he huomaisivat sinut', 'Pyri ohittamaan mahdollisimman pian'),
+(37, 'Kuinka paljon on hidastettava ajoneuvon nopeutta jotta jarrutusmatka lyhenee puoleen?', '25%', 'Puolet', '80%'),
+(38, 'Miksi kova vauhti on tärkeää saada pois ennen kaarteeseen ajamista.', 'Kaarteessa ajoneuvo ajautuu helposti pois ajoradalta keskipakoisvoiman ansiosta', 'Koska et välttämättä tiedä mitä kaarteen jälkeen tulee', 'Jotta moottori jäähtyisi'),
+(39, 'Miten ajonopeuden lisääminen vaikuttaa havaintojen tekemiseen?', 'Havainnointi sivuille heikkenee nopeuden kasvaessa', 'Nopeuden lisääminen ei vaikuta havaintojen tekoon', 'Havaintojen tekeminen helpottuu'),
+(40, 'Milloin tulee kiinnittää erityistä huomiota pyöräilijöihin ja muihin kaksipyöräisiin?', 'Risteyksissä', 'Lähestyessäsi tunnelia', 'Ennen liikennevaloja'),
+(41, 'Miten turvavyötä on käytettävä?', 'Ajoneuvossa myös takapenkillä olevien tulee käyttää turvavyötä kuljettajan lisäksi', 'Ainoastaan etupenkillä olevan tulee käyttää turvavyötä', 'Riittää että vain kuljettaja käyttää turvavyötä'),
+(42, 'Miten toimit kun ajat autokoulun ajoneuvon perässä joka yllättäen pysähtyy risteyksessä vaikka valot ovat vihreät?', 'Ole kärsivällinen ja varaudu siihen että he voivat tehdä virheitä liikenteessä', 'Pyri ohittamaan mahdollisimman pian', 'Pysy riittävän lähellä jotta he huomaisivat sinut'),
+(43, 'Miten vilkkua eli suuntamerkkiä on käytettävä', 'Käyttämällä suuntamerkkiä ajoissa lisäät liikenteen sujuvuutta', 'Liikenneympyrästä poistuttaessa ei tarvitse käyttää vilkkua', 'Kaistan vaihto ei edellytä vilkun käyttöä koska se huomataan muutenkin'),
+(44, 'Miten jarrutat moottorin avulla?', 'Vapautat kaasun ylös ja annat kytkimen olla ylhäällä', 'Vaihdat pienemmälle ja jarrutat samalla kevyesti', 'Vaihdat isommalle vaihteelle ja painat kaasua'),
+(45, 'Kun joudut pysähtymään tielle pimeällä, mitkä valot sinun tulee kytkeä päälle?', 'Seisonta- tai lähivalot', 'Valoja ei tarvitse kytkeä', 'Takasumuvalo'),
+(46, 'Kuljettaja on syyllistynyt rattijuopumukseen jos kuljettajan veren alkoholipitoisuus on ajon aikana tai sen jälkeen vähintään', '0.5 promillea', '0.4 promillea', '0.3 promillea'),
+(47, 'Et ole varma mitä edessäsi hitaasti ajava moottoripyöräilijä aikoo tehdä. Miten toimit?', 'Pysy moottoripyöräilijän takana', 'Siirry lähemmäksi', 'Soita äänimerkkiä ja ohita tilanne nopeasti'),
+(48, 'Mille seuraavista tulee antaa eniten lisätilaa ohitettaessa?', 'Polkupyöräilijälle', 'Traktorille', 'Pakettiautolle'),
+(49, 'Miten liityt liikenneympyrään kun sinulle on väistämismerkki?', 'Väistän liikenneympyrässä ajavaa ja liityn vasta kun on tilaa', 'Minulla on etuajo-oikeus liikenneympyrään liityttäessä', 'Liikenneympyrässä ajavan on väistettävä minua'),
+(50, 'Olet kääntymässä yksisuuntaiselta tieltä vasemmalle. Mikä seuraavista on oikein?', 'Ryhmityt tien vasempaan reunaan', 'Ryhmityt tien keskelle', 'Ryhmityt tien oikeaan reunaan');
 
 -- --------------------------------------------------------
 
@@ -168,7 +203,7 @@ ALTER TABLE `achievements`
 -- AUTO_INCREMENT for table `quizqa`
 --
 ALTER TABLE `quizqa`
-  MODIFY `QaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `QaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `scoreboard`
