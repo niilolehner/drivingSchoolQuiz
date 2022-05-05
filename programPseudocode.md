@@ -3,7 +3,8 @@
 
 Alkuun ylätunniste, joka tulostetaan kaikille sivuille;
 
-//Virheiden tarkistus
+
+//Virheiden tarkistus.
 JOS (URL-parametreissä virheellä $ERROR = joku arvo) {
   //Tutkitaan, mikä on virheen arvo
   JOS (Error === 1) {
@@ -15,7 +16,7 @@ JOS (URL-parametreissä virheellä $ERROR = joku arvo) {
 }
 
 
-//Tulostetaan sivuston sisältö URL mukaan
+//Tulostetaan sivuston sisältö URL mukaan.
 HAE URL-parametrit ja tallenna $page;
 
 Tarkistetaan muuttujan $page arvo;
@@ -28,13 +29,23 @@ JOS page === 2 {
  jne...
 
 
-//Tulostetaan tietokannasta sisältöä
+//Tulostetaan tietokannasta sisältöä.
 JOS (kysymys) {
   tulosta tämä sisältö;
 }
 JOS (Oppilas saavuttaa palkinnon) {
   tulosta tämä sisältö;
 }
+
+
+//Tulostetaan tietokannasta onnitteluviesti oikeasta vastauksesta.
+JOS (vastaus === oikea vastaus) {
+  tulostetaan tämä onnittelu viesti
+}
+JOS (vastaus === väärä vastaus) {
+  Tulostetaan tämä epäonnistunut viesti
+}
+
 
 Loppuun alatunniste, joka tulostuu myös kaikille sivuille;
 
@@ -43,7 +54,7 @@ Loppuun alatunniste, joka tulostuu myös kaikille sivuille;
 # Tietokannasta tietojen haku
 /*
 
-//Tarkistetaan URL-parametrin avulla, mille sivustolle haetaan dataa
+//Tarkistetaan URL-parametrin avulla, mille sivustolle haetaan dataa.
 JOS (Tarkistetaan, onko sivuston URL-parametri asetettu) {
   perustetaan evästeelle muuttuja $cookie;
 
@@ -84,7 +95,50 @@ JOS (Tarkistetaan, onko sivuston URL-parametri asetettu) {
     haetaan tietokannasta kysymysten tiedot;
     tulostetaan tiedot näytölle;
   }
+  JOS (cookie === ) {
+    haetaan tietokannasta tulosten tiedot;
+    tulostetaan tiedot näytölle;
+  }
   JNE..
 }
 
 */
+
+# Tietokantaan tietojen syöttö
+/*
+
+//Harjoittelun tuloksien käsittely.
+Tarkistetaan, onko POST-muuttujalle syötetty arvoa;
+Tallennetaan arvo muuttujaan;
+Tarkistetaan, ettei syötetty arvo sisällä virheitä/hakkerointia;
+Luodaan kokonaispiste muuttuja;
+
+JOS (arvo === oikea vastaus) {
+  lisätään yksi piste oikeisiin pisteisiin;
+}
+JOS (arvo === väärä vastaus) {
+  lisätään yksi piste vääriin vastauksiin;
+}
+
+JOS (kysymystenmäärä === luku) {
+  tarkistetaan, saavutettiinko palkinto;
+  syötetään tulokset tietokantaan;
+}
+JOS (kysymystenmäärä < luku) {
+  tulostetaan uusi kysymys;
+}
+
+
+JOS (palkinto === tosi) {
+  tulostetaan palkinto oppilaalle;
+  näytetään tulokset;
+}
+MUUTEN {
+  näytetään tulokset;
+}
+
+Lähetetään tulokset opettajan näkymään;
+
+*/
+
+
