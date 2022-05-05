@@ -2,15 +2,19 @@
 include 'dbConnection.php';
 
 isset($_GET['page']) ? $page = $_GET['page'] : $page = '';
-isset($_GET['studentName']) ? $studentName = $_GET['studentName'] : $studentName = '';
+isset($_GET['studentId']) ? $studentId = $_GET['studentId'] : $studentId = '';
 $sql = '';
-$JSON = array();
-$page = 'studentachievements'; //testing purpose
+$rows = [];
+
+$studentId = 1;                 //testing purpose
+$page = 'scoreboard';              //testing purpose
 
 
-//Get student data from database:
-if ($page === 'student') {
-  $sql = "SELECT * FROM '$page' WHERE Name = '$studentName'";
+//Get data from database and input it in JSON-format:
+if ($page === 'quizqa' || $page === 'scoreboard' || $page === 'achievements') {
+  $sql = "SELECT * FROM $page";
+} else if ($page === 'student') {
+  $sql = "SELECT * FROM $page WHERE StudentID = $studentId";
 } else if ($page === 'studentachievements') {
   $sql = "SELECT * 
           FROM $page
@@ -18,21 +22,22 @@ if ($page === 'student') {
           INNER JOIN achievements ON $page.AchievementID = achievements.AchievementID";
 }
 
-$result = $conn->query($sql);
-$rowCount = mysqli_num_rows($result);
-$row = $result->fetch_assoc();
+$result = mysqli_query($conn, $sql);
 
-/*
-while($row = $result->fetch_array()){
-    $JSON['studentachievements'][] = $row;
+if (mysqli_num_rows($result) > 0) {
+  while ($row = mysqli_fetch_assoc($result)) {
+      array_push($rows, $row);
+  }
+  
+  echo json_encode($rows);
+} else {
+  echo 'No data';
 }
+mysqli_close($conn);
 
-  //input data to JSON
- echo json_encode($JSON); 
-*/
 
+//Testing different way:
 $Testing = "Hello World!";
 
-// $conn->close();
 
 ?>
