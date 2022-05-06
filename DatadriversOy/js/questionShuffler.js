@@ -1,5 +1,4 @@
 // Fisher-Yates-Durstenfeld shuffle
-
 function shuffle(sourceArray) {
     for (var i = 0; i < sourceArray.length - 1; i++) {
         var j = i + Math.floor(Math.random() * (sourceArray.length - i));
@@ -17,7 +16,7 @@ let questionArray =  [
     {
         QaID: 1,
         Question: "Question 1",
-        RightAnswer: "Wrong Answer1",
+        RightAnswer: "Right Answer1",
         WrongAnswer1: "Wrong Answer1.1",
         WrongAnswer2: "Wrong Answer1.2",
     },
@@ -36,12 +35,17 @@ let questionArray =  [
         RightAnswer: "Right Answer 3",
         WrongAnswer1: "Wrong Answer3.1",
         WrongAnswer2: "Wrong Answer3.2",
+    },
+
+    {
+        QaID: 4,
+        Question: "Question 4",
+        RightAnswer: "Right Answer 4",
+        WrongAnswer1: "Wrong Answer4.1",
+        WrongAnswer2: "Wrong Answer4.2",
     }
 
   ];
 
-// shuffledQuestionArray is the ready array of objects to be used by the quiz
-let shuffledQuestionArray = shuffle(questionArray);
-
-// console printout for debug
+shuffledQuestionArray = shuffle(questionArray);
 console.table(shuffledQuestionArray);
