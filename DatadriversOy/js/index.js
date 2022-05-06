@@ -1,6 +1,8 @@
 "use strict";
 
-function shuffle(sourceArray) {
+// Fisher–Yates shuffle Algorithm
+function shuffle(inputArray) {
+  let sourceArray = JSON.parse(JSON.stringify(inputArray));
   for (let i = 0; i < sourceArray.length - 1; i++) {
       let j = i + Math.floor(Math.random() * (sourceArray.length - i));
 
@@ -11,16 +13,22 @@ function shuffle(sourceArray) {
   return sourceArray;
 }
 
-function getQuestions() {
+// gets an array from PHP
+function arrayFromPHP() {
   let xhReq = new XMLHttpRequest();
   xhReq.open("GET", 'php/getDatabaseData.php', false);
   xhReq.send(null);
-  let questionArray = JSON.parse(xhReq.responseText);
-  return questionArray;
+  let resultArray = JSON.parse(xhReq.responseText);
+  return resultArray;
 }
 
-let sortedQuestionArray = getQuestions();
-let shuffledQuestionArray = shuffle(JSON.parse(JSON.stringify(sortedQuestionArray)));
+// storing array for use
+let sortedQuestionArray = arrayFromPHP();
+
+// shuffling original array (do each time a new set of questions is needed)
+let shuffledQuestionArray = shuffle(sortedQuestionArray);
+
+// print to console for testing purposes
 console.log(sortedQuestionArray);
 console.log(shuffledQuestionArray);
 
