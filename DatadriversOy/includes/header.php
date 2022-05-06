@@ -1,7 +1,3 @@
-<?php include './php/getDatabaseData.php'; 
-
-?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -30,14 +26,6 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
 
-    <script>
-      <?php
-      echo "var hello = '$Testing'";
-      
-      ?>
-
-      console.log(hello);
-    </script>
 <title>Datadrivers Oy</title>
   </head>
   
