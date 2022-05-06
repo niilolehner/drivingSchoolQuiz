@@ -6,7 +6,7 @@
 $page = 'quiz'; //testing purpose
 
 if ($page === 'quiz') {
-    include 'context/quiz.html';
+    include 'pages/quiz.html';
 }
 
 
