@@ -1,3 +1,7 @@
+<?php include './php/getDatabaseData.php'; 
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -15,6 +19,17 @@
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+      <?php
+      echo "var hello = '$Testing'";
+      
+      ?>
+
+      console.log(hello);
+
+    </script>
+
     <link rel="stylesheet" href="css/index.css">
 
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
