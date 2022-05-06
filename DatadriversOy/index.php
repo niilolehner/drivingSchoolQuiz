@@ -1,5 +1,5 @@
 <?php
-    require 'includes/header.php';
+require 'includes/header.php';
 
 
 //Context comes here
@@ -10,7 +10,7 @@ if ($page === 'quiz') {
 }
 
 
-    require 'includes/footer.php';
+require 'includes/footer.php';
 ?>
 
 
