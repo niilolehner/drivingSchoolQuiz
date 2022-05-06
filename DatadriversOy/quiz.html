@@ -16,3 +16,35 @@
         </div>
     </header>
     
+    var questions =
+    [
+    {
+    question: "Missä on jarru?",
+    answers: ["oikea", "vasen", "keskellä"],
+    rightAanswer: 3
+    },
+    
+    {
+    question: "mikä on ratti?",
+    answers: ["nappula", "ympyrä", "kolmio"],
+    rightAnswer: 2
+    }
+
+    var buttonTexts = [tänne numerot answerista arraysta];
+
+    var randomNumbers[] = Math.floor((buttonTexts.length)*Math.random());
+
+    $('#vastaus1').text(function() //siirretään ekaan buttoniin teksti
+    {
+        return buttonTexts[randomNumbers[1]];
+    });
+
+    $('#vastaus2').text(function() //siirretään ekaan buttoniin teksti
+    {
+    return buttonTexts[randomNumbers[2]];
+    });
+
+    $('#vastaus3').text(function() //siirretään ekaan buttoniin teksti
+    {
+    return buttonTexts[randomNumbers[3]];
+    });
