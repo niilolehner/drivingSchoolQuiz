@@ -7,7 +7,7 @@ $sql = '';
 $rows = [];
 
 $studentId = 1; //testing purpose
-$page = 'scoreboard'; //testing purpose
+$page = 'quizqa'; //testing purpose
 
 //Get data from database and input it in JSON-format:
 if ($page === 'quizqa' || $page === 'scoreboard' || $page === 'achievements') {
@@ -37,6 +37,4 @@ else {
 }
 mysqli_close($conn);
 
-//Testing different way:
-$Testing = "Hello World!";
 ?>
