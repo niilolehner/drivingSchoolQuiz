@@ -18,7 +18,7 @@ let questionArray =  [
         QaID: 1,
         Question: "Question 1",
         RightAnswer: "Wrong Answer1",
-        WrongAnswer1: "Wrong Answer1",
+        WrongAnswer1: "Wrong Answer1.1",
         WrongAnswer2: "Wrong Answer1.2",
     },
 
@@ -40,6 +40,7 @@ let questionArray =  [
 
   ];
 
+// shuffledQuestionArray is the ready array of objects to be used by the quiz
 let shuffledQuestionArray = shuffle(questionArray);
 
 // console printout for debug
