@@ -16,23 +16,10 @@
         </div>
     </header>
     
-    var questions =
-    [
-    {
-    question: "Missä on jarru?",
-    answers: ["oikea", "vasen", "keskellä"],
-    rightAanswer: 3
-    },
-    
-    {
-    question: "mikä on ratti?",
-    answers: ["nappula", "ympyrä", "kolmio"],
-    rightAnswer: 2
-    }
+    <script>
+    var buttonTexts = ["hupsista", "heipsistä", "hipsankeikka"];
 
-    var buttonTexts = [tänne numerot answerista arraysta];
-
-    var randomNumbers[] = Math.floor((buttonTexts.length)*Math.random());
+    var randomNumbers = Math.floor((buttonTexts.length)*Math.random());
 
     $('#vastaus1').text(function() //siirretään ekaan buttoniin teksti
     {
@@ -48,3 +35,4 @@
     {
     return buttonTexts[randomNumbers[3]];
     });
+    </script>
