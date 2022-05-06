@@ -42,4 +42,5 @@ let questionArray =  [
 
 let shuffledQuestionArray = shuffle(questionArray);
 
+// console printout for debug
 console.table(shuffledQuestionArray);
