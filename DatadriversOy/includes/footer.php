@@ -14,7 +14,6 @@
     
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> 
     
-<script src="./js/index.js"></script>
 </body>
 
 </html>

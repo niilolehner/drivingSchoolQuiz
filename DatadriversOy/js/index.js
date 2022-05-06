@@ -1,7 +1,6 @@
 "use strict";
-console.log("toimiiko?");
-let context = '';
 
+let context = '';
 
 //Get JSON data.
 $(document).ready(function(){
