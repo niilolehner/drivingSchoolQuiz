@@ -1,42 +1,19 @@
 
     <script>
-    /*function changeQuestion()
-        {
-            prompt("Please enter your name", "Harry Potter");
-            //document.getElementById('vastaus1').style.visibility = 'hidden';
-  var buttonTexts = ["hupsista", "heipsistä", "hipsankeikka"];
-
-    //var randomNumbers = Math.floor((buttonTexts.length)*Math.random());
-
-    let ans = document.getElementById("vastaus1");
-    (ans).text(buttonTexts[1]);
-        
-
-    let ans2 = document.getElementById("vastaus2");
-    ans2.val(buttonTexts[2]);
-
-    let ans3 = document.getElementById("vastaus3");
-    ans3.text(function() 
-    {
-    return buttonTexts[3];
-    }); 
-    }*/
-
     function changeQuestion() {
-        // just for demo purposes @Malla, works on my computer -Niilo
-        alert("yolo");
+        
+        let question = "QUESTION";
+        document.getElementById("kysymys").innerHTML = question;
+
         let  ans1 = "CHANGED1";      
         document.getElementById("vastaus1").innerHTML = ans1;
 
-        alert("trolo");
         let  ans2 = "CHANGED2";      
         document.getElementById("vastaus2").innerHTML = ans2;
 
-        alert("lolo");
         let  ans3 = "CHANGED3";      
         document.getElementById("vastaus3").innerHTML = ans3;
     }
-
     </script>
     
     <!-- Masthead-->
@@ -48,8 +25,8 @@
                     
                     <h3 id="kysymys" class="text-white-50 mx-auto mt-2 mb-5">Mihin ajon aikana tarvitaan jarruja?</h3>
                     <a id="vastaus1" class="btn btn-primary" onclick="changeQuestion()" href="#vastaus1">Ajaakseen lujempaa</a>
-                    <a id="vastaus2" class="btn btn-primary" href="#vastaus2">Hypätäkseen kiven yli</a>
-                    <a id="vastaus3" class="btn btn-primary" href="#vastaus3">Pysähtymään</a>
+                    <a id="vastaus2" class="btn btn-primary" onclick="changeQuestion()" href="#vastaus2">Hypätäkseen kiven yli</a>
+                    <a id="vastaus3" class="btn btn-primary" onclick="changeQuestion()" href="#vastaus3">Pysähtymään</a>
                     
                 </div>
             </div>
