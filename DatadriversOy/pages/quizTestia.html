@@ -7,7 +7,7 @@
                     <h1 class="mx-auto my-0 text-uppercase">QUIZ</h1>
                     <form>  
                     <h3 id="kysymys" class="text-white-50 mx-auto mt-2 mb-5">Mihin ajon aikana tarvitaan jarruja?</h3>
-                    <a id="vastaus1" class="btn btn-primary" href="#vastaus1">Ajaakseen lujempaa</a>
+                    <a id="vastaus1" class="btn btn-primary" onclick="changeQuestion()" href="#vastaus1">Ajaakseen lujempaa</a>
                     <a id="vastaus2" class="btn btn-primary" href="#vastaus2">Hypätäkseen kiven yli</a>
                     <a id="vastaus3" class="btn btn-primary" href="#vastaus3">Pysähtymään</a>
                     </form>
@@ -17,22 +17,26 @@
     </header>
     
     <script>
+
+        function changeQuestion()
+        {
     var buttonTexts = ["hupsista", "heipsistä", "hipsankeikka"];
 
-    var randomNumbers = Math.floor((buttonTexts.length)*Math.random());
+    //var randomNumbers = Math.floor((buttonTexts.length)*Math.random());
 
     $('#vastaus1').text(function() //siirretään ekaan buttoniin teksti
     {
-        return buttonTexts[randomNumbers[1]];
+        return buttonTexts[1];
     });
 
     $('#vastaus2').text(function() //siirretään ekaan buttoniin teksti
     {
-    return buttonTexts[randomNumbers[2]];
+    return buttonTexts[2];
     });
 
     $('#vastaus3').text(function() //siirretään ekaan buttoniin teksti
     {
-    return buttonTexts[randomNumbers[3]];
+    return buttonTexts[3];
     });
+    }
     </script>
