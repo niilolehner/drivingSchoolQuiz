@@ -19,7 +19,9 @@ function getQuestions() {
   return questionArray;
 }
 
-let shuffledQuestionArray = shuffle(getQuestions());
+let sortedQuestionArray = getQuestions();
+let shuffledQuestionArray = shuffle(JSON.parse(JSON.stringify(sortedQuestionArray)));
+console.log(sortedQuestionArray);
 console.log(shuffledQuestionArray);
 
 
