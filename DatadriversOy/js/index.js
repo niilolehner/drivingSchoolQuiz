@@ -4,7 +4,7 @@ let context = '';
 
 //Get JSON data.
 $(document).ready(function(){
-    $.get('http://localhost/Fullstack/Team_Awesome/DatadriversOy/php/getDatabaseData.php', function(data){
+    $.get('php/getDatabaseData.php', function(data){
         let result = JSON.parse(data) ;
 
         context +='<header class="masthead">';

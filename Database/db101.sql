@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2022 at 02:30 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- Generation Time: May 06, 2022 at 06:17 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,31 +29,30 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `achievements` (
   `AchievementID` int(11) NOT NULL,
-  `PopText` text NOT NULL,
-  `PopImage` blob NOT NULL
+  `PopText` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `achievements`
 --
 
-INSERT INTO `achievements` (`AchievementID`, `PopText`, `PopImage`) VALUES
-(1, '5x vastaussarja! (oikein peräkkäin)', ''),
-(2, '15x vastaussarja! (oikein peräkkäin)', ''),
-(3, '30x vastaussarja! (oikein peräkkäin)', ''),
-(4, '50x vastaussarja! (oikein peräkkäin)', ''),
-(5, 'Ensimmäinen visa suoritettu!', ''),
-(6, '5 visaa suoritettu!', ''),
-(7, '10 visaa suoritettu!', ''),
-(8, '20 visaa suoritettu!', ''),
-(9, '50 visaa suoritettu!', ''),
-(10, '100 visaa suoritettu!', ''),
-(11, '200 visaa suoritettu!', ''),
-(12, 'Salama (suoritit visan alle X minuutissa, 100% oikein)', ''),
-(13, 'Hitaasti, mutta varmasti... (visaan vastaaminen kesti yli X minuuttia, 100% oikein)', ''),
-(14, 'Surullinen Panda (suoritti visan 100% väärin)', ''),
-(15, 'Keksihirviö (salainen saavutus, opettaja voi myöntää sen)', ''),
-(16, 'Maraton (kaikki saavutukset kerätty)', '');
+INSERT INTO `achievements` (`AchievementID`, `PopText`) VALUES
+(1, '5x vastaussarja!'),
+(2, '15x vastaussarja!'),
+(3, '30x vastaussarja!'),
+(4, '50x vastaussarja!'),
+(5, 'Ensimmäinen visa suoritettu!'),
+(6, '5 visaa suoritettu!'),
+(7, '10 visaa suoritettu!'),
+(8, '20 visaa suoritettu!'),
+(9, '50 visaa suoritettu!'),
+(10, '100 visaa suoritettu!'),
+(11, '200 visaa suoritettu!'),
+(12, 'Salama'),
+(13, 'Hitaasti, mutta varmasti...'),
+(14, 'Surullinen Panda'),
+(15, 'Keksihirviö'),
+(16, 'Maraton');
 
 -- --------------------------------------------------------
 
@@ -133,7 +132,7 @@ INSERT INTO `quizqa` (`QaID`, `Question`, `RightAnswer`, `WrongAnswer1`, `WrongA
 
 CREATE TABLE `scoreboard` (
   `ScoreID` int(11) NOT NULL,
-  `PlayerName` text NOT NULL,
+  `StudentID` text NOT NULL,
   `TopScoreTime` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -146,9 +145,16 @@ CREATE TABLE `scoreboard` (
 CREATE TABLE `student` (
   `StudentID` int(11) NOT NULL,
   `Name` text NOT NULL,
-  `Achievements` text NOT NULL,
-  `OwnTopScoreTime` double NOT NULL
+  `OwnTopScoreTime` double NOT NULL,
+  `QuizesDone` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`StudentID`, `Name`, `OwnTopScoreTime`, `QuizesDone`) VALUES
+(1, 'Testaaja', 100, 0);
 
 -- --------------------------------------------------------
 
@@ -160,6 +166,13 @@ CREATE TABLE `studentachievements` (
   `StudentID` int(11) NOT NULL,
   `AchievementID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `studentachievements`
+--
+
+INSERT INTO `studentachievements` (`StudentID`, `AchievementID`) VALUES
+(1, 12);
 
 --
 -- Indexes for dumped tables
@@ -181,7 +194,8 @@ ALTER TABLE `quizqa`
 -- Indexes for table `scoreboard`
 --
 ALTER TABLE `scoreboard`
-  ADD PRIMARY KEY (`ScoreID`);
+  ADD PRIMARY KEY (`ScoreID`),
+  ADD KEY `StudentID` (`StudentID`(768));
 
 --
 -- Indexes for table `student`
@@ -215,7 +229,7 @@ ALTER TABLE `scoreboard`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `StudentID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `StudentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
