@@ -1,6 +1,29 @@
 "use strict";
 
-let context = '';
+function shuffle(sourceArray) {
+  for (let i = 0; i < sourceArray.length - 1; i++) {
+      let j = i + Math.floor(Math.random() * (sourceArray.length - i));
+
+      let temp = sourceArray[j];
+      sourceArray[j] = sourceArray[i];
+      sourceArray[i] = temp;
+  }
+  return sourceArray;
+}
+
+function getQuestions() {
+  let xhReq = new XMLHttpRequest();
+  xhReq.open("GET", 'php/getDatabaseData.php', false);
+  xhReq.send(null);
+  let questionArray = JSON.parse(xhReq.responseText);
+  return questionArray;
+}
+
+let shuffledQuestionArray = shuffle(getQuestions());
+console.log(shuffledQuestionArray);
+
+
+/*let context = '';
 
 //Get JSON data.
 $(document).ready(function(){
@@ -26,4 +49,4 @@ $(document).ready(function(){
 
           $("#context").html(context);
     });
-});
+});*/
