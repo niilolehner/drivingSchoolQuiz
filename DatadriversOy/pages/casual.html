@@ -17,45 +17,12 @@
     </div>
 </header>
 
+
 <!-- lots of testing under, will go away -->
 
-<!-- <script>
-
-    const questions = [
-        {
-            QaId: "1",
-            question: "Kuinka monta hevosta on konepellin alla?",
-            rightAnswer: "viisi",
-            wrongAsnwer1: "kahdeksan",
-            wrongAsnwer2: "vaikka kuinka monta"
-        },
-        {
-            QaId: "2",
-            question: "Montako pyörää on autossa?",
-            rightAnswer: "ei yhtään",
-            wrongAsnwer1: "4",
-            wrongAsnwer2: "12"
-        }
-    ]
-
-    function changeQuestion() {
-
-        let question = shuff
-        document.getElementById("kysymys").innerHTML = question;
-
-        let ans1 = questions[0].wrongAsnwer1;
-        document.getElementById("vastaus1").innerHTML = ans1;
-
-        let ans2 = questions[0].rightAnswer;
-        document.getElementById("vastaus2").innerHTML = ans2;
-
-        let ans3 = questions[0].wrongAsnwer2;
-        document.getElementById("vastaus3").innerHTML = ans3;
-    }
-</script> -->
-
 <script>
-function changeQuestion() {
+function changeQuestion() 
+{
     for (let i = 0; i < shuffledQuestionArray.length; i++)
 {
 let question = shuffledQuestionArray[i].Question;
@@ -69,5 +36,8 @@ document.getElementById("vastaus2").innerHTML = ans2;
 
 let ans3 = shuffledQuestionArray[i].WrongAnswer2;
 document.getElementById("vastaus3").innerHTML = ans3;
-}}
+
+changeQuestion();
+}
+}
 </script>
