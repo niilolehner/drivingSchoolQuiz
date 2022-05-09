@@ -44,9 +44,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#about">Casual</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Competitive</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#signup">Achievements</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php?sivu=casual">Casual</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php?sivu=competitive">Competitive</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php?sivu=achievements">Achievements</a></li>
                 </ul>
             </div>
         </div>

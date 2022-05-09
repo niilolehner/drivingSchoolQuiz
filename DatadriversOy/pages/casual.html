@@ -1,0 +1,53 @@
+<!-- Masthead-->
+<header class="masthead">
+    <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+        <div class="d-flex justify-content-center">
+            <div class="text-center">
+                <h1 class="mx-auto my-0 text-uppercase">QUIZ</h1>
+                <form>
+                <h3 id="kysymys" class="text-white-50 mx-auto mt-2 mb-5">Mihin ajon aikana tarvitaan jarruja?</h3>
+                <a id="vastaus1" class="btn btn-primary" onclick="changeQuestion()" href="#vastaus1">Ajaakseen
+                    lujempaa</a>
+                <a id="vastaus2" class="btn btn-primary" onclick="changeQuestion()" href="#vastaus2">Hypätäkseen kiven
+                    yli</a>
+                <a id="vastaus3" class="btn btn-primary" onclick="changeQuestion()" href="#vastaus3">Pysähtymään</a>
+            </form>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+
+    const questions = [
+        {
+            QaId: "1",
+            question: "Kuinka monta hevosta on konepellin alla?",
+            rightAnswer: "viisi",
+            wrongAsnwer1: "kahdeksan",
+            wrongAsnwer2: "vaikka kuinka monta"
+        },
+        {
+            QaId: "2",
+            question: "Montako pyörää on autossa?",
+            rightAnswer: "ei yhtään",
+            wrongAsnwer1: "4",
+            wrongAsnwer2: "12"
+        }
+    ]
+
+    function changeQuestion() {
+
+        let question = questions[0].question;
+        document.getElementById("kysymys").innerHTML = question;
+
+        let ans1 = questions[0].wrongAsnwer1;
+        document.getElementById("vastaus1").innerHTML = ans1;
+
+        let ans2 = questions[0].rightAnswer;
+        document.getElementById("vastaus2").innerHTML = ans2;
+
+        let ans3 = questions[0].wrongAsnwer2;
+        document.getElementById("vastaus3").innerHTML = ans3;
+    }
+</script>
