@@ -17,7 +17,9 @@
     </div>
 </header>
 
-<script>
+<!-- lots of testing under, will go away -->
+
+<!-- <script>
 
     const questions = [
         {
@@ -38,7 +40,7 @@
 
     function changeQuestion() {
 
-        let question = questions[0].question;
+        let question = shuff
         document.getElementById("kysymys").innerHTML = question;
 
         let ans1 = questions[0].wrongAsnwer1;
@@ -50,4 +52,22 @@
         let ans3 = questions[0].wrongAsnwer2;
         document.getElementById("vastaus3").innerHTML = ans3;
     }
+</script> -->
+
+<script>
+function changeQuestion() {
+    for (let i = 0; i < shuffledQuestionArray.length; i++)
+{
+let question = shuffledQuestionArray[i].Question;
+document.getElementById("kysymys").innerHTML = question;
+
+let ans1 = shuffledQuestionArray[i].RightAnswer;
+document.getElementById("vastaus1").innerHTML = ans1;
+
+let ans2 = shuffledQuestionArray[i].WrongAnswer1;
+document.getElementById("vastaus2").innerHTML = ans2;
+
+let ans3 = shuffledQuestionArray[i].WrongAnswer2;
+document.getElementById("vastaus3").innerHTML = ans3;
+}}
 </script>
