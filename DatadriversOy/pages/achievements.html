@@ -1,9 +1,9 @@
 <style>
+
 .miniachiev {
     height: 5vw;
     width: 5vw;
 }
-
 
 </style>
 
@@ -12,7 +12,7 @@
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
        <div class="d-flex justify-content-center">
             <div class="text-center">
-               <h1 class="mx-auto my-0 text-uppercase">palkistot</h1>
+               <h1 class="mx-auto my-0 text-uppercase">Saavutukset</h1>
                    
                 <div class="text-white-50 ">
                     <p id="unlockedAchievsList"></p>
@@ -24,16 +24,17 @@
 </header>
 
 <script>
+
     function getUnlockedAchievs() {
 
         let unlockedAchievsArray = arrayFromPHP();
 
         unlockedAchievsArray.forEach(({AchievementID, POPtext})=>{ 
 
-            document.getElementById('unlockedAchievsList').innerHTML +=' ' + '<img class="miniachiev" src="images/' + `${AchievementID}` + '.png">' + " " + `${POPtext}` + ' '});
+        document.getElementById('unlockedAchievsList').innerHTML +=' ' + '<img class="miniachiev" src="images/' + `${AchievementID}` + '.png">' + " " + `${POPtext}` + ' '});
 
-        }
+    }
 
-getUnlockedAchievs();
+    getUnlockedAchievs();
 
 </script>
