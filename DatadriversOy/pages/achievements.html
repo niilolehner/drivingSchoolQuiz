@@ -1,9 +1,9 @@
 <style>
+
 .miniachiev {
     height: 5vw;
     width: 5vw;
 }
-
 
 </style>
 
@@ -24,16 +24,17 @@
 </header>
 
 <script>
+
     function getUnlockedAchievs() {
 
         let unlockedAchievsArray = arrayFromPHP();
 
         unlockedAchievsArray.forEach(({AchievementID, POPtext})=>{ 
 
-            document.getElementById('unlockedAchievsList').innerHTML +=' ' + '<img class="miniachiev" src="images/' + `${AchievementID}` + '.png">' + " " + `${POPtext}` + ' '});
+        document.getElementById('unlockedAchievsList').innerHTML +=' ' + '<img class="miniachiev" src="images/' + `${AchievementID}` + '.png">' + " " + `${POPtext}` + ' '});
 
-        }
+    }
 
-getUnlockedAchievs();
+    getUnlockedAchievs();
 
 </script>
