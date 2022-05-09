@@ -11,7 +11,11 @@
                 <a id="vastaus2" class="btn btn-primary" onclick="changeQuestion()" href="#vastaus2">Hypätäkseen kiven
                     yli</a>
                 <a id="vastaus3" class="btn btn-primary" onclick="changeQuestion()" href="#vastaus3">Pysähtymään</a>
-            </form>
+                <div class="text-center">
+                    <a id="submit" class="btn btn-primary" onclick="submit()" href="#submit">Tarkasta</a>
+                    <a id="next" class="btn btn-primary" onclick="next()" href="#next">Seuraava</a>
+                </div> 
+                </form>
             </div>
         </div>
     </div>
@@ -21,7 +25,7 @@
 <!-- lots of testing under, will go away -->
 
 <script>
-function changeQuestion() 
+/* function changeQuestion() 
 {
     for (let i = 0; i < shuffledQuestionArray.length; i++)
 {
@@ -39,5 +43,33 @@ document.getElementById("vastaus3").innerHTML = ans3;
 
 changeQuestion();
 }
+} */
+
+let currentQuestion = 0;
+let score = 0;
+
+const kysymysTxt = document.getElementById("kysymys");
+const vastaus1Btn = document.getElementById("vastaus1");
+const vastaus2Btn = document.getElementById("vastaus2");
+const vastaus3Btn = document.getElementById("vastaus3");
+const submitBtn = document.getElementById("submit");
+const nextBtn = document.getElementById("next");
+
+vastaus1Btn.addEventListener("click", dno);
+prevBtn.addEventListener("click", dno);
+nextBtn.addEventListener("click", next);
+submitBtn.addEventListener("click", submit);
+
+function next()
+{
+    currentQuestion++;
+    if(currentQuestion >=2)
+    {
+        nextBtn.classList.add("hide");
+    }
+    kysymysTxt.innerHTML = shuffledQuestionArray[currentQuestion].Question;
+    vastaus1Btn.innerHTML = shuffledQuestionArray[currentQuestion].RightAnswer;
+    vastaus2Btn.innerHTML = shuffledQuestionArray[currentQuestion].WrongAnswer1;
+    vastaus3Btn.innerHTML = shuffledQuestionArray[currentQuestion].WrongAnswer2;
 }
 </script>
