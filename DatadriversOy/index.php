@@ -2,16 +2,29 @@
 require 'includes/header.php';
 ?>
 
-<div id="context"></div>
-
 <?php
 //Context comes here
-$page = 'quiz'; //testing purpose
+$page = 'welcome'; //testing purpose
 
-if ($page === 'quiz') {
-    include 'pages/quiz.html';
+if ($page === 'welcome') {
+    include 'pages/welcome.html';
 }
 
+if ($page === 'competitive') {
+    include 'pages/competitive.html';
+}
+
+if ($page === 'casual') {
+    include 'pages/casual.html';
+}
+
+if ($page === 'achievements') {
+    include 'pages/achievements.html';
+}
+
+if ($page === 'teacher') {
+    include 'pages/teacher.html';
+}
 
 require 'includes/footer.php';
 ?>
