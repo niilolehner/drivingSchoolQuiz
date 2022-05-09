@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="author" content="Ismo Manninen Niilo Lehner Malla Marttala",>
@@ -16,8 +16,6 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <script src="./js/index.js"></script>
-    
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -27,27 +25,48 @@
         rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
+        
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> 
+    <script src="./js/index.js"></script>
+    
+    <title>Datadrivers Oy</title>
+</head>
 
-<title>Datadrivers Oy</title>
-  </head>
-  
-  <body id="page-top">
+<?php
+
+isset($_GET['page']) ? $page = $_GET['page'] : $page = '';
+
+if ($page === ''){ 
+    $page = 'welcome';
+}
+
+if ($page !== 'welcome') {
+    ?>
+    <body id="page-top">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="#page-top">Aloita tai lopeta quiz</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
-                Menu
+            <a class="navbar-brand" href="index.php?page=welcome">Etusivu</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Valikko
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.php?sivu=casual">Casual</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.php?sivu=competitive">Competitive</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.php?sivu=achievements">Achievements</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Harjoittelutehtäviä</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Teoriakoeharjoitus</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Palkinnot</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+<?php
+}
+?>

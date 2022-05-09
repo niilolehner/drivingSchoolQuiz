@@ -1,11 +1,8 @@
 <?php
-require 'includes/header.php';
+    require 'includes/header.php';
 ?>
 
 <?php
-//Context comes here
-$page = 'casual'; //testing purpose
-
 if ($page === 'welcome') {
     include 'pages/welcome.html';
 }
@@ -28,7 +25,9 @@ if ($page === 'teacher') {
 ?>
 
 <?php
-require 'includes/footer.php';
+if ($page !== 'welcome'){
+    require 'includes/footer.php';
+}
 ?>
 
 
