@@ -17,11 +17,12 @@ else if ($page === 'student') {
   $sql = "SELECT * FROM $page WHERE StudentID = $studentId";
 }
 else if ($page === 'studentachievements') {
-  $sql = "SELECT * 
+  $sql = "SELECT student.StudentID, student.Name, achievements.AchievementID, achievements.POPtext
           FROM $page
           INNER JOIN student ON $page.studentID = student.studentID
-          INNER JOIN achievements ON $page.AchievementID = achievements.AchievementID";
-}
+          INNER JOIN achievements ON $page.AchievementID = achievements.AchievementID
+          WHERE student.StudentID = $studentId";
+}      
 
 $result = mysqli_query($conn, $sql);
 

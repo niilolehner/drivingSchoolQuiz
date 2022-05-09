@@ -12,7 +12,7 @@
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
        <div class="d-flex justify-content-center">
             <div class="text-center">
-               <h1 class="mx-auto my-0 text-uppercase">saavutukset</h1>
+               <h1 class="mx-auto my-0 text-uppercase">palkistot</h1>
                    
                 <div class="text-white-50 ">
                     <p id="unlockedAchievsList"></p>
@@ -37,16 +37,3 @@
 getUnlockedAchievs();
 
 </script>
-
-
-
-
-<!-- else if ($page === 'studentachievements') {
-    $sql = "SELECT student.StudentID, student.Name, achievements.AchievementID, achievements.POPtext
-            FROM $page
-            INNER JOIN student ON $page.studentID = student.studentID
-            INNER JOIN achievements ON $page.AchievementID = achievements.AchievementID
-            WHERE student.StudentID = $studentId"; //// SELECT and WHERE need to be updated in master version of code
-  }                   
-  
-                                        ^^^^^^^ CHANGES NEEDED TO BE MADE TO getDatabaseData.php -->
