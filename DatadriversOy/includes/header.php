@@ -44,25 +44,25 @@
 isset($_GET['page']) ? $page = $_GET['page'] : $page = '';
 
 if ($page === ''){ 
-    $page = 'welcome';
+    $page = 'userChoose';
 }
 
-if ($page !== 'welcome') {
-    ?>
+if ($page !== 'welcome' && $page !== 'userChoose') {
+?>
     <body id="page-top">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="index.php?page=welcome">Etusivu</a>
+            <a class="navbar-brand" href="index.php?page=userChoose">Valitse käyttäjä (demo)</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Valikko
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Harjoittelutehtäviä</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Teoriakoeharjoitus</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Palkinnot</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Harjoittelutehtäviä</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Teoriakoeharjoitus</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Palkinnot</a></li>
                 </ul>
             </div>
         </div>

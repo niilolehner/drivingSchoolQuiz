@@ -1,8 +1,10 @@
 <?php
     require 'includes/header.php';
-?>
 
-<?php
+if ($page === 'userChoose') {
+    include 'pages/userChoose.html';
+}
+
 if ($page === 'welcome') {
     include 'pages/welcome.html';
 }
@@ -22,12 +24,9 @@ if ($page === 'achievements') {
 if ($page === 'teacher') {
     include 'pages/teacher.html';
 }
-?>
 
-<?php
-if ($page !== 'welcome'){
+
+if ($page !== 'welcome' && $page !== 'userChoose') {
     require 'includes/footer.php';
 }
 ?>
-
-
