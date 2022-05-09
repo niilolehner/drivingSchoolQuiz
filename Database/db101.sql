@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2022 at 06:17 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+-- Generation Time: May 09, 2022 at 06:33 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -154,7 +154,8 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`StudentID`, `Name`, `OwnTopScoreTime`, `QuizesDone`) VALUES
-(1, 'Testaaja', 100, 0);
+(1, 'Testaaja', 100, 0),
+(2, 'Testaaja2', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -172,7 +173,23 @@ CREATE TABLE `studentachievements` (
 --
 
 INSERT INTO `studentachievements` (`StudentID`, `AchievementID`) VALUES
-(1, 12);
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(1, 9),
+(1, 10),
+(1, 11),
+(1, 12),
+(1, 13),
+(1, 14),
+(1, 15),
+(1, 16),
+(2, 1);
 
 --
 -- Indexes for dumped tables
@@ -229,7 +246,7 @@ ALTER TABLE `scoreboard`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `StudentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `StudentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

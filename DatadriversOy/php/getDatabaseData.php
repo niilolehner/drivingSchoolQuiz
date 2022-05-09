@@ -7,7 +7,7 @@ $sql = '';
 $rows = [];
 
 $studentId = 1; //testing purpose
-$page = 'quizqa'; //testing purpose
+$page = 'studentachievements'; //testing purpose
 
 //Get data from database and input it in JSON-format:
 if ($page === 'quizqa' || $page === 'scoreboard' || $page === 'achievements') {

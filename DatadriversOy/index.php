@@ -17,7 +17,7 @@ if ($page === 'casual') {
     include 'pages/casual.html';
 }
 
-if ($page === 'achievements') {
+if ($page === 'studentachievements') {
     include 'pages/achievements.html';
 }
 

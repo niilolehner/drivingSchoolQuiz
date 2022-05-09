@@ -66,7 +66,7 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="index.php?page=casual">Harjoittelutehtäviä</a></li>
                 <li class="nav-item"><a class="nav-link" href="inde.php?page=competitive">Teoriakoeharjoitus</a></li>
-                <li class="nav-item"><a class="nav-link" href="index.php?page=achievements">Saavutukset</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.php?page=studentachievements">Saavutukset</a></li>
             </ul>
         </div>
     </div>

@@ -23,14 +23,14 @@ function arrayFromPHP() {
 }
 
 // storing array for use
-let sortedQuestionArray = arrayFromPHP();
+// let sortedQuestionArray = arrayFromPHP();
 
 // shuffling original array (do each time a new set of questions is needed)
-let shuffledQuestionArray = shuffle(sortedQuestionArray);
+// let shuffledQuestionArray = shuffle(sortedQuestionArray);
 
 // print to console for testing purposes
-console.log(sortedQuestionArray);
-console.log(shuffledQuestionArray);
+// console.log(sortedQuestionArray);
+// console.log(shuffledQuestionArray);
 
 
 
