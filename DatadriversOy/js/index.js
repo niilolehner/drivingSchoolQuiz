@@ -14,23 +14,13 @@ function shuffle(inputArray) {
 }
 
 // gets an array from PHP
-function arrayFromPHP() {
+function arrayFromPHP(pageName) {
   let xhReq = new XMLHttpRequest();
-  xhReq.open("GET", 'php/getDatabaseData.php', false);
+  xhReq.open("GET", 'php/getDatabaseData.php?page=' + pageName, false);
   xhReq.send(null);
   let resultArray = JSON.parse(xhReq.responseText);
   return resultArray;
 }
-
-// storing array for use
-// let sortedQuestionArray = arrayFromPHP();
-
-// shuffling original array (do each time a new set of questions is needed)
-// let shuffledQuestionArray = shuffle(sortedQuestionArray);
-
-// print to console for testing purposes
-// console.log(sortedQuestionArray);
-// console.log(shuffledQuestionArray);
 
 
 

@@ -27,7 +27,7 @@
 
     function getUnlockedAchievs() {
 
-        let unlockedAchievsArray = arrayFromPHP();
+        let unlockedAchievsArray = arrayFromPHP("studentachievements");
 
         unlockedAchievsArray.forEach(({AchievementID, POPtext})=>{ 
 

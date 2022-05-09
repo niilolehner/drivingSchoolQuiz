@@ -1,16 +1,16 @@
 <?php
-include 'dbConnection.php';
-
 isset($_GET['page']) ? $page = $_GET['page'] : $page = '';
 isset($_GET['studentId']) ? $studentId = $_GET['studentId'] : $studentId = '';
+
+include 'dbConnection.php';
+
 $sql = '';
 $rows = [];
 
 $studentId = 1; //testing purpose
-$page = 'studentachievements'; //testing purpose
 
 //Get data from database and input it in JSON-format:
-if ($page === 'quizqa' || $page === 'scoreboard' || $page === 'achievements') {
+if ($page === 'quizqa' || $page === 'scoreboard') {
   $sql = "SELECT * FROM $page";
 }
 else if ($page === 'student') {

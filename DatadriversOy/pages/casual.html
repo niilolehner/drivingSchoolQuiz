@@ -45,6 +45,12 @@ changeQuestion();
 }
 } */
 
+// storing array for use
+let sortedQuestionArray = arrayFromPHP("quizqa");
+
+// shuffling original array (do each time a new set of questions is needed)
+let shuffledQuestionArray = shuffle(sortedQuestionArray);
+
 const kysymysTxt = document.getElementById("kysymys");
 const vastaus1Btn = document.getElementById("vastaus1");
 const vastaus2Btn = document.getElementById("vastaus2");
@@ -57,6 +63,7 @@ submitBtn.addEventListener("click", submit);
 
 function startQuiz()
 {
+
     let currentQuestion = 0;
     let score = 0;
 
