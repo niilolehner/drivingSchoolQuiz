@@ -15,6 +15,7 @@
 
     let currentQuestion = 0;
     let score = 0;
+    let streak = 0;
 
     function startQuiz() {
         kysymysTxt.innerHTML = shuffledQuestionArray[currentQuestion].Question;
@@ -25,9 +26,11 @@
         vastaus1Btn.onclick = () => {
             if (shuffledQuestionArray[currentQuestion].RightAnswer == vastaus1Btn.innerHTML) {
                 score++;
+                streak++;
                 next();
             }
             else if (shuffledQuestionArray[currentQuestion].WrongAnswer1 || shuffledQuestionArray[currentQuestion].WrongAnswer2) {
+                streak = 0;
                 next();
             }
         }
@@ -35,9 +38,11 @@
         vastaus2Btn.onclick = () => {
             if (shuffledQuestionArray[currentQuestion].RightAnswer == vastaus2Btn.innerHTML) {
                 score++;
+                streak++;
                 next();
             }
             else if (shuffledQuestionArray[currentQuestion].WrongAnswer1 || shuffledQuestionArray[currentQuestion].WrongAnswer2) {
+                streak = 0;
                 next();
             }
         }
@@ -45,9 +50,11 @@
         vastaus3Btn.onclick = () => {
             if (shuffledQuestionArray[currentQuestion].RightAnswer == vastaus3Btn.innerHTML) {
                 score++;
+                streak++;
                 next();
             }
             else if (shuffledQuestionArray[currentQuestion].WrongAnswer1 || shuffledQuestionArray[currentQuestion].WrongAnswer2) {
+                streak = 0;
                 next();
             }
         }
@@ -62,6 +69,7 @@
     
             console.log(currentQuestion);
             console.log(score);
+            console.log(streak);
         }
     }
 
