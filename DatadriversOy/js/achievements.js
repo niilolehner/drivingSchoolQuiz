@@ -16,6 +16,6 @@ function getUnlockedAchievs() {
   
     unlockedAchievsArray.forEach(({AchievementID, POPtext})=>{ 
   
-    document.getElementById('unlockedAchievsList').innerHTML +=' ' + '<img class="miniachiev" src="images/' + `${AchievementID}` + '.png">' + ' ' + `${POPtext}` + ' '});
+    document.getElementById('unlockedAchievsList').innerHTML +='<img class="miniachiev" src="images/' + `${AchievementID}` + '.png">' + ' ' + `${POPtext}`});
   
   }
