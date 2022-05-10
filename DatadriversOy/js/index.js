@@ -2,7 +2,7 @@
 
 // Fisher–Yates algorithm (shuffles arrays)
 function shuffle(inputArray) {
-  // making a deep copy
+  // makes a deep copy
   let resultArray = JSON.parse(JSON.stringify(inputArray));
   for (let i = 0; i < resultArray.length - 1; i++) {
       let j = i + Math.floor(Math.random() * (resultArray.length - i));
@@ -20,9 +20,29 @@ function arrayFromPHP(pageName) {
   xhReq.open("GET", 'php/getDatabaseData.php?page=' + pageName, false);
   xhReq.send(null);
   let inputArray = JSON.parse(xhReq.responseText);
-  // making a deep copy
+  // makes a deep copy
   let resultArray = JSON.parse(JSON.stringify(inputArray));
   return resultArray;
+}
+
+// gets unlocked achievements info
+function getUnlockedAchievs() {
+
+  let unlockedAchievsArray = arrayFromPHP("studentachievements");
+
+  return unlockedAchievsArray;
+
+}
+
+// populates the achievements.html
+function listUnlockedAchievs() {
+
+  let unlockedAchievsArray = getUnlockedAchievs();
+
+  unlockedAchievsArray.forEach(({AchievementID, POPtext})=>{ 
+
+  document.getElementById('unlockedAchievsList').innerHTML +=' ' + '<img class="miniachiev" src="images/' + `${AchievementID}` + '.png">' + " " + `${POPtext}` + ' '});
+
 }
 
 
