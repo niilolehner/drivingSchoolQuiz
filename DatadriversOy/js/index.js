@@ -1,24 +1,27 @@
 "use strict";
 
-// Fisher–Yates shuffle Algorithm
+// Fisher–Yates algorithm (shuffles arrays)
 function shuffle(inputArray) {
-  let sourceArray = JSON.parse(JSON.stringify(inputArray));
-  for (let i = 0; i < sourceArray.length - 1; i++) {
-      let j = i + Math.floor(Math.random() * (sourceArray.length - i));
+  // making a deep copy
+  let resultArray = JSON.parse(JSON.stringify(inputArray));
+  for (let i = 0; i < resultArray.length - 1; i++) {
+      let j = i + Math.floor(Math.random() * (resultArray.length - i));
 
-      let temp = sourceArray[j];
-      sourceArray[j] = sourceArray[i];
-      sourceArray[i] = temp;
+      let temp = resultArray[j];
+      resultArray[j] = resultArray[i];
+      resultArray[i] = temp;
   }
-  return sourceArray;
+  return resultArray;
 }
 
-// gets an array from PHP
+// gets an array from PHP/MySQL (see getDatabaseData.php)
 function arrayFromPHP(pageName) {
   let xhReq = new XMLHttpRequest();
   xhReq.open("GET", 'php/getDatabaseData.php?page=' + pageName, false);
   xhReq.send(null);
-  let resultArray = JSON.parse(xhReq.responseText);
+  let inputArray = JSON.parse(xhReq.responseText);
+  // making a deep copy
+  let resultArray = JSON.parse(JSON.stringify(inputArray));
   return resultArray;
 }
 
