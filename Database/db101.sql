@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2022 at 06:33 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- Generation Time: May 10, 2022 at 06:32 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -133,29 +133,22 @@ INSERT INTO `quizqa` (`QaID`, `Question`, `RightAnswer`, `WrongAnswer1`, `WrongA
 CREATE TABLE `scoreboard` (
   `ScoreID` int(11) NOT NULL,
   `StudentID` text NOT NULL,
-  `TopScoreTime` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `student`
---
-
-CREATE TABLE `student` (
-  `StudentID` int(11) NOT NULL,
-  `Name` text NOT NULL,
-  `OwnTopScoreTime` double NOT NULL,
-  `QuizesDone` int(11) NOT NULL
+  `Score` int(11) NOT NULL,
+  `Time` double NOT NULL,
+  `Date` date NOT NULL,
+  `Feedback` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `student`
+-- Dumping data for table `scoreboard`
 --
 
-INSERT INTO `student` (`StudentID`, `Name`, `OwnTopScoreTime`, `QuizesDone`) VALUES
-(1, 'Testaaja', 100, 0),
-(2, 'Testaaja2', 0, 0);
+INSERT INTO `scoreboard` (`ScoreID`, `StudentID`, `Score`, `Time`, `Date`, `Feedback`) VALUES
+(1, '1', 100, 0.6, '2022-05-10', 'Loistavaa!'),
+(2, '2', 75, 1.15, '2022-05-10', 'Jatka samaan malliin'),
+(3, '3', 55, 1.5, '2022-05-10', 'Loistavaa'),
+(4, '3', 10, 2, '2022-05-10', 'Nyt meni kyllä aivan päin persettä\r\n'),
+(5, '1', 5, 0.3, '2022-05-10', 'Hyhhyh');
 
 -- --------------------------------------------------------
 
@@ -215,12 +208,6 @@ ALTER TABLE `scoreboard`
   ADD KEY `StudentID` (`StudentID`(768));
 
 --
--- Indexes for table `student`
---
-ALTER TABLE `student`
-  ADD PRIMARY KEY (`StudentID`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -240,13 +227,7 @@ ALTER TABLE `quizqa`
 -- AUTO_INCREMENT for table `scoreboard`
 --
 ALTER TABLE `scoreboard`
-  MODIFY `ScoreID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `student`
---
-ALTER TABLE `student`
-  MODIFY `StudentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ScoreID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

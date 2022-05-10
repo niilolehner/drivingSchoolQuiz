@@ -33,12 +33,12 @@
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="./js/index.js" defer></script>
     <script src="./js/casual.js" defer></script>
     <script src="./js/achievements.js" defer></script>
+    <script src="./js/teacher.js" defer></script>
 
-
-
+    
     <!-- Bootstrap core CSS -->
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
