@@ -13,7 +13,7 @@
                 <a id="vastaus3" class="btn btn-primary"  href="#vastaus3">Pysähtymään</a>
                 <div class="text-center">
                     <a id="submit" class="btn btn-primary" onclick="submit()" href="#submit">Lopeta</a>
-                    <a id="next" class="btn btn-primary" onclick="next()" href="#next">Seuraava</a>
+                    <a id="next" class="btn btn-primary" href="#next">Seuraava</a>
                 </div> 
                 </form>
             </div>
@@ -21,107 +21,4 @@
     </div>
 </header>
 
-
-<!-- lots of testing under, will go away -->
-
-<script>
-/* function changeQuestion() 
-{
-    for (let i = 0; i < shuffledQuestionArray.length; i++)
-{
-let question = shuffledQuestionArray[i].Question;
-document.getElementById("kysymys").innerHTML = question;
-
-let ans1 = shuffledQuestionArray[i].RightAnswer;
-document.getElementById("vastaus1").innerHTML = ans1;
-
-let ans2 = shuffledQuestionArray[i].WrongAnswer1;
-document.getElementById("vastaus2").innerHTML = ans2;
-
-let ans3 = shuffledQuestionArray[i].WrongAnswer2;
-document.getElementById("vastaus3").innerHTML = ans3;
-
-changeQuestion();
-}
-} */
-
-// storing array for use
-let sortedQuestionArray = arrayFromPHP("quizqa");
-
-// shuffling original array (do each time a new set of questions is needed)
-let shuffledQuestionArray = shuffle(sortedQuestionArray);
-
-const kysymysTxt = document.getElementById("kysymys");
-const vastaus1Btn = document.getElementById("vastaus1");
-const vastaus2Btn = document.getElementById("vastaus2");
-const vastaus3Btn = document.getElementById("vastaus3");
-const submitBtn = document.getElementById("submit");
-const nextBtn = document.getElementById("next");
-
-nextBtn.addEventListener("click", next);
-submitBtn.addEventListener("click", submit);
-
-function startQuiz()
-{
-
-    let currentQuestion = 0;
-    let score = 0;
-
-    kysymysTxt.innerHTML = shuffledQuestionArray[currentQuestion].Question;
-    vastaus1Btn.innerHTML = shuffledQuestionArray[currentQuestion].RightAnswer;
-    vastaus2Btn.innerHTML = shuffledQuestionArray[currentQuestion].WrongAnswer1;
-    vastaus3Btn.innerHTML = shuffledQuestionArray[currentQuestion].WrongAnswer2;
-
-    vastaus1Btn.onclick = () =>
-    {
-        if(shuffledQuestionArray[currentQuestion].RightAnswer)
-        {
-            score++;
-            next();
-        }
-        else if(shuffledQuestionArray[currentQuestion].WrongAnswer1 || shuffledQuestionArray[currentQuestion].WrongAnswer2)
-        {
-            next();
-        }
-    }
-
-    vastaus2Btn.onclick = () => {
-        if (shuffledQuestionArray[currentQuestion].RightAnswer) {
-            score++;
-            next();
-        }
-        else if (shuffledQuestionArray[currentQuestion].WrongAnswer1 || shuffledQuestionArray[currentQuestion].WrongAnswer2) {
-            next();
-        }
-    }
-
-    vastaus3Btn.onclick = () => {
-        if (shuffledQuestionArray[currentQuestion].RightAnswer) {
-            score++;
-            next();
-        }
-        else if (shuffledQuestionArray[currentQuestion].WrongAnswer1 || shuffledQuestionArray[currentQuestion].WrongAnswer2) {
-            next();
-        }
-    }
-
-    console.log(currentQuestion);
-    console.log(score);
-
-
-function next()
-{
-    currentQuestion++;
-    if(currentQuestion >=2)
-    {
-        nextBtn.classList.add("hide");
-    }
-    kysymysTxt.innerHTML = shuffledQuestionArray[currentQuestion].Question;
-    vastaus1Btn.innerHTML = shuffledQuestionArray[currentQuestion].RightAnswer;
-    vastaus2Btn.innerHTML = shuffledQuestionArray[currentQuestion].WrongAnswer1;
-    vastaus3Btn.innerHTML = shuffledQuestionArray[currentQuestion].WrongAnswer2;
-}
-}
-
-startQuiz();
-</script>
+<script>startQuiz();</script>

@@ -34,6 +34,7 @@
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     <script src="./js/index.js"></script>
+    <script src="./js/casual.js" defer></script>
 
     <!-- Bootstrap core CSS -->
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -45,13 +46,13 @@
 <body id="page-top">
 
 <?php
-    isset($_GET['page']) ? $page = $_GET['page'] : $page = '';
+isset($_GET['page']) ? $page = $_GET['page'] : $page = '';
 
-    if ($page === ''){ 
-        $page = 'userChoose';
-    }
+if ($page === '') {
+    $page = 'userChoose';
+}
 
-    if ($page !== 'welcome' && $page !== 'userChoose') {
+if ($page !== 'welcome' && $page !== 'userChoose') {
 ?>
 
 <!-- Navigation-->

@@ -22,7 +22,8 @@ else if ($page === 'studentachievements') {
           INNER JOIN student ON $page.studentID = student.studentID
           INNER JOIN achievements ON $page.AchievementID = achievements.AchievementID
           WHERE student.StudentID = $studentId";
-}      
+}
+
 
 $result = mysqli_query($conn, $sql);
 
