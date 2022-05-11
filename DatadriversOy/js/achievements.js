@@ -14,10 +14,10 @@ function isAchievUnlocked(unlockedAchievsArray, AchievementID) {
   }); 
 }
 
-// check that the achievements are not already unlocked
+// check DB that achievements are not already unlocked
 // also check if requirements of locked achievements are satisfied for unlock
-// unlock the achievements
-// trigger achievements animation
+// record unlocked achievements to DB
+// trigger achievements unlock animation
 //
 // modeInput is "admin", "competitive" or "casual" as string, timeInput is minutes as integer
 // scoreInput is correct answers given as integer, streakInput is correct answer streak as integer
