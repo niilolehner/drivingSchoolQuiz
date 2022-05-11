@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2022 at 08:04 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+-- Generation Time: May 11, 2022 at 04:07 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `db101`
 --
-CREATE DATABASE IF NOT EXISTS `db101` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `db101`;
 
 -- --------------------------------------------------------
 
@@ -185,7 +183,9 @@ INSERT INTO `studentachievements` (`StudentID`, `AchievementID`) VALUES
 (1, 14),
 (1, 15),
 (1, 16),
-(2, 1);
+(2, 1),
+(2, 2),
+(2, 5);
 
 -- --------------------------------------------------------
 
@@ -198,17 +198,18 @@ CREATE TABLE `students` (
   `Name` text NOT NULL,
   `BestTime` double NOT NULL,
   `BestScore` int(11) NOT NULL,
-  `QuizesDone` int(11) NOT NULL
+  `QuizesDone` int(11) NOT NULL,
+  `Keksi` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`StudentID`, `Name`, `BestTime`, `BestScore`, `QuizesDone`) VALUES
-(1, 'Matti', 0.6, 100, 2),
-(2, 'Teppo', 1, 50, 5),
-(3, 'Seppo', 1.15, 0, 10);
+INSERT INTO `students` (`StudentID`, `Name`, `BestTime`, `BestScore`, `QuizesDone`, `Keksi`) VALUES
+(1, 'Matti', 0.6, 100, 2, 1),
+(2, 'Teppo', 1, 50, 5, 0),
+(3, 'Seppo', 1.15, 0, 10, 0);
 
 --
 -- Indexes for dumped tables

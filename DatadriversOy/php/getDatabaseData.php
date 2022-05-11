@@ -10,10 +10,10 @@ $rows = [];
 $studentId = 1; //testing purpose
 
 //Get data from database and input it in JSON-format:
-if ($page === 'quizqa') {
+if ($page === 'quizqa' || $page === 'achievements') {
   $sql = "SELECT * FROM $page";
 }
-else if ($page === 'student') {
+else if ($page === 'students') {
   $sql = "SELECT * FROM $page WHERE StudentID = $studentId";
 }
 else if ($page === 'scoreboard') {
