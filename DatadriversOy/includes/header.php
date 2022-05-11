@@ -38,6 +38,10 @@
     <script src="./js/achievements.js" defer></script>
 
 
+    
+    <script src="./js/competitive.js" defer></script>
+
+
 
     <!-- Bootstrap core CSS -->
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">

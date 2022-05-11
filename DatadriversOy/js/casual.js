@@ -1,5 +1,5 @@
 
-    // storing array for use
+     // storing array for use
     let sortedQuestionArray = arrayFromPHP("quizqa");
 
     // shuffling original array (do each time a new set of questions is needed)
@@ -73,4 +73,4 @@
         }
     }
 
-    startQuiz();
+    startQuiz(); 
