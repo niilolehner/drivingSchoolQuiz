@@ -17,15 +17,15 @@ function shuffle(inputArray) {
 // gets an array from PHP/MySQL (see getDatabaseData.php)
 function arrayFromPHP(pageName) {
   let xhReq = new XMLHttpRequest();
-  xhReq.open("GET", 'php/getDatabaseData.php?page=' + pageName);
+  xhReq.open("GET", 'php/getDatabaseData.php?page=' + pageName, false);
   xhReq.send(null);
   let resultArray = JSON.parse(xhReq.responseText);
   return resultArray;
 }
 
 // posts an array to PHP/MySQL (see writeToDatabase.php)
-function arrayToPHP(inputArray, pageName) {
-  let jsonString = JSON.stringify(inputArray);
+function arrayToPHP(variable, pageName) {
+  let jsonString = JSON.stringify(variable);
   let xhReq = new XMLHttpRequest();
   xhReq.open("POST", 'php/writeToDatabase.php?page=' + pageName);
   xhReq.setRequestHeader("Content-Type", "application/json");
