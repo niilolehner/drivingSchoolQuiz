@@ -10,3 +10,5 @@
     document.getElementById('unlockedAchievsList').innerHTML +='<img class="miniachiev" src="images/' + `${AchievementID}` + '.png">' + ' ' + `${POPtext}`});
   
   }
+
+  listUnlockedAchievs();
