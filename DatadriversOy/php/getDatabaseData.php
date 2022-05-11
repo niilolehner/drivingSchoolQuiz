@@ -10,18 +10,24 @@ $rows = [];
 $studentId = 1; //testing purpose
 
 //Get data from database and input it in JSON-format:
-if ($page === 'quizqa' || $page === 'scoreboard') {
+if ($page === 'quizqa') {
   $sql = "SELECT * FROM $page";
 }
 else if ($page === 'student') {
   $sql = "SELECT * FROM $page WHERE StudentID = $studentId";
 }
-else if ($page === 'studentachievements') {
-  $sql = "SELECT student.StudentID, student.Name, achievements.AchievementID, achievements.POPtext
+else if ($page === 'scoreboard') {
+  $sql = "SELECT students.Name, scoreboard.Score, scoreboard.Time, scoreboard.Date
           FROM $page
-          INNER JOIN student ON $page.studentID = student.studentID
+          INNER JOIN students ON $page.studentID = students.studentID
+          WHERE scoreboard.FeedbackGiven = 0";
+}
+else if ($page === 'studentachievements') {
+  $sql = "SELECT students.StudentID, students.Name, achievements.AchievementID, achievements.POPtext
+          FROM $page
+          INNER JOIN students ON $page.studentID = students.studentID
           INNER JOIN achievements ON $page.AchievementID = achievements.AchievementID
-          WHERE student.StudentID = $studentId";
+          WHERE students.StudentID = $studentId";
 }
 
 

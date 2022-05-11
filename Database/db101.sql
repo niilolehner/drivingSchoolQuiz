@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2022 at 06:33 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- Generation Time: May 11, 2022 at 08:04 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `db101`
 --
+CREATE DATABASE IF NOT EXISTS `db101` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `db101`;
 
 -- --------------------------------------------------------
 
@@ -133,29 +135,23 @@ INSERT INTO `quizqa` (`QaID`, `Question`, `RightAnswer`, `WrongAnswer1`, `WrongA
 CREATE TABLE `scoreboard` (
   `ScoreID` int(11) NOT NULL,
   `StudentID` text NOT NULL,
-  `TopScoreTime` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `student`
---
-
-CREATE TABLE `student` (
-  `StudentID` int(11) NOT NULL,
-  `Name` text NOT NULL,
-  `OwnTopScoreTime` double NOT NULL,
-  `QuizesDone` int(11) NOT NULL
+  `Score` int(11) NOT NULL,
+  `Time` double NOT NULL,
+  `Date` date NOT NULL,
+  `Feedback` varchar(255) NOT NULL,
+  `FeedbackGiven` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `student`
+-- Dumping data for table `scoreboard`
 --
 
-INSERT INTO `student` (`StudentID`, `Name`, `OwnTopScoreTime`, `QuizesDone`) VALUES
-(1, 'Testaaja', 100, 0),
-(2, 'Testaaja2', 0, 0);
+INSERT INTO `scoreboard` (`ScoreID`, `StudentID`, `Score`, `Time`, `Date`, `Feedback`, `FeedbackGiven`) VALUES
+(1, '1', 100, 0.6, '2022-05-10', '', 0),
+(2, '2', 75, 1.15, '2022-05-10', '', 0),
+(3, '3', 55, 1.5, '2022-05-10', '', 0),
+(4, '3', 10, 2, '2022-05-10', '', 0),
+(5, '1', 5, 0.3, '2022-05-10', '', 0);
 
 -- --------------------------------------------------------
 
@@ -191,6 +187,29 @@ INSERT INTO `studentachievements` (`StudentID`, `AchievementID`) VALUES
 (1, 16),
 (2, 1);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students`
+--
+
+CREATE TABLE `students` (
+  `StudentID` int(11) NOT NULL,
+  `Name` text NOT NULL,
+  `BestTime` double NOT NULL,
+  `BestScore` int(11) NOT NULL,
+  `QuizesDone` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`StudentID`, `Name`, `BestTime`, `BestScore`, `QuizesDone`) VALUES
+(1, 'Matti', 0.6, 100, 2),
+(2, 'Teppo', 1, 50, 5),
+(3, 'Seppo', 1.15, 0, 10);
+
 --
 -- Indexes for dumped tables
 --
@@ -215,9 +234,9 @@ ALTER TABLE `scoreboard`
   ADD KEY `StudentID` (`StudentID`(768));
 
 --
--- Indexes for table `student`
+-- Indexes for table `students`
 --
-ALTER TABLE `student`
+ALTER TABLE `students`
   ADD PRIMARY KEY (`StudentID`);
 
 --
@@ -240,13 +259,13 @@ ALTER TABLE `quizqa`
 -- AUTO_INCREMENT for table `scoreboard`
 --
 ALTER TABLE `scoreboard`
-  MODIFY `ScoreID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ScoreID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `student`
+-- AUTO_INCREMENT for table `students`
 --
-ALTER TABLE `student`
-  MODIFY `StudentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `students`
+  MODIFY `StudentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

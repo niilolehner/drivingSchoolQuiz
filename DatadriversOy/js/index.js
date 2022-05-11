@@ -19,8 +19,25 @@ function arrayFromPHP(pageName) {
   let xhReq = new XMLHttpRequest();
   xhReq.open("GET", 'php/getDatabaseData.php?page=' + pageName, false);
   xhReq.send(null);
-  let inputArray = JSON.parse(xhReq.responseText);
-  // makes a deep copy
-  let resultArray = JSON.parse(JSON.stringify(inputArray));
+  let resultArray = JSON.parse(xhReq.responseText);
   return resultArray;
 }
+
+// posts an array to PHP/MySQL (see writeToDatabase.php)
+function arrayToPHP(variable, pageName) {
+  let jsonString = JSON.stringify(variable);
+  let xhReq = new XMLHttpRequest();
+  xhReq.open("POST", 'php/writeToDatabase.php?page=' + pageName);
+  xhReq.setRequestHeader("Content-Type", "application/json");
+  xhReq.send(jsonString);
+}
+
+// dummy variable for testing
+let toSend = {
+  Name: "Niilo",
+  Age: 38,
+  Occupation: "Student"
+}
+
+// firing function for testing
+arrayToPHP(toSend, "page");
