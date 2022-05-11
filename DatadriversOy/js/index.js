@@ -24,8 +24,8 @@ function arrayFromPHP(pageName) {
 }
 
 // posts an array to PHP/MySQL (see writeToDatabase.php)
-function arrayToPHP(variable, pageName) {
-  let jsonString = JSON.stringify(variable);
+function arrayToPHP(inputArray, pageName) {
+  let jsonString = JSON.stringify(inputArray);
   let xhReq = new XMLHttpRequest();
   xhReq.open("POST", 'php/writeToDatabase.php?page=' + pageName);
   xhReq.setRequestHeader("Content-Type", "application/json");
