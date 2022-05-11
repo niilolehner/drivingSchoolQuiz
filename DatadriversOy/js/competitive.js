@@ -30,13 +30,22 @@ function end() {
     csubmitBtn.addEventListener("click", csubmit);
 
     let ccurrentQuestion = 0;
-    let cscore = 0;
-    let cstreak = 0; 
+    let wrongclick = 0;
+
 
 function startFastQuiz() {
+            ckysymysTxt.style.visibility = 'hidden';
+            cvastaus1Btn.style.visibility = 'hidden';
+            cvastaus2Btn.style.visibility = 'hidden';
+            cvastaus3Btn.style.visibility = 'hidden';
     
     csubmitBtn.onclick = () => {
         start();
+            ckysymysTxt.style.visibility = 'visible';
+            cvastaus1Btn.style.visibility = 'visible';
+            cvastaus2Btn.style.visibility = 'visible';
+            cvastaus3Btn.style.visibility = 'visible';
+            csubmitBtn.style.visibility = 'hidden';
         ckysymysTxt.innerHTML = cshuffledQuestionArray[ccurrentQuestion].Question;
         cvastaus1Btn.innerHTML = cshuffledQuestionArray[ccurrentQuestion].RightAnswer;
         cvastaus2Btn.innerHTML = cshuffledQuestionArray[ccurrentQuestion].WrongAnswer1;
@@ -44,39 +53,48 @@ function startFastQuiz() {
         console.log(startTime);
     }
 
-        cvastaus1Btn.onclick = () => {
-            if (cshuffledQuestionArray[ccurrentQuestion].RightAnswer == cvastaus1Btn.innerHTML) {
-                cscore++;
-                cstreak++;
-                next();
+   /*  cvastaus1Btn.onclick = () => {
+        if (cshuffledQuestionArray[ccurrentQuestion].RightAnswer == cvastaus1Btn.innerHTML)
+        {
+            next();
+        }
+        if (cshuffledQuestionArray[ccurrentQuestion].WrongAnswer1)
+        {
+            wrongclick++;
+            if (cshuffledQuestionArray[ccurrentQuestion].WrongAnswer2)
+            {
+                
             }
-            else if (cshuffledQuestionArray[ccurrentQuestion].WrongAnswer1 || cshuffledQuestionArray[ccurrentQuestion].WrongAnswer2) {
-                cstreak = 0;
+            else if (cshuffledQuestionArray[ccurrentQuestion].RightAnswer == cvastaus1Btn.innerHTML)
+            {
                 next();
             }
         }
+    } */
 
-        cvastaus2Btn.onclick = () => {
-            if (cshuffledQuestionArray[ccurrentQuestion].RightAnswer == cvastaus2Btn.innerHTML) {
-                cscore++;
-                cstreak++;
+       cvastaus1Btn.onclick = () => {
+            if (cshuffledQuestionArray[ccurrentQuestion].RightAnswer == cvastaus1Btn.innerHTML) {
                 next();
             }
             else if (cshuffledQuestionArray[ccurrentQuestion].WrongAnswer1 || cshuffledQuestionArray[ccurrentQuestion].WrongAnswer2) {
-                cstreak = 0;
+            wrongclick++;
+            }
+        }
+    cvastaus2Btn.onclick = () => {
+            if (cshuffledQuestionArray[ccurrentQuestion].RightAnswer == cvastaus2Btn.innerHTML) {
                 next();
+            }
+            else if (cshuffledQuestionArray[ccurrentQuestion].WrongAnswer1 || cshuffledQuestionArray[ccurrentQuestion].WrongAnswer2) {
+            wrongclick++;
             }
         }
 
         cvastaus3Btn.onclick = () => {
             if (cshuffledQuestionArray[ccurrentQuestion].RightAnswer == cvastaus3Btn.innerHTML) {
-                cscore++;
-                cstreak++;
                 next();
             }
             else if (cshuffledQuestionArray[ccurrentQuestion].WrongAnswer1 || cshuffledQuestionArray[ccurrentQuestion].WrongAnswer2) {
-                cstreak = 0;
-                next();
+            wrongclick++;
             }
         }
 
@@ -84,13 +102,13 @@ function startFastQuiz() {
         if (ccurrentQuestion == 9) {
                 ccurrentQuestion++;
                 end();
+            let amountRight = ccurrentQuestion - wrongclick;
                 console.log(ccurrentQuestion);
-                console.log(cscore);
-                console.log(cstreak);
-        ckysymysTxt.innerHTML = " ";
-        cvastaus1Btn.innerHTML = " ";
-        cvastaus2Btn.innerHTML = " ";
-        cvastaus3Btn.innerHTML = " ";
+                console.log(amountRight + "/10");
+            ckysymysTxt.style.display = 'none';
+            cvastaus1Btn.style.display = 'none';
+            cvastaus2Btn.style.display = 'none';
+            cvastaus3Btn.style.display = 'none';
     }
     else
     {
@@ -102,7 +120,6 @@ function startFastQuiz() {
             cvastaus3Btn.innerHTML = cshuffledQuestionArray[ccurrentQuestion].WrongAnswer2;
     
             console.log(ccurrentQuestion);
-            console.log(cscore);
             console.log(cstreak);
         }
     }

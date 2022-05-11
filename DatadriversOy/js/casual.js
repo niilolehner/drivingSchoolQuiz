@@ -16,7 +16,9 @@
     let currentQuestion = 0;
     let score = 0;
     let streak = 0;
-
+    let clicks = 0;
+    let wrongAnswers = 0;
+    
     function startQuiz() {
         kysymysTxt.innerHTML = shuffledQuestionArray[currentQuestion].Question;
         vastaus1Btn.innerHTML = shuffledQuestionArray[currentQuestion].RightAnswer;
@@ -27,11 +29,13 @@
             if (shuffledQuestionArray[currentQuestion].RightAnswer == vastaus1Btn.innerHTML) {
                 score++;
                 streak++;
+                clicks++;
                 next();
             }
             else if (shuffledQuestionArray[currentQuestion].WrongAnswer1 || shuffledQuestionArray[currentQuestion].WrongAnswer2) {
                 streak = 0;
-                next();
+                clicks = 0;
+                wrongAnswers++;
             }
         }
 
@@ -39,11 +43,13 @@
             if (shuffledQuestionArray[currentQuestion].RightAnswer == vastaus2Btn.innerHTML) {
                 score++;
                 streak++;
+                clicks++;
                 next();
             }
             else if (shuffledQuestionArray[currentQuestion].WrongAnswer1 || shuffledQuestionArray[currentQuestion].WrongAnswer2) {
                 streak = 0;
-                next();
+                clicks++;
+                wrongAnswers++;
             }
         }
 
@@ -51,12 +57,25 @@
             if (shuffledQuestionArray[currentQuestion].RightAnswer == vastaus3Btn.innerHTML) {
                 score++;
                 streak++;
+                clicks++;
                 next();
             }
             else if (shuffledQuestionArray[currentQuestion].WrongAnswer1 || shuffledQuestionArray[currentQuestion].WrongAnswer2) {
                 streak = 0;
-                next();
+                clicks++;
+                wrongAnswers++;
             }
+        }
+
+        submitBtn.onclick = () => {
+            kysymysTxt.style.display = 'none';
+            vastaus1Btn.style.display = 'none';
+            vastaus2Btn.style.display = 'none';
+            vastaus3Btn.style.display = 'none';
+            //visibility = "hidden"
+            let wrongQ = clicks - currentQuestion;
+            let score = wrongQ - wrongAnswers;
+            console.log(score + "/" + currentQuestion)
         }
 
         function next() {
@@ -68,7 +87,6 @@
             vastaus3Btn.innerHTML = shuffledQuestionArray[currentQuestion].WrongAnswer2;
     
             console.log(currentQuestion);
-            console.log(score);
             console.log(streak);
         }
     }
