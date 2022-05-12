@@ -150,6 +150,6 @@ function checkAndAwardAchievs(modeInput, timeInput, scoreInput, streakInput) {
 }
 
 // testing purposes, commenting out
-// checkAndAwardAchievs("admin", 0, 0, 0);
+checkAndAwardAchievs("admin", 0, 0, 0);
 
 listUnlockedAchievements();

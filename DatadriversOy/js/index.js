@@ -37,6 +37,3 @@ let unlockThis = {
   StudentID: 2,
   AchievementID: 6
 }
-
-// firing function for testing (it works, commenting out for demoing later)
-// arrayToPHP(unlockThis, "studentachievements");
