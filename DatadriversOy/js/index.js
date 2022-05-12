@@ -33,11 +33,10 @@ function arrayToPHP(inputArray, pageName) {
 }
 
 // dummy variable for testing
-let toSend = {
-  Name: "Niilo",
-  Age: 38,
-  Occupation: "Student"
+let unlockAchiev = {
+  StudentID: 2,
+  AchievementID: 6
 }
 
 // firing function for testing
-arrayToPHP(toSend, "page");
+arrayToPHP(unlockAchiev, "page");

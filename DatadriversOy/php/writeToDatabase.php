@@ -25,8 +25,8 @@ else if ($page === 'scoreboard') {
   $stmt->execute();
 }
 else if ($page === 'studentachievements') {
-  $stmt = $conn->prepare("INSERT INTO $page (example1, example2, example3) VALUES (?, ?, ?)");
-  $stmt->bind_param("sss", $example1 , $example2, $example3);
+  $stmt = $conn->prepare("INSERT INTO $page (`StudentID`, `AchievementID`) VALUES (?, ?)");
+  $stmt->bind_param("ii", $example1, $example2);
   $stmt->execute();
 }
 
