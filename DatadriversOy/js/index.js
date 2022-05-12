@@ -38,5 +38,5 @@ let unlockAchiev = {
   AchievementID: 6
 }
 
-// firing function for testing
-arrayToPHP(unlockAchiev, "page");
+// firing function for testing (it works, commenting out for demoing later)
+// arrayToPHP(unlockAchiev, "studentachievements");
