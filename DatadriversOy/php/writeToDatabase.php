@@ -5,7 +5,6 @@ isset($_GET['studentId']) ? $studentId = $_GET['studentId'] : $studentId = '';
 include 'dbConnection.php';
 
 $sql = '';
-$rows = [];
 
 $studentId = 1; //testing purpose
 
