@@ -31,6 +31,8 @@ function end() {
 
     let ccurrentQuestion = 0;
     let wrongclick = 0;
+    let cscore = 0;
+    let ctotalScore = 0;
 
 
 function startFastQuiz() {
@@ -52,25 +54,6 @@ function startFastQuiz() {
         cvastaus3Btn.innerHTML = cshuffledQuestionArray[ccurrentQuestion].WrongAnswer2;
         console.log(startTime);
     }
-
-   /*  cvastaus1Btn.onclick = () => {
-        if (cshuffledQuestionArray[ccurrentQuestion].RightAnswer == cvastaus1Btn.innerHTML)
-        {
-            next();
-        }
-        if (cshuffledQuestionArray[ccurrentQuestion].WrongAnswer1)
-        {
-            wrongclick++;
-            if (cshuffledQuestionArray[ccurrentQuestion].WrongAnswer2)
-            {
-                
-            }
-            else if (cshuffledQuestionArray[ccurrentQuestion].RightAnswer == cvastaus1Btn.innerHTML)
-            {
-                next();
-            }
-        }
-    } */
 
        cvastaus1Btn.onclick = () => {
             if (cshuffledQuestionArray[ccurrentQuestion].RightAnswer == cvastaus1Btn.innerHTML) {
@@ -101,10 +84,9 @@ function startFastQuiz() {
     function next() {
         if (ccurrentQuestion == 9) {
                 ccurrentQuestion++;
-                end();
-            let amountRight = ccurrentQuestion - wrongclick;
-                console.log(ccurrentQuestion);
-                console.log(amountRight + "/10");
+            end();
+            
+                console.log(ctotalScore + "/" + ccurrentQuestion);
             ckysymysTxt.style.display = 'none';
             cvastaus1Btn.style.display = 'none';
             cvastaus2Btn.style.display = 'none';
@@ -113,14 +95,25 @@ function startFastQuiz() {
     else
     {
             ccurrentQuestion++;
-    
+
+             if (wrongclick == 0) {
+            cscore = 1;
+            }
+            else {
+            cscore = 0;
+            }
+            ctotalScore = ctotalScore + cscore;
+            
             ckysymysTxt.innerHTML = cshuffledQuestionArray[ccurrentQuestion].Question;
             cvastaus1Btn.innerHTML = cshuffledQuestionArray[ccurrentQuestion].RightAnswer;
             cvastaus2Btn.innerHTML = cshuffledQuestionArray[ccurrentQuestion].WrongAnswer1;
             cvastaus3Btn.innerHTML = cshuffledQuestionArray[ccurrentQuestion].WrongAnswer2;
     
             console.log(ccurrentQuestion);
-            console.log(cstreak);
+            console.log(ctotalScore);
+
+            cscore = 0;
+            wrongclick = 0;
         }
     }
     }
