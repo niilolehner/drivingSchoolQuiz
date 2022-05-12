@@ -33,10 +33,10 @@ function arrayToPHP(inputArray, pageName) {
 }
 
 // dummy variable for testing
-let unlockAchiev = {
+let unlockThis = {
   StudentID: 2,
   AchievementID: 6
 }
 
 // firing function for testing (it works, commenting out for demoing later)
-// arrayToPHP(unlockAchiev, "studentachievements");
+// arrayToPHP(unlockThis, "studentachievements");
