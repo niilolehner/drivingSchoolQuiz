@@ -7,7 +7,7 @@ include 'dbConnection.php';
 $sql = '';
 $rows = [];
 
-$studentId = 1; //testing purpose
+$studentId = 2; //testing purpose
 
 //Get data in JSON-format and insert/update into database through prepared statements:
 $requestPayload = file_get_contents("php://input");
@@ -16,17 +16,17 @@ $phpArray = json_decode($requestPayload, true);
 
 if ($page === 'students') {
   $stmt = $conn->prepare("INSERT INTO $page (example1, example2, example3) VALUES (?, ?, ?)");
-  $stmt->bind_param("sss", $example1 , $example2, $example3);
+  $stmt->bind_param("sss", $phpArray['example1'], $phpArray['example2'], $phpArray['example3']);
   $stmt->execute();
 }
 else if ($page === 'scoreboard') {
   $stmt = $conn->prepare("INSERT INTO $page (example1, example2, example3) VALUES (?, ?, ?)");
-  $stmt->bind_param("sss", $example1 , $example2, $example3);
+  $stmt->bind_param("sss", $phpArray['example1'], $phpArray['example2'], $phpArray['example3']);
   $stmt->execute();
 }
 else if ($page === 'studentachievements') {
   $stmt = $conn->prepare("INSERT INTO $page (`StudentID`, `AchievementID`) VALUES (?, ?)");
-  $stmt->bind_param("ii", $example1, $example2);
+  $stmt->bind_param("ii", $phpArray['StudentID'], $phpArray['AchievementID']);
   $stmt->execute();
 }
 
