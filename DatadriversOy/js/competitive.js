@@ -42,6 +42,7 @@ function startFastQuiz() {
             cvastaus3Btn.style.visibility = 'hidden';
     
     csubmitBtn.onclick = () => {
+        Swal.fire("Our First Alert");
         start();
             ckysymysTxt.style.visibility = 'visible';
             cvastaus1Btn.style.visibility = 'visible';
