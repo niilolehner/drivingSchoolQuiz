@@ -18,10 +18,10 @@ function isAchievUnlocked(unlockedAchievsArray, AchievementID) {
 // also check if requirements of locked achievements are satisfied for unlock
 // record unlocked achievements to DB
 // trigger achievements unlock animation
-// ***********************************************************************************************
-// modeInput is "admin", "competitive" or "casual" as string, timeInput is minutes as integer
-// scoreInput is correct answers given as integer, streakInput is correct answer streak as integer
-// ***********************************************************************************************
+// *************************************************************************************************
+// *modeInput is "admin", "competitive" or "casual" as string, timeInput is minutes as integer     *
+// *scoreInput is correct answers given as integer, streakInput is correct answer streak as integer*
+// *************************************************************************************************
 function checkAndAwardAchievs(modeInput, timeInput, scoreInput, streakInput) {
   let mode = modeInput;
   let time = timeInput;
