@@ -89,9 +89,9 @@ function startFastQuiz() {
         }
 
     function next() {
-        if (ccurrentQuestion == 9) {
+            if (ccurrentQuestion == 9) {
                 ccurrentQuestion++;
-            end();
+                end();
             
                 console.log(ctotalScore + "/" + ccurrentQuestion);
             ckysymysTxt.style.display = 'none';
@@ -100,21 +100,21 @@ function startFastQuiz() {
             cvastaus3Btn.style.display = 'none';
 
             // variable viemään tulokset databaseen 
-            let tulosDbaseen =
+            let tulosDatabaseen =
             {
                 StudentID: 2,
                 Score: ctotalScore,
                 Time: seconds,
                 Date: newdate
             }
-
-
+                arrayToPHP(tulosDatabaseen, "endOfCompetitiveQuiz");
+            
     }
     else
     {
             ccurrentQuestion++;
 
-             if (wrongclick == 0) {
+            if (wrongclick == 0) {
             cscore = 1;
             }
             else {

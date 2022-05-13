@@ -159,5 +159,5 @@ function giveFeedback(scoreID) {
 
   console.log(sendFeedback);
 
-  arrayToPHP(sendFeedback, "scoreboard");
+  arrayToPHP(sendFeedback, "feedback");
 }

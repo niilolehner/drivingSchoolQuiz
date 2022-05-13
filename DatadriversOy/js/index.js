@@ -31,9 +31,3 @@ function arrayToPHP(inputArray, pageName) {
   xhReq.setRequestHeader("Content-Type", "application/json");
   xhReq.send(jsonString);
 }
-
-// dummy variable for testing
-let unlockThis = {
-  StudentID: 2,
-  AchievementID: 6
-}
