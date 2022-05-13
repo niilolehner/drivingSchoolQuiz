@@ -153,6 +153,7 @@ function giveFeedback(scoreID) {
 
   sendFeedback = {
     keyScoreId: scoreID,
+    keyFeedbackGiven: 1,
     keyFeedbackText: overallValue //+ ' ' + ThingsToDevelopValue + ' ' + TipValue
   }
 

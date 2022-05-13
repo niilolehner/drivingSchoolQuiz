@@ -24,10 +24,8 @@ if ($page === 'students') { // !!!! this statement is non-functional, it's just 
 //   $stmt->execute();
 // }
 else if ($page === 'scoreboard') {
-  $stmt = $conn->prepare("UPDATE $page 
-                          SET Feedback = ?, FeedbackGiven = ?
-                          WHERE ScoreID = ?");
-  $stmt->bind_param("sis", $phpArray['keyFeedbackText'] , 1, $phpArray['keyScoreId']);
+  $stmt = $conn->prepare("UPDATE $page SET Feedback = ?, FeedbackGiven = ? WHERE ScoreID = ?");
+  $stmt->bind_param("sis", $phpArray['keyFeedbackText'] , $phpArray['keyFeedbackGiven'], $phpArray['keyScoreId']);
   $stmt->execute();
 }
 else if ($page === 'studentachievements') {
