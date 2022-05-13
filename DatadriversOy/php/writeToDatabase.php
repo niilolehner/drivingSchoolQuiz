@@ -23,7 +23,7 @@ if ($page === 'students') { // !!!! this statement is non-functional, it's just 
 //   $stmt->bind_param("sss", $phpArray['example1'], $phpArray['example2'], $phpArray['example3']);
 //   $stmt->execute();
 // }
-else if ($page === 'scoreboard') {
+else if ($page === 'feedback') {
   $stmt = $conn->prepare("UPDATE $page SET Feedback = ?, FeedbackGiven = ? WHERE ScoreID = ?");
   $stmt->bind_param("sis", $phpArray['keyFeedbackText'] , $phpArray['keyFeedbackGiven'], $phpArray['keyScoreId']);
   $stmt->execute();
