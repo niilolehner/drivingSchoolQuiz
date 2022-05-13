@@ -17,10 +17,11 @@ else if ($page === 'students') {
   $sql = "SELECT * FROM $page WHERE StudentID = $studentId";
 }
 else if ($page === 'scoreboard') {
-  $sql = "SELECT students.Name, scoreboard.Score, scoreboard.Time, scoreboard.Date
+  $sql = "SELECT scoreboard.ScoreID, students.Name, scoreboard.Score, scoreboard.Time, scoreboard.Date
           FROM $page
           INNER JOIN students ON $page.studentID = students.studentID
-          WHERE scoreboard.FeedbackGiven = 0";
+          WHERE scoreboard.FeedbackGiven = 0
+          ORDER BY scoreboard.scoreID";
 }
 else if ($page === 'studentachievements') {
   $sql = "SELECT students.StudentID, students.Name, achievements.AchievementID, achievements.POPtext
