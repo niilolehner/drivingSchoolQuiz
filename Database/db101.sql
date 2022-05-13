@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2022 at 04:07 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- Generation Time: May 13, 2022 at 12:48 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -134,7 +134,7 @@ CREATE TABLE `scoreboard` (
   `ScoreID` int(11) NOT NULL,
   `StudentID` text NOT NULL,
   `Score` int(11) NOT NULL,
-  `Time` double NOT NULL,
+  `Time` int(11) NOT NULL,
   `Date` date NOT NULL,
   `Feedback` varchar(255) NOT NULL,
   `FeedbackGiven` tinyint(1) NOT NULL
@@ -145,11 +145,11 @@ CREATE TABLE `scoreboard` (
 --
 
 INSERT INTO `scoreboard` (`ScoreID`, `StudentID`, `Score`, `Time`, `Date`, `Feedback`, `FeedbackGiven`) VALUES
-(1, '1', 100, 0.6, '2022-05-10', '', 0),
-(2, '2', 75, 1.15, '2022-05-10', '', 0),
-(3, '3', 55, 1.5, '2022-05-10', '', 0),
-(4, '3', 10, 2, '2022-05-10', '', 0),
-(5, '1', 5, 0.3, '2022-05-10', '', 0);
+(1, '1', 100, 90, '2022-05-10', '', 0),
+(2, '2', 75, 75, '2022-05-10', '', 0),
+(3, '3', 55, 77, '2022-05-10', '', 0),
+(4, '3', 10, 80, '2022-05-10', '', 0),
+(5, '1', 10, 50, '2022-05-10', '', 0);
 
 -- --------------------------------------------------------
 
@@ -183,9 +183,7 @@ INSERT INTO `studentachievements` (`StudentID`, `AchievementID`) VALUES
 (1, 14),
 (1, 15),
 (1, 16),
-(2, 1),
-(2, 2),
-(2, 5);
+(2, 1);
 
 -- --------------------------------------------------------
 
@@ -196,20 +194,19 @@ INSERT INTO `studentachievements` (`StudentID`, `AchievementID`) VALUES
 CREATE TABLE `students` (
   `StudentID` int(11) NOT NULL,
   `Name` text NOT NULL,
-  `BestTime` double NOT NULL,
+  `BestTime` int(11) NOT NULL,
   `BestScore` int(11) NOT NULL,
-  `QuizesDone` int(11) NOT NULL,
-  `Keksi` tinyint(1) NOT NULL DEFAULT 0
+  `QuizesDone` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`StudentID`, `Name`, `BestTime`, `BestScore`, `QuizesDone`, `Keksi`) VALUES
-(1, 'Matti', 0.6, 100, 2, 1),
-(2, 'Teppo', 1, 50, 5, 0),
-(3, 'Seppo', 1.15, 0, 10, 0);
+INSERT INTO `students` (`StudentID`, `Name`, `BestTime`, `BestScore`, `QuizesDone`) VALUES
+(1, 'Matti', 60, 100, 2),
+(2, 'Teppo', 47, 50, 5),
+(3, 'Seppo', 10, 0, 10);
 
 --
 -- Indexes for dumped tables
