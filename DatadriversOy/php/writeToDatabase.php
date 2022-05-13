@@ -38,6 +38,11 @@ else if ($page === 'endOfCompetitiveQuiz') {
   $stmt->bind_param("iiis", $phpArray['StudentID'], $phpArray['Score'], $phpArray['Time'], $phpArray['Date']);
   $stmt->execute();
 }
+else if ($page === 'personalBestToUpdate') {
+  $stmt = $conn->prepare("UPDATE `students` SET BestTime = ?, BestScore = ?, QuizesDone = ? WHERE studentID = ?");
+  $stmt->bind_param("sis", $phpArray['oldTime'], $phpArray['oldScore'], $phpArray['oldQuizesDone'], $phpArray[$studentId]);
+  $stmt->execute();
+}
 
 mysqli_close($conn);
 ?>
