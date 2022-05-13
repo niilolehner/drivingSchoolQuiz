@@ -15,12 +15,11 @@ let colDiv = document.createElement('div');
 colDiv.setAttribute('class', 'col');
 let headerH3 = document.createElement('h3');
 headerH3.setAttribute('class', 'text-white-50');
-let h3Text = 'Kaikki';
+let h3Text = 'Kaikki tulokset';
 let h3Node = document.createTextNode(h3Text);
 headerH3.appendChild(h3Node);
 let divTable = document.createElement('div');
 divTable.setAttribute('class', 'table-responsive');
-divTable.setAttribute('style', 'height: 500px;');
 
 //Create table for tabledata.
 let table = document.createElement('table');
@@ -79,11 +78,10 @@ const showModal = (
     if (modalWrap !== null){
         modalWrap.remove();
     }
-
     modalWrap = document.createElement('div');
     modalWrap.innerHTML = '<div class="modal fade" id="exampleModal" tabindex="-1">\
-    <div class="modal-dialog modal-dialog-centered">\
-      <div class="modal-content bg-light">\
+    <div class="modal-dialog modal-dialog-centered ">\
+      <div class="modal-content ">\
         <div class="modal-header">\
           <h5 class="modal-title" id="exampleModalLabel">Anna palautetta oppilaalle</h5>\
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\
@@ -128,9 +126,8 @@ const showModal = (
               </div>\
             </div>\
             <div class="modal-footer">\
-            <input type="hidden" value="' + scoreID + '" id="inputScoreID">\
               <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Sulje</button>\
-              <button type="submit" class="btn btn-success modal-success-btn" data-bs-dismiss="modal">Lähetä palaute</button>\
+              <button id="sendFeedbackBtn" type="button" class="btn btn-success modal-success-btn" data-bs-dismiss="modal" onclick="Testi(' + scoreID + ')">Lähetä palaute</button>\
             </div>\
           </form>\
         </div>\
@@ -143,8 +140,14 @@ const showModal = (
   modal.show();
 }
 
-//!This do not stop page refresh...
-$("#sendFeedback").submit(function(e) {
-    e.preventDefault(); // <==stop page refresh==>
-    console.log('Testi');
-});
+function Testi(scoreID) {
+  let overallOutput = document.getElementById('inputOverall');
+  let ThingsToDevelopOutput = document.getElementById('inputThingsToDevelop');
+  let TipOutput = document.getElementById('inputTip');
+
+  let overallValue = overallOutput.options[overallOutput.selectedIndex].value;
+  let ThingsToDevelopValue = ThingsToDevelopOutput.options[ThingsToDevelopOutput.selectedIndex].value;
+  let TipValue = TipOutput.options[TipOutput.selectedIndex].value;
+
+  console.log(scoreID, overallValue, ThingsToDevelopValue, TipValue);
+}
