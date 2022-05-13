@@ -127,7 +127,7 @@ const showModal = (
             </div>\
             <div class="modal-footer">\
               <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Sulje</button>\
-              <button id="sendFeedbackBtn" type="button" class="btn btn-success modal-success-btn" data-bs-dismiss="modal" onclick="Testi(' + scoreID + ')">Lähetä palaute</button>\
+              <button id="sendFeedbackBtn" type="button" class="btn btn-success modal-success-btn" data-bs-dismiss="modal" onclick="giveFeedback(' + scoreID + ')">Lähetä palaute</button>\
             </div>\
           </form>\
         </div>\
@@ -140,7 +140,7 @@ const showModal = (
   modal.show();
 }
 
-function Testi(scoreID) {
+function giveFeedback(scoreID) {
   let overallOutput = document.getElementById('inputOverall');
   let ThingsToDevelopOutput = document.getElementById('inputThingsToDevelop');
   let TipOutput = document.getElementById('inputTip');
@@ -150,4 +150,13 @@ function Testi(scoreID) {
   let TipValue = TipOutput.options[TipOutput.selectedIndex].value;
 
   console.log(scoreID, overallValue, ThingsToDevelopValue, TipValue);
+
+  sendFeedback = {
+    keyScoreId: scoreID,
+    keyFeedbackText: overallValue //+ ' ' + ThingsToDevelopValue + ' ' + TipValue
+  }
+
+  console.log(sendFeedback);
+
+  arrayToPHP(sendFeedback, "scoreboard");
 }
