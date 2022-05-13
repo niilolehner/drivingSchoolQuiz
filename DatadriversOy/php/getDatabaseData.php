@@ -1,6 +1,6 @@
 <?php
 isset($_GET['page']) ? $page = $_GET['page'] : $page = '';
-isset($_GET['studentId']) ? $studentId = $_GET['studentId'] : $studentId = '';
+isset($_GET['id']) ? $id = $_GET['id'] : $id = '';
 
 include 'dbConnection.php';
 
@@ -15,7 +15,12 @@ if ($page === 'quizqa' || $page === 'achievements') {
 }
 else if ($page === 'students') {
   $sql = "SELECT * FROM $page WHERE StudentID = $studentId";
-}
+} 
+
+//Testing for cookiemonstro
+else if ($page === 'getStudentId') {
+  $sql = "SELECT StudentID FROM scoreboard WHERE ScoreID = $id";
+} 
 else if ($page === 'scoreboard') {
   $sql = "SELECT scoreboard.ScoreID, students.Name, scoreboard.Score, scoreboard.Time, scoreboard.Date
           FROM $page
@@ -37,6 +42,14 @@ else if ($page === 'studentachievements') {
 }
 
 
+///Testing for cookiemonstro
+else if ($page === 'studentachievementsAesmouVersion') {
+  $sql = "SELECT students.StudentID, students.Name, achievements.AchievementID, achievements.POPtext
+          FROM studentachievements
+          INNER JOIN students ON studentachievements.studentID = students.studentID
+          INNER JOIN achievements ON studentachievements.AchievementID = achievements.AchievementID
+          WHERE students.StudentID = $id";
+}
 
 $result = mysqli_query($conn, $sql);
 
