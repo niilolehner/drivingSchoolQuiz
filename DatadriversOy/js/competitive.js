@@ -108,6 +108,8 @@ function startFastQuiz() {
                 Date: newdate
             }
                 arrayToPHP(tulosDatabaseen, "endOfCompetitiveQuiz");
+
+                UpdateDatabase();
             
     }
     else
@@ -134,6 +136,35 @@ function startFastQuiz() {
             wrongclick = 0;
         }
     }
-    }
 
+    function UpdateDatabase()
+    {
+        let getDatabaseArray = arrayFromPHP("personalBestForUpdating");
+        let oldScore = getDatabaseArray[0].BestScore;
+        let oldTime = getDatabaseArray[0].BestTime;
+        let oldQuizesDone = getDatabaseArray[0].QuizesDone;
+
+        if (ctotalScore > oldScore || oldScore == "")
+            {
+            oldScore = ctotalScore;
+        }
+        
+        if (seconds > oldTime || oldTime == "")
+        {
+            oldTime = seconds;
+        }
+        
+        oldQuizesDone++;
+
+        let newBestForDatabase =
+        {
+            BestScore: oldScore,
+            BestTime: oldTime,
+            QuizesDone: oldQuizesDone,
+            StudentID: 1
+        }
+        arrayToPHP(newBestForDatabase, "personalBestToUpdate");
+    }
+}
+    
 startFastQuiz();

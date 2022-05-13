@@ -33,6 +33,11 @@ else if ($page === 'feedbackForStudent') {
           FROM scoreboard
           WHERE FeedbackGiven = 1 AND studentID = $studentId";
 }
+else if ($page === 'personalBestForUpdating') {
+  $sql = "SELECT BestTime, BestScore, QuizesDone
+          FROM students
+          WHERE studentID = $studentId";
+}
 else if ($page === 'studentachievements') {
   $sql = "SELECT students.StudentID, students.Name, achievements.AchievementID, achievements.POPtext
           FROM $page
@@ -40,7 +45,6 @@ else if ($page === 'studentachievements') {
           INNER JOIN achievements ON $page.AchievementID = achievements.AchievementID
           WHERE students.StudentID = $studentId";
 }
-
 
 ///Testing for cookiemonstro
 else if ($page === 'studentachievementsAesmouVersion') {
