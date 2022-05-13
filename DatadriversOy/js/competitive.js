@@ -89,9 +89,9 @@ function startFastQuiz() {
         }
 
     function next() {
-        if (ccurrentQuestion == 9) {
+            if (ccurrentQuestion == 9) {
                 ccurrentQuestion++;
-            end();
+                end();
             
                 console.log(ctotalScore + "/" + ccurrentQuestion);
             ckysymysTxt.style.display = 'none';
@@ -107,13 +107,13 @@ function startFastQuiz() {
                 Time: seconds,
                 Date: newdate
             }
-
+            arrayToPHP(tulosDatabaseen, "endOfCompetitiveQuiz");
     }
     else
     {
             ccurrentQuestion++;
 
-             if (wrongclick == 0) {
+            if (wrongclick == 0) {
             cscore = 1;
             }
             else {

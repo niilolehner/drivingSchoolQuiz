@@ -24,8 +24,8 @@ if ($page === 'students') { // !!!! this statement is non-functional, it's just 
 //   $stmt->execute();
 // }
 else if ($page === 'feedback') {
-  $stmt = $conn->prepare("UPDATE $page SET Feedback = ?, FeedbackGiven = ? WHERE ScoreID = ?");
-  $stmt->bind_param("sis", $phpArray['keyFeedbackText'] , $phpArray['keyFeedbackGiven'], $phpArray['keyScoreId']);
+  $stmt = $conn->prepare("UPDATE `scoreboard` SET Feedback = ?, FeedbackGiven = ? WHERE ScoreID = ?");
+  $stmt->bind_param("sis", $phpArray['keyFeedbackText'], $phpArray['keyFeedbackGiven'], $phpArray['keyScoreId']);
   $stmt->execute();
 }
 else if ($page === 'studentachievements') {
@@ -33,7 +33,11 @@ else if ($page === 'studentachievements') {
   $stmt->bind_param("ii", $phpArray['StudentID'], $phpArray['AchievementID']);
   $stmt->execute();
 }
+else if ($page === 'endOfCompetitiveQuiz') {
+  $stmt = $conn->prepare("INSERT INTO `scoreboard` (`ScoreID`, `StudentID`, `Score`, `Time`, `Date`) VALUES (NULL, ?, ?, ?, ?)");
+  $stmt->bind_param("iiis", $phpArray['StudentID'], $phpArray['Score'], $phpArray['Time'], $phpArray['Date']);
+  $stmt->execute();
+}
 
 mysqli_close($conn);
-
 ?>
