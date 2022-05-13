@@ -23,6 +23,11 @@ else if ($page === 'scoreboard') {
           WHERE scoreboard.FeedbackGiven = 0
           ORDER BY scoreboard.scoreID";
 }
+else if ($page === 'feedbackForStudent') {
+  $sql = "SELECT Feedback, FeedbackGiven
+          FROM scoreboard
+          WHERE FeedbackGiven = 1 AND studentID = $studentId";
+}
 else if ($page === 'studentachievements') {
   $sql = "SELECT students.StudentID, students.Name, achievements.AchievementID, achievements.POPtext
           FROM $page
@@ -30,6 +35,7 @@ else if ($page === 'studentachievements') {
           INNER JOIN achievements ON $page.AchievementID = achievements.AchievementID
           WHERE students.StudentID = $studentId";
 }
+
 
 
 $result = mysqli_query($conn, $sql);

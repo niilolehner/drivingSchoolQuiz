@@ -107,7 +107,8 @@ function startFastQuiz() {
                 Time: seconds,
                 Date: newdate
             }
-            arrayToPHP(tulosDatabaseen, "endOfCompetitiveQuiz");
+                arrayToPHP(tulosDatabaseen, "endOfCompetitiveQuiz");
+            
     }
     else
     {
