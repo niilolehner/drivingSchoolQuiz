@@ -100,14 +100,13 @@ function startFastQuiz() {
             cvastaus3Btn.style.display = 'none';
 
             // variable viemään tulokset databaseen 
-            let tulosDbaseen =
+            let tulosDatabaseen =
             {
                 StudentID: 2,
                 Score: ctotalScore,
                 Time: seconds,
                 Date: newdate
             }
-
 
     }
     else
