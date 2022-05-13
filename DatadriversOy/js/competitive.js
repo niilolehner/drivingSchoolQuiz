@@ -1,7 +1,8 @@
- var startTime, endTime;
+var startTime, endTime;
+var seconds;
 
 function start() {
-        startTime = performance.now();
+    startTime = performance.now();
     };
 
 function end() {
@@ -11,9 +12,15 @@ function end() {
   timeDiff /= 1000; 
   
   // get seconds 
-  var seconds = Math.round(timeDiff);
+  seconds = Math.round(timeDiff);
   console.log(seconds + " seconds");
 } 
+
+var dateObj = new Date();
+var month = dateObj.getUTCMonth() + 1; //months from 1-12
+var day = dateObj.getUTCDate();
+var year = dateObj.getUTCFullYear();
+var newdate = year + "-" + month + "-" + day; 
   
  // storing array for use
     let csortedQuestionArray = arrayFromPHP("quizqa");
@@ -42,7 +49,6 @@ function startFastQuiz() {
             cvastaus3Btn.style.visibility = 'hidden';
     
     csubmitBtn.onclick = () => {
-        Swal.fire("Our First Alert");
         start();
             ckysymysTxt.style.visibility = 'visible';
             cvastaus1Btn.style.visibility = 'visible';
@@ -92,6 +98,17 @@ function startFastQuiz() {
             cvastaus1Btn.style.display = 'none';
             cvastaus2Btn.style.display = 'none';
             cvastaus3Btn.style.display = 'none';
+
+            // variable viemään tulokset databaseen 
+            let tulosDbaseen =
+            {
+                StudentID: 2,
+                Score: ctotalScore,
+                Time: seconds,
+                Date: newdate
+            }
+
+
     }
     else
     {
