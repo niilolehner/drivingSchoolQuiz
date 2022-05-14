@@ -6,8 +6,6 @@ include 'dbConnection.php';
 
 $sql = '';
 
-$studentId = 1; //testing purpose
-
 //Get data in JSON-format and insert/update into database through prepared statements:
 $requestPayload = file_get_contents("php://input");
 
