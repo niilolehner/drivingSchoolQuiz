@@ -8,10 +8,29 @@ function listUnlockedAchievements() {
 }
 
 // check unlockedAchievsArray if achiev present, needs AchievementID (for example "1") as a string
-function isAchievUnlocked(unlockedAchievsArray, AchievementID) {
-  return unlockedAchievsArray.some(function(el) {
-    return el.AchievementID === AchievementID;
+function isAchievUnlocked(inputUnlockedAchievsArray, inputAchievementID) {
+  return inputUnlockedAchievsArray.some(function(el) {
+    return el.AchievementID === inputAchievementID;
   }); 
+}
+
+// unlocks the achievement, needs StudentID and AchievementID as integers
+function achievUnlock(inputStudentID, inputAchievementID) {
+  let unlockArray = {
+    StudentID: inputStudentID,
+    AchievementID: inputAchievementID
+  }
+  arrayToPHP(unlockArray, "unlockAchievements");
+}
+
+// fires the animation for an achievement unlocking, needs the PopText and AchievementID as a string
+function achievAnim(inputPopText, inputAchievementID) {
+  Swal.fire({
+    title: "Saavutus avattu!",
+    text: inputPopText,
+    imageUrl: "images/" + inputAchievementID + ".png",
+    imageWidth: 200,
+  })
 }
 
 // check DB that achievements are not already unlocked
@@ -23,133 +42,94 @@ function isAchievUnlocked(unlockedAchievsArray, AchievementID) {
 // *scoreInput is correct answers given as integer, streakInput is correct answer streak as integer*
 // *************************************************************************************************
 function checkAndAwardAchievs(modeInput, timeInput, scoreInput, streakInput) {
-  let mode = modeInput;
-  let time = timeInput;
-  let score = scoreInput;
-  let streak = streakInput;
-  let unlockAchiev = "";
   // the 'students' table entry for QuizesDone needs to be updated on quiz completion, before checkAndAwardAchievs is fired
   let studentInfo = arrayFromPHP("students");
   let quizesCompleted = Number(studentInfo[0].QuizesDone);
-  let keksi = studentInfo[0].Keksi;
   let achievementsInfo = arrayFromPHP("achievements");
   let unlockedAchievsArray = arrayFromPHP("studentachievements");
-  let numberOfAchievs = unlockedAchievsArray.length;
-  if (isAchievUnlocked(unlockedAchievsArray, '1') === false && streak >= 5) {
-    unlockAchiev = {
-      StudentID: studentInfo[0].StudentID,
-      AchievementID: 1
-    }
-    arrayToPHP(unlockAchiev, "studentachievements");
+  // 1. 5x vastaussarja! (oikein peräkkäin)
+  if (isAchievUnlocked(unlockedAchievsArray, "1") === false && streakInput >= 5) {
+    achievUnlock(studentInfo[0].StudentID, 1)
+    achievAnim(achievementsInfo[0].PopText, "1");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, '2') === false && streak >= 15) {
-    unlockAchiev = {
-      StudentID: studentInfo[0].StudentID,
-      AchievementID: 2
-    }
-    arrayToPHP(unlockAchiev, "studentachievements");
+  // 2. 15x vastaussarja! (oikein peräkkäin)
+  if (isAchievUnlocked(unlockedAchievsArray, "2") === false && streakInput >= 15) {
+    achievUnlock(studentInfo[0].StudentID, 2)
+    achievAnim(achievementsInfo[1].PopText, "2");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, '3') === false && streak >= 30) {
-    unlockAchiev = {
-      StudentID: studentInfo[0].StudentID,
-      AchievementID: 3
-    }
-    arrayToPHP(unlockAchiev, "studentachievements");
+  // 3. 30x vastaussarja! (oikein peräkkäin)
+  if (isAchievUnlocked(unlockedAchievsArray, "3") === false && streakInput >= 30) {
+    achievUnlock(studentInfo[0].StudentID, 3)
+    achievAnim(achievementsInfo[2].PopText, "3");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, '4') === false && streak >= 50) {
-    unlockAchiev = {
-      StudentID: studentInfo[0].StudentID,
-      AchievementID: 4
-    }
-    arrayToPHP(unlockAchiev, "studentachievements");
+  // 4. 50x vastaussarja! (oikein peräkkäin)
+  if (isAchievUnlocked(unlockedAchievsArray, "4") === false && streakInput >= 50) {
+    achievUnlock(studentInfo[0].StudentID, 4)
+    achievAnim(achievementsInfo[3].PopText, "4");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, '5') === false && quizesCompleted >= 1) {
-    unlockAchiev = {
-      StudentID: studentInfo[0].StudentID,
-      AchievementID: 5
-    }
-    arrayToPHP(unlockAchiev, "studentachievements");
+  // 5. Ensimmäinen visa suoritettu!
+  if (isAchievUnlocked(unlockedAchievsArray, "5") === false && quizesCompleted >= 1) {
+    achievUnlock(studentInfo[0].StudentID, 5)
+    achievAnim(achievementsInfo[4].PopText, "5");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, '6') === false && quizesCompleted >= 5) {
-    unlockAchiev = {
-      StudentID: studentInfo[0].StudentID,
-      AchievementID: 6
-    }
-    arrayToPHP(unlockAchiev, "studentachievements");
+  // 6. 5 visaa suoritettu!
+  if (isAchievUnlocked(unlockedAchievsArray, "6") === false && quizesCompleted >= 5) {
+    achievUnlock(studentInfo[0].StudentID, 6)
+    achievAnim(achievementsInfo[5].PopText, "6");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, '7') === false && quizesCompleted >= 10) {
-    unlockAchiev = {
-      StudentID: studentInfo[0].StudentID,
-      AchievementID: 7
-    }
-    arrayToPHP(unlockAchiev, "studentachievements");
+  // 7. 10 visaa suoritettu!
+  if (isAchievUnlocked(unlockedAchievsArray, "7") === false && quizesCompleted >= 10) {
+    achievUnlock(studentInfo[0].StudentID, 7)
+    achievAnim(achievementsInfo[6].PopText, "7");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, '8') === false && quizesCompleted >= 20) {
-    unlockAchiev = {
-      StudentID: studentInfo[0].StudentID,
-      AchievementID: 8
-    }
-    arrayToPHP(unlockAchiev, "studentachievements");
+  // 8. 20 visaa suoritettu!
+  if (isAchievUnlocked(unlockedAchievsArray, "8") === false && quizesCompleted >= 20) {
+    achievUnlock(studentInfo[0].StudentID, 8)
+    achievAnim(achievementsInfo[7].PopText, "8");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, '9') === false && quizesCompleted >= 50) {
-    unlockAchiev = {
-      StudentID: studentInfo[0].StudentID,
-      AchievementID: 9
-    }
-    arrayToPHP(unlockAchiev, "studentachievements");
+  // 9. 50 visaa suoritettu!
+  if (isAchievUnlocked(unlockedAchievsArray, "9") === false && quizesCompleted >= 50) {
+    achievUnlock(studentInfo[0].StudentID, 9)
+    achievAnim(achievementsInfo[8].PopText, "9");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, '10') === false && quizesCompleted >= 100) {
-    unlockAchiev = {
-      StudentID: studentInfo[0].StudentID,
-      AchievementID: 10
-    }
-    arrayToPHP(unlockAchiev, "studentachievements");
+  // 10. 100 visaa suoritettu!
+  if (isAchievUnlocked(unlockedAchievsArray, "10") === false && quizesCompleted >= 100) {
+    achievUnlock(studentInfo[0].StudentID, 10)
+    achievAnim(achievementsInfo[9].PopText, "10");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, '11') === false && quizesCompleted >= 200) {
-    unlockAchiev = {
-      StudentID: studentInfo[0].StudentID,
-      AchievementID: 11
-    }
-    arrayToPHP(unlockAchiev, "studentachievements");
+  // 11. 200 visaa suoritettu!
+  if (isAchievUnlocked(unlockedAchievsArray, "11") === false && quizesCompleted >= 200) {
+    achievUnlock(studentInfo[0].StudentID, 11)
+    achievAnim(achievementsInfo[10].PopText, "11");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, '12') === false && mode === "competitive" && time <= 300 && score === 10) {
-    unlockAchiev = {
-      StudentID: studentInfo[0].StudentID,
-      AchievementID: 12
-    }
-    arrayToPHP(unlockAchiev, "studentachievements");
+  // 12. Salama (suoritit visan alle X minuutissa, 100% oikein)
+  if (isAchievUnlocked(unlockedAchievsArray, "12") === false && modeInput === "competitive" && timeInput <= 300 && scoreInput === 10) {
+    achievUnlock(studentInfo[0].StudentID, 12)
+    achievAnim(achievementsInfo[11].PopText, "12");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, '13') === false && mode === "competitive" && time >= 600 && score === 10) {
-    unlockAchiev = {
-      StudentID: studentInfo[0].StudentID,
-      AchievementID: 13
-    }
-    arrayToPHP(unlockAchiev, "studentachievements");
+  // 13. Hitaasti, mutta varmasti... (visaan vastaaminen kesti yli X minuuttia, 100% oikein)
+  if (isAchievUnlocked(unlockedAchievsArray, "13") === false && modeInput === "competitive" && timeInput >= 600 && scoreInput === 10) {
+    achievUnlock(studentInfo[0].StudentID, 13)
+    achievAnim(achievementsInfo[12].PopText, "13");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, '14') === false && mode === "competitive" && score === 0) {
-    unlockAchiev = {
-      StudentID: studentInfo[0].StudentID,
-      AchievementID: 14
-    }
-    arrayToPHP(unlockAchiev, "studentachievements");
+  // 14. Surullinen Panda (suoritti visan 100% väärin)
+  if (isAchievUnlocked(unlockedAchievsArray, "14") === false && modeInput === "competitive" && scoreInput === 0) {
+    achievUnlock(studentInfo[0].StudentID, 14)
+    achievAnim(achievementsInfo[13].PopText, "14");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, '15') === false && keksi === "1") {
-    unlockAchiev = {
-      StudentID: studentInfo[0].StudentID,
-      AchievementID: 15
-    }
-    arrayToPHP(unlockAchiev, "studentachievements");
+  // 15. Keksihirviö (salainen saavutus, opettaja voi myöntää sen)
+  if (isAchievUnlocked(unlockedAchievsArray, "15") === false && studentInfo[0].Keksi === "1") {
+    achievUnlock(studentInfo[0].StudentID, 15)
+    achievAnim(achievementsInfo[14].PopText, "15");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, '16') === false && numberOfAchievs === 15) {
-    unlockAchiev = {
-      StudentID: studentInfo[0].StudentID,
-      AchievementID: 16
-    }
-    arrayToPHP(unlockAchiev, "studentachievements");   
+  // 16. Maraton (kaikki muut saavutukset avattu)
+  if (isAchievUnlocked(unlockedAchievsArray, "16") === false && unlockedAchievsArray.length === 15) {
+    achievUnlock(studentInfo[0].StudentID, 16)
+    achievAnim(achievementsInfo[15].PopText, "16");  
   }
 }
 
 // testing purposes, commenting out
-// checkAndAwardAchievs("admin", 0, 0, 0);
+checkAndAwardAchievs("admin", 0, 0, 0);
 
-  listUnlockedAchievements();
+listUnlockedAchievements();
