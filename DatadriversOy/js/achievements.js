@@ -19,7 +19,7 @@ function isAchievUnlocked(unlockedAchievsArray, AchievementID) {
 // record unlocked achievements to DB
 // trigger achievements unlock animation
 // *************************************************************************************************
-// *modeInput is "admin", "competitive" or "casual" as string, timeInput is minutes as integer     *
+// *modeInput is "admin", "competitive" or "casual" as string, timeInput is seconds as integer     *
 // *scoreInput is correct answers given as integer, streakInput is correct answer streak as integer*
 // *************************************************************************************************
 function checkAndAwardAchievs(modeInput, timeInput, scoreInput, streakInput) {
@@ -112,14 +112,14 @@ function checkAndAwardAchievs(modeInput, timeInput, scoreInput, streakInput) {
     }
     arrayToPHP(unlockAchiev, "studentachievements");
   }
-  if (isAchievUnlocked(unlockedAchievsArray, '12') === false && mode === "competitive" && time <= 5 && score === 10) {
+  if (isAchievUnlocked(unlockedAchievsArray, '12') === false && mode === "competitive" && time <= 300 && score === 10) {
     unlockAchiev = {
       StudentID: studentInfo[0].StudentID,
       AchievementID: 12
     }
     arrayToPHP(unlockAchiev, "studentachievements");
   }
-  if (isAchievUnlocked(unlockedAchievsArray, '13') === false && mode === "competitive" && time >= 15 && score === 10) {
+  if (isAchievUnlocked(unlockedAchievsArray, '13') === false && mode === "competitive" && time >= 600 && score === 10) {
     unlockAchiev = {
       StudentID: studentInfo[0].StudentID,
       AchievementID: 13
@@ -152,4 +152,4 @@ function checkAndAwardAchievs(modeInput, timeInput, scoreInput, streakInput) {
 // testing purposes, commenting out
 // checkAndAwardAchievs("admin", 0, 0, 0);
 
-listUnlockedAchievements();
+  listUnlockedAchievements();
