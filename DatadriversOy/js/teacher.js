@@ -1,10 +1,12 @@
+"use strict";
+
 //Get tableContainer from HTML
 const tableContainer = document.getElementById('tableContainer');
 //Get data from scoreboard;
 const scoreboard = arrayFromPHP('scoreboard');
 
 //Create array for headers and teacher comments.
-const headers = ['#', 'Nimi', 'Pisteet', 'Aika', 'Päivämäärä','Palaute'];
+const headers = ['Nimi', 'Pisteet', 'Aika', 'Päivämäärä','Palaute'];
 const overallArray = ['...', 'Loistavaa!', 'Ihan kelpo suoritus!', 'Nyt taisi mennä vähän penkin alle.', 'Hyhhyh...'];
 const thingsToDevelopArray = ['Kertaa liikennemerkkejä.', 'Kertaa ajoneuvonhallintaa.', 'Kiinnitä huomiota jalankulkijoihin.', 'Harjoittele ajoneuvonhallintaa.'];
 const tipsArray = ['Jatka harjoittelua ja muista ajojärjestys.', 'Jatka harjoittelua ja muista ennakoida liikenteessä.', 'Jatka harjoittelua ja älä pidä kiirettä.', 'Jos jatkat harjoittelua, olet ammattilainen liikenteessä.', 'Jos jatkat samaan malliin, olet mestari liikenteessä.', 'Muista myös levätä autokoulun ohessa, että jaksat keskittyä tehtävissä.', 'Suosittelen kertailemaan harjoitustehtäviä.', 'Kyllä sinä vielä onnistut!', 'Uskon, että läpäiset teoriakokeen!'];
@@ -58,14 +60,20 @@ scoreboard.forEach(Data => {
       row.appendChild(content);
     });
 
-    //Get studentID from database
-    let scoreID = Object.values(Data)[0];
-    let studentData = arrayFromPHP2('getStudentId', scoreID); 
-    let studentID = studentData[0].StudentID; 
+    //Get student name from object.
+    let studentName = Object.values(Data)[0];
+
+    //Get student ID from database.
+    let studentData = arrayFromPHP2('getStudentID', studentName); 
+    let studentID = studentData[0].StudentID;
+
+    //Get student Score ID from database.
+    let studentDataScore = arrayFromPHP2('getScoreID', studentID); 
+    let studentScoreID = studentDataScore[0].ScoreID;
 
     //Create button with styles and text.
     let buttonFeedback = document.createElement('div');
-    buttonFeedback.innerHTML = '<button class="btn btn-secondary p-2 m-2" type="button" onclick="showModal('+ scoreID +', ' + studentID +')">Anna <br> Palaute</button>';
+    buttonFeedback.innerHTML = '<button class="btn btn-secondary p-2 m-2" type="button" onclick="showModal('+ studentScoreID +', ' + studentID +')">Anna <br> Palaute</button>';
 
     row.appendChild(buttonFeedback);
     tableBody.appendChild(row);
@@ -181,7 +189,7 @@ function giveFeedback(scoreID, studentID) {
 
   if (cookieMonsterValue) {
     if (isAchievUnlocked(unlockedAchievsArray, '15') === false) { // && keksi === "1"
-      unlockAchiev = {
+      let unlockAchiev = {
         StudentID: studentID,
         AchievementID: 15
       }
@@ -189,7 +197,7 @@ function giveFeedback(scoreID, studentID) {
     }
   }
 
-  sendFeedback = {
+  let sendFeedback = {
     keyScoreId: scoreID,
     keyFeedbackGiven: 1,
     keyFeedbackText: overallValue + ' ' + thingsToDevelopValue + ' ' + tipValue

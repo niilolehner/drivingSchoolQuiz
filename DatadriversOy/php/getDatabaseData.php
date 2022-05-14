@@ -16,17 +16,18 @@ if ($page === 'quizqa' || $page === 'achievements') {
 else if ($page === 'students') {
   $sql = "SELECT * FROM $page WHERE StudentID = $studentId";
 } 
-
-//Testing for cookiemonstro
-else if ($page === 'getStudentId') {
-  $sql = "SELECT StudentID FROM scoreboard WHERE ScoreID = $id";
-} 
+else if ($page === 'getStudentID') {
+  $sql = "SELECT StudentID FROM students WHERE Name = '$id'";
+}
+else if ($page === 'getScoreID') {
+  $sql = "SELECT ScoreID FROM scoreboard WHERE StudentID = $id AND FeedbackGiven = 0";
+}  
 else if ($page === 'scoreboard') {
-  $sql = "SELECT scoreboard.ScoreID, students.Name, scoreboard.Score, scoreboard.Time, scoreboard.Date
+  $sql = "SELECT students.Name, scoreboard.Score, scoreboard.Time, scoreboard.Date
           FROM $page
           INNER JOIN students ON $page.studentID = students.studentID
           WHERE scoreboard.FeedbackGiven = 0
-          ORDER BY scoreboard.scoreID";
+          ORDER BY scoreboard.Date DESC";
 }
 else if ($page === 'feedbackForStudent') {
   $sql = "SELECT Feedback, FeedbackGiven
@@ -45,8 +46,6 @@ else if ($page === 'studentachievements') {
           INNER JOIN achievements ON $page.AchievementID = achievements.AchievementID
           WHERE students.StudentID = $studentId";
 }
-
-///Testing for cookiemonstro
 else if ($page === 'studentachievementsAesmouVersion') {
   $sql = "SELECT students.StudentID, students.Name, achievements.AchievementID, achievements.POPtext
           FROM studentachievements

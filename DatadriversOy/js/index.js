@@ -24,9 +24,9 @@ function arrayFromPHP(pageName) {
 }
 
 // gets an array from PHP/MySQL (see getDatabaseData.php)
-function arrayFromPHP2(pageName, ID) {
+function arrayFromPHP2(pageName, id) {
   let xhReq = new XMLHttpRequest();
-  xhReq.open("GET", 'php/getDatabaseData.php?page=' + pageName +'&id=' + ID , false);
+  xhReq.open("GET", 'php/getDatabaseData.php?page=' + pageName +'&id=' + id + '', false);
   xhReq.send(null);
   let resultArray = JSON.parse(xhReq.responseText);
   return resultArray;
