@@ -1,20 +1,20 @@
 "use strict";
 
-// populate the achievements.html
+// populates the achievements.html
 function listUnlockedAchievements() {  
   let unlockedAchievsArray = arrayFromPHP("studentachievements");
   unlockedAchievsArray.forEach(({AchievementID, POPtext})=>{ 
   document.getElementById('unlockedAchievsList').innerHTML +='<img class="miniachiev" src="images/' + `${AchievementID}` + '.png">' + ' ' + `${POPtext}`});
 }
 
-// check unlockedAchievsArray if achiev present, needs AchievementID (for example "1") as a string
+// checks unlockedAchievsArray if achiev present, needs AchievementID (for example "1") as a string (see checkAndAwardAchievs() main function)
 function isAchievUnlocked(inputUnlockedAchievsArray, inputAchievementID) {
   return inputUnlockedAchievsArray.some(function(el) {
     return el.AchievementID === inputAchievementID;
   }); 
 }
 
-// unlocks the achievement, needs StudentID and AchievementID as integers
+// unlocks the achievement, needs StudentID and AchievementID as integers (see checkAndAwardAchievs() main function)
 function achievUnlock(inputStudentID, inputAchievementID) {
   let unlockArray = {
     StudentID: inputStudentID,
@@ -23,7 +23,7 @@ function achievUnlock(inputStudentID, inputAchievementID) {
   arrayToPHP(unlockArray, "unlockAchievements");
 }
 
-// fires the animation for an achievement unlocking, needs the PopText and AchievementID as a string
+// fires the animation for an achievement unlocking, needs the PopText and AchievementID as a string (see checkAndAwardAchievs() main function)
 function achievAnim(inputPopText, inputAchievementID) {
   Swal.fire({
     title: "Saavutus avattu!",
@@ -33,10 +33,11 @@ function achievAnim(inputPopText, inputAchievementID) {
   })
 }
 
-// check DB that achievements are not already unlocked
-// also check if requirements of locked achievements are satisfied for unlock
-// record unlocked achievements to DB
-// trigger achievements unlock animation
+// !!! this is the main achievements function !!!
+// checks DB that achievements are not already unlocked
+// also checks if requirements of locked achievements are satisfied for unlock
+// records unlocked achievements to DB
+// triggers achievements unlock animation
 // *************************************************************************************************
 // *modeInput is "admin", "competitive" or "casual" as string, timeInput is seconds as integer     *
 // *scoreInput is correct answers given as integer, streakInput is correct answer streak as integer*
