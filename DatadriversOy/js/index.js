@@ -19,7 +19,13 @@ function arrayFromPHP(pageName) {
   let xhReq = new XMLHttpRequest();
   xhReq.open("GET", 'php/getDatabaseData.php?page=' + pageName, false);
   xhReq.send(null);
-  let resultArray = JSON.parse(xhReq.responseText);
+  let resultArray = {};
+  try {
+    resultArray = JSON.parse(xhReq.responseText);
+  }
+  catch(e) {
+    // array empty
+  }
   return resultArray;
 }
 
