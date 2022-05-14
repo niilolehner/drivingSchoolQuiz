@@ -1,5 +1,8 @@
 "use strict";
 
+const navBar = document.getElementById('navBar');
+const footerId = document.getElementById('footerId');
+
 // Fisher–Yates algorithm (shuffles arrays)
 function shuffle(inputArray) {
   // makes a deep copy
@@ -40,3 +43,47 @@ function arrayToPHP(inputArray, pageName) {
   xhReq.setRequestHeader("Content-Type", "application/json");
   xhReq.send(jsonString);
 }
+
+//Get elements to animation and content.
+function animate() {
+  setTimeout(() => {
+    navBar.classList.add('active');
+  }, 200)
+  
+  let url = window.location.href;
+  if(url.includes('?page=welcome')){
+    const welcomePage = document.getElementById('welcomePage');
+    setTimeout(() => {
+      welcomePage.classList.add('active');
+    }, 800);
+  }
+  else if(url.includes('?page=competitive')){
+    const quizCompetitive = document.getElementById('quizCompetitive');
+    setTimeout(() => {
+        quizCompetitive.classList.add('active');
+    }, 800);
+  }
+  if(url.includes('?page=teacher')){
+    setTimeout(() => {
+      tableContainer.classList.add('active');
+    }, 800);
+  }
+  if(url.includes('?page=casual')){
+    const quizCasual = document.getElementById('quizCasual');
+    setTimeout(() => {
+        quizCasual.classList.add('active');
+    }, 800);
+  }
+  if(url.includes('?page=studentachievements')){  
+    const achievementID = document.getElementById('achievementID');
+    setTimeout(() => {
+        achievementID.classList.add('active');
+    }, 800);
+  }
+
+  setTimeout(() => {
+    footerId.classList.add('active');
+  }, 1200);
+}
+
+animate()

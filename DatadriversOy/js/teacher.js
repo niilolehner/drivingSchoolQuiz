@@ -1,7 +1,8 @@
 "use strict";
 
-//Get tableContainer from HTML
+//Get elements to animation and content.
 const tableContainer = document.getElementById('tableContainer');
+
 //Get data from scoreboard;
 const scoreboard = arrayFromPHP('scoreboard');
 

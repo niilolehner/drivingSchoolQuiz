@@ -1,3 +1,5 @@
+"use strict";
+
 var startTime, endTime;
 var seconds;
 

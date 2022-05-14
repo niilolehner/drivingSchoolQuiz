@@ -1,3 +1,4 @@
+"use strict";
 
      // storing array for use
     let sortedQuestionArray = arrayFromPHP("quizqa");
