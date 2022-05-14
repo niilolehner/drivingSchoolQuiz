@@ -28,8 +28,8 @@ else if ($page === 'feedback') {
   $stmt->bind_param("sis", $phpArray['keyFeedbackText'], $phpArray['keyFeedbackGiven'], $phpArray['keyScoreId']);
   $stmt->execute();
 }
-else if ($page === 'studentachievements') {
-  $stmt = $conn->prepare("INSERT INTO $page (`StudentID`, `AchievementID`) VALUES (?, ?)");
+else if ($page === 'unlockAchievements') {
+  $stmt = $conn->prepare("INSERT INTO `studentachievements` (`StudentID`, `AchievementID`) VALUES (?, ?)");
   $stmt->bind_param("ii", $phpArray['StudentID'], $phpArray['AchievementID']);
   $stmt->execute();
 }
