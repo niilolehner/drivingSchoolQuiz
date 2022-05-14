@@ -14,7 +14,7 @@ if ($page === 'quizqa' || $page === 'achievements') {
   $sql = "SELECT * FROM $page";
 }
 else if ($page === 'students') {
-  $sql = "SELECT * FROM $page WHERE StudentID = $studentId";
+  $sql = "SELECT * FROM students WHERE StudentID = $studentId";
 } 
 else if ($page === 'getStudentID') {
   $sql = "SELECT StudentID FROM students WHERE Name = '$id'";
@@ -24,8 +24,8 @@ else if ($page === 'getScoreID') {
 }  
 else if ($page === 'scoreboard') {
   $sql = "SELECT students.Name, scoreboard.Score, scoreboard.Time, scoreboard.Date
-          FROM $page
-          INNER JOIN students ON $page.studentID = students.studentID
+          FROM scoreboard
+          INNER JOIN students ON scoreboard.studentID = students.studentID
           WHERE scoreboard.FeedbackGiven = 0
           ORDER BY scoreboard.Date DESC";
 }
@@ -39,11 +39,11 @@ else if ($page === 'personalBestForUpdating') {
           FROM students
           WHERE studentID = $studentId";
 }
-else if ($page === 'studentachievements') {
+else if ($page === 'unlockedAchievements') {
   $sql = "SELECT students.StudentID, students.Name, achievements.AchievementID, achievements.POPtext
-          FROM $page
-          INNER JOIN students ON $page.studentID = students.studentID
-          INNER JOIN achievements ON $page.AchievementID = achievements.AchievementID
+          FROM studentachievements
+          INNER JOIN students ON studentachievements.studentID = students.studentID
+          INNER JOIN achievements ON studentachievements.AchievementID = achievements.AchievementID
           WHERE students.StudentID = $studentId";
 }
 else if ($page === 'studentachievementsAesmouVersion') {
