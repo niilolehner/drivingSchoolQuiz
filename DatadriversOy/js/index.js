@@ -85,13 +85,13 @@ function achievAnim(inputPopText, inputAchievNum) {
 // proper studentId needs to be selected on getDatabaseData.php (see $studentId variable)
 // checks DB that achievements are not already unlocked
 // also checks if requirements of locked achievements are satisfied for unlock
-// records unlocked achievements to DB if not already unlocked
+// records unlocked achievements to DB
 // also triggers achievements unlock animation
 // the following parameters need to be set up when fired at the end of a quiz or on the achiev page:
-// *************************************************************************************************
-// *modeInput is "admin", "competitive" or "casual" as string, timeInput is seconds as integer     *
-// *scoreInput is correct answers given as integer, streakInput is correct answer streak as integer*
-// *************************************************************************************************
+// ****************************************************************************************************************
+// *modeInput is "admin", "competitive" or "casual" as string, timeInput is seconds as integer                    *
+// *scoreInput is correct answers given as integer, streakInput is correct answer streak on end of quiz as integer*
+// ****************************************************************************************************************
 function checkAndAwardAchievs(modeInput, timeInput, scoreInput, streakInput) {
   // the 'students' table entry for QuizesDone needs to be updated on quiz completion, BEFORE checkAndAwardAchievs is fired
   let studentInfo = arrayFromPHP("students");
