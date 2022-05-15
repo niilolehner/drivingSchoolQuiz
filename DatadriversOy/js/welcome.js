@@ -1,11 +1,5 @@
 "use strict";
 
-$(document).ready(function () {
-    $("#oppilasBtn").click(function () {  
-        oppilas(); 
-    });
-});
-
 function oppilas() {
    
     let feedbackArray = arrayFromPHP("feedbackForStudent");
@@ -21,18 +15,13 @@ function oppilas() {
     
         if (feedback == 1) {
             Swal.fire({
-                title: 'Sweet!',
                 text: feedbackTxt,
                 confirmButtonColor: '#27804c',
                 imageUrl: 'images/feedback.png',
                 imageWidth: 300,
                 imageHeight: 300,
                 imageAlt: 'Custom image',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    nextPage();
-                }
-            })
+            });
         }
     }
 
@@ -40,3 +29,6 @@ function oppilas() {
         window.location.href = "./index.php?page=welcome";
     }
 }
+setTimeout(() => {
+    oppilas(); 
+  }, 500);

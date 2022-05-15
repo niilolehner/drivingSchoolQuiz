@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 13, 2022 at 12:48 PM
+-- Generation Time: May 15, 2022 at 09:40 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -145,11 +145,10 @@ CREATE TABLE `scoreboard` (
 --
 
 INSERT INTO `scoreboard` (`ScoreID`, `StudentID`, `Score`, `Time`, `Date`, `Feedback`, `FeedbackGiven`) VALUES
-(1, '1', 100, 90, '2022-05-10', '', 0),
+(1, '1', 50, 90, '2022-05-10', '  Kyllä sinä vielä onnistut!', 1),
 (2, '2', 75, 75, '2022-05-10', '', 0),
-(3, '3', 55, 77, '2022-05-10', '', 0),
-(4, '3', 10, 80, '2022-05-10', '', 0),
-(5, '1', 10, 50, '2022-05-10', '', 0);
+(3, '3', 10, 80, '2022-05-10', '', 0),
+(4, '1', 75, 0, '2022-05-14', '', 0);
 
 -- --------------------------------------------------------
 
@@ -158,6 +157,7 @@ INSERT INTO `scoreboard` (`ScoreID`, `StudentID`, `Score`, `Time`, `Date`, `Feed
 --
 
 CREATE TABLE `studentachievements` (
+  `StudentachievementsID` int(11) NOT NULL,
   `StudentID` int(11) NOT NULL,
   `AchievementID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -166,24 +166,25 @@ CREATE TABLE `studentachievements` (
 -- Dumping data for table `studentachievements`
 --
 
-INSERT INTO `studentachievements` (`StudentID`, `AchievementID`) VALUES
-(1, 1),
-(1, 2),
-(1, 3),
-(1, 4),
-(1, 5),
-(1, 6),
-(1, 7),
-(1, 8),
-(1, 9),
-(1, 10),
-(1, 11),
-(1, 12),
-(1, 13),
-(1, 14),
-(1, 15),
-(1, 16),
-(2, 1);
+INSERT INTO `studentachievements` (`StudentachievementsID`, `StudentID`, `AchievementID`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 1, 3),
+(4, 1, 4),
+(5, 1, 5),
+(6, 1, 6),
+(7, 1, 7),
+(8, 1, 8),
+(9, 1, 9),
+(10, 1, 10),
+(11, 1, 11),
+(12, 1, 12),
+(13, 1, 13),
+(14, 1, 14),
+(15, 1, 15),
+(16, 1, 16),
+(17, 2, 1),
+(21, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -232,6 +233,12 @@ ALTER TABLE `scoreboard`
   ADD KEY `StudentID` (`StudentID`(768));
 
 --
+-- Indexes for table `studentachievements`
+--
+ALTER TABLE `studentachievements`
+  ADD PRIMARY KEY (`StudentachievementsID`);
+
+--
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
@@ -258,6 +265,12 @@ ALTER TABLE `quizqa`
 --
 ALTER TABLE `scoreboard`
   MODIFY `ScoreID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `studentachievements`
+--
+ALTER TABLE `studentachievements`
+  MODIFY `StudentachievementsID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `students`

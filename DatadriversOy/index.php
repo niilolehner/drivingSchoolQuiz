@@ -3,11 +3,11 @@
 
 if ($page === 'welcome') {
     include 'pages/welcome.html';
+    ?><script src="./js/welcome.js" defer></script><?php
 }
 
 if ($page === 'userChoose') {
     include 'pages/userChoose.html';
-    ?><script src="./js/userChoose.js" defer></script><?php
 }
 
 if ($page === 'competitive') {
