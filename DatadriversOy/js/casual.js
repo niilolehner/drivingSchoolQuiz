@@ -21,11 +21,31 @@
     let score = 0;
     let wrongAnswers = 0;
     
-function startQuiz() {
+    function shuffleArray(array) {
+            for (var i = array.length - 1; i > 0; i--) {
+ 
+                // Generate random number
+                var j = Math.floor(Math.random() * (i + 1));
+ 
+                var temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+ 
+            return array;
+    }
+    
+    function startQuiz() {
+
+    let answerArray = [shuffledQuestionArray[currentQuestion].RightAnswer, shuffledQuestionArray[currentQuestion].WrongAnswer1, shuffledQuestionArray[currentQuestion].WrongAnswer2];
+    
+    var Answers = shuffleArray(answerArray);
+
     kysymysTxt.innerHTML = shuffledQuestionArray[currentQuestion].Question;
-    vastaus1Btn.innerHTML = shuffledQuestionArray[currentQuestion].RightAnswer;
-    vastaus2Btn.innerHTML = shuffledQuestionArray[currentQuestion].WrongAnswer1;
-    vastaus3Btn.innerHTML = shuffledQuestionArray[currentQuestion].WrongAnswer2;
+    vastaus1Btn.innerHTML = Answers[0];
+    vastaus2Btn.innerHTML = Answers[1];
+    vastaus3Btn.innerHTML = Answers[2];
+
         
     vastaus1Btn.onclick = () => {
         if (shuffledQuestionArray[currentQuestion].RightAnswer == vastaus1Btn.innerHTML) {
@@ -71,11 +91,13 @@ function startQuiz() {
 
     function next() {
         currentQuestion++;
+         let answerArray = [shuffledQuestionArray[currentQuestion].RightAnswer, shuffledQuestionArray[currentQuestion].WrongAnswer1, shuffledQuestionArray[currentQuestion].WrongAnswer2];
+        var Answers = shuffleArray(answerArray);
     
         kysymysTxt.innerHTML = shuffledQuestionArray[currentQuestion].Question;
-        vastaus1Btn.innerHTML = shuffledQuestionArray[currentQuestion].RightAnswer;
-        vastaus2Btn.innerHTML = shuffledQuestionArray[currentQuestion].WrongAnswer1;
-        vastaus3Btn.innerHTML = shuffledQuestionArray[currentQuestion].WrongAnswer2;
+        vastaus1Btn.innerHTML = Answers[0];
+        vastaus2Btn.innerHTML = Answers[1];
+        vastaus3Btn.innerHTML = Answers[2];
 
         if (wrongAnswers == 0) {
             score = 1;
