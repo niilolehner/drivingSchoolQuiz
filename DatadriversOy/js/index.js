@@ -52,11 +52,14 @@ function arrayToPHP(inputArray, pageName) {
 
 //Get elements to animation and content.
 function animate() {
-  setTimeout(() => {
-    navBar.classList.add('active');
-  }, 200)
-  
   let url = window.location.href;
+
+  if(url.includes('?page=welcome') === false && url.includes('?page=userChoose') === false ){  
+    setTimeout(() => {
+      navBar.classList.add('active');
+    }, 200)
+  }
+  
   if(url.includes('?page=welcome')){
     const welcomePage = document.getElementById('welcomePage');
     setTimeout(() => {
@@ -87,9 +90,12 @@ function animate() {
     }, 800);
   }
 
-  setTimeout(() => {
-    footerId.classList.add('active');
-  }, 1200);
+  if(url.includes('?page=welcome') === false && url.includes('?page=userChoose') === false ){  
+    setTimeout(() => {
+      footerId.classList.add('active');
+    }, 1200);
+  }
+  
 }
 
 animate()

@@ -44,11 +44,6 @@ isset($_GET['page']) ? $page = $_GET['page'] : $page = '';
 
 
     <script src="./js/index.js" defer></script>
-    <script src="./js/casual.js" defer></script>
-    <script src="./js/achievements.js" defer></script>
-    <script src="./js/teacher.js" defer></script>
-    <script src="./js/competitive.js" defer></script>
-    <script src="./js/userChoose.js" defer></script>
 
     <title>Datadrivers Oy</title>
 </head>
