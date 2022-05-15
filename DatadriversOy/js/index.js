@@ -98,71 +98,72 @@ function checkAndAwardAchievs(modeInput, timeInput, scoreInput, streakInput) {
   let quizesCompleted = Number(studentInfo[0].QuizesDone);
   let unlockedAchievsArray = arrayFromPHP("unlockedAchievements");
   if (isAchievUnlocked(unlockedAchievsArray, "1") === false && streakInput >= 5) {
-    achievUnlock("5x vastaussarja!", 1)
+    achievUnlock("5x vastaussarja!", 1);
+    achievAnim("5x vastaussarja!", "1"); 
   }
   if (isAchievUnlocked(unlockedAchievsArray, "2") === false && streakInput >= 15) {
-    achievUnlock(studentInfo[0].StudentID, 2)
+    achievUnlock(studentInfo[0].StudentID, 2);
     achievAnim("15x vastaussarja!", "2");  
   }
   if (isAchievUnlocked(unlockedAchievsArray, "3") === false && streakInput >= 30) {
-    achievUnlock(studentInfo[0].StudentID, 3)
+    achievUnlock(studentInfo[0].StudentID, 3);
     achievAnim("30x vastaussarja!", "3");  
   }
   if (isAchievUnlocked(unlockedAchievsArray, "4") === false && streakInput >= 50) {
-    achievUnlock(studentInfo[0].StudentID, 4)
+    achievUnlock(studentInfo[0].StudentID, 4);
     achievAnim("50x vastaussarja!", "4");  
   }
   if (isAchievUnlocked(unlockedAchievsArray, "5") === false && quizesCompleted >= 1) {
-    achievUnlock(studentInfo[0].StudentID, 5)
+    achievUnlock(studentInfo[0].StudentID, 5);
     achievAnim("Ensimmäinen visa suoritettu!", "5");  
   }
   if (isAchievUnlocked(unlockedAchievsArray, "6") === false && quizesCompleted >= 5) {
-    achievUnlock(studentInfo[0].StudentID, 6)
+    achievUnlock(studentInfo[0].StudentID, 6);
     achievAnim("5 visaa suoritettu!", "6");  
   }
   if (isAchievUnlocked(unlockedAchievsArray, "7") === false && quizesCompleted >= 10) {
-    achievUnlock(studentInfo[0].StudentID, 7)
+    achievUnlock(studentInfo[0].StudentID, 7);
     achievAnim("10 visaa suoritettu!", "7");  
   }
   if (isAchievUnlocked(unlockedAchievsArray, "8") === false && quizesCompleted >= 20) {
-    achievUnlock(studentInfo[0].StudentID, 8)
+    achievUnlock(studentInfo[0].StudentID, 8);
     achievAnim("20 visaa suoritettu!", "8");  
   }
   if (isAchievUnlocked(unlockedAchievsArray, "9") === false && quizesCompleted >= 50) {
-    achievUnlock(studentInfo[0].StudentID, 9)
+    achievUnlock(studentInfo[0].StudentID, 9);
     achievAnim("50 visaa suoritettu!", "9");  
   }
   if (isAchievUnlocked(unlockedAchievsArray, "10") === false && quizesCompleted >= 100) {
-    achievUnlock(studentInfo[0].StudentID, 10)
+    achievUnlock(studentInfo[0].StudentID, 10);
     achievAnim("100 visaa suoritettu!", "10");  
   }
   if (isAchievUnlocked(unlockedAchievsArray, "11") === false && quizesCompleted >= 200) {
-    achievUnlock(studentInfo[0].StudentID, 11)
+    achievUnlock(studentInfo[0].StudentID, 11);
     achievAnim("200 visaa suoritettu!", "11");  
   }
   // suoritti visan alle X minuutissa, 100% oikein
   if (isAchievUnlocked(unlockedAchievsArray, "12") === false && modeInput === "competitive" && timeInput <= 300 && scoreInput === 10) {
-    achievUnlock(studentInfo[0].StudentID, 12)
+    achievUnlock(studentInfo[0].StudentID, 12);
     achievAnim("Salama", "12");  
   }
   // visaan vastaaminen kesti yli X minuuttia, mutta 100% oikein
   if (isAchievUnlocked(unlockedAchievsArray, "13") === false && modeInput === "competitive" && timeInput >= 600 && scoreInput === 10) {
-    achievUnlock(studentInfo[0].StudentID, 13)
+    achievUnlock(studentInfo[0].StudentID, 13);
     achievAnim("Hitaasti, mutta varmasti...", "13");  
   }
   // suoritti visan 100% väärin
   if (isAchievUnlocked(unlockedAchievsArray, "14") === false && modeInput === "competitive" && scoreInput === 0) {
-    achievUnlock(studentInfo[0].StudentID, 14)
+    achievUnlock(studentInfo[0].StudentID, 14);
     achievAnim("Surullinen Panda", "14");  
   }
   // salainen saavutus, opettaja voi myöntää sen
   if (isAchievUnlocked(unlockedAchievsArray, "15") === false && studentInfo[0].Keksi === "1") {
-    achievUnlock(studentInfo[0].StudentID, 15)
+    achievUnlock(studentInfo[0].StudentID, 15);
     achievAnim("Keksihirviö", "15");  
   }
   // kaikki muut saavutukset avattu
   if (isAchievUnlocked(unlockedAchievsArray, "16") === false && unlockedAchievsArray.length === 15) {
-    achievUnlock(studentInfo[0].StudentID, 16)
+    achievUnlock(studentInfo[0].StudentID, 16);
     achievAnim("Maraton", "16");  
   }
 }
