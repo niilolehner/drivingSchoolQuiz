@@ -33,7 +33,7 @@ else if ($page === 'endOfCompetitiveQuiz') {
 }
 else if ($page === 'personalBestToUpdate') {
   $stmt = $conn->prepare("UPDATE `students` SET BestTime = ?, BestScore = ?, QuizesDone = ? WHERE studentID = ?");
-  $stmt->bind_param("sis", $phpArray['oldTime'], $phpArray['oldScore'], $phpArray['oldQuizesDone'], $phpArray[$studentId]);
+  $stmt->bind_param("iiii", $phpArray['oldTime'], $phpArray['oldScore'], $phpArray['oldQuizesDone'], $phpArray[$studentId]);
   $stmt->execute();
 }
 

@@ -8,7 +8,7 @@ function oppilas() {
     let feedbackTxt = feedbackArray[0].Feedback;
 
     if (feedback == 0) {
-        window.location.href = "./index.php?page=welcome";
+        nextPage();
     }
 
     else {
