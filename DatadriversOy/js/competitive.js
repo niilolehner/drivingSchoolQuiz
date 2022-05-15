@@ -50,18 +50,23 @@ function startFastQuiz() {
             cvastaus2Btn.style.visibility = 'hidden';
             cvastaus3Btn.style.visibility = 'hidden';
     
+    let canswerArray = [cshuffledQuestionArray[ccurrentQuestion].RightAnswer, cshuffledQuestionArray[ccurrentQuestion].WrongAnswer1, cshuffledQuestionArray[ccurrentQuestion].WrongAnswer2];
+    
+    var cAnswers = shuffleArray(canswerArray);
+
+    ckysymysTxt.innerHTML = cshuffledQuestionArray[ccurrentQuestion].Question;
+    cvastaus1Btn.innerHTML = cAnswers[0];
+    cvastaus2Btn.innerHTML = cAnswers[1];
+    cvastaus3Btn.innerHTML = cAnswers[2];
+    
     csubmitBtn.onclick = () => {
         start();
+        console.log(startTime);
             ckysymysTxt.style.visibility = 'visible';
             cvastaus1Btn.style.visibility = 'visible';
             cvastaus2Btn.style.visibility = 'visible';
             cvastaus3Btn.style.visibility = 'visible';
             csubmitBtn.style.visibility = 'hidden';
-        ckysymysTxt.innerHTML = cshuffledQuestionArray[ccurrentQuestion].Question;
-        cvastaus1Btn.innerHTML = cshuffledQuestionArray[ccurrentQuestion].RightAnswer;
-        cvastaus2Btn.innerHTML = cshuffledQuestionArray[ccurrentQuestion].WrongAnswer1;
-        cvastaus3Btn.innerHTML = cshuffledQuestionArray[ccurrentQuestion].WrongAnswer2;
-        console.log(startTime);
     }
 
        cvastaus1Btn.onclick = () => {
@@ -112,7 +117,6 @@ function startFastQuiz() {
                 arrayToPHP(tulosDatabaseen, "endOfCompetitiveQuiz");
 
                 UpdateDatabase();
-            
     }
     else
     {
@@ -124,12 +128,15 @@ function startFastQuiz() {
             else {
             cscore = 0;
             }
-            ctotalScore = ctotalScore + cscore;
+                ctotalScore = ctotalScore + cscore;
+                
+            let canswerArray = [cshuffledQuestionArray[ccurrentQuestion].RightAnswer, cshuffledQuestionArray[ccurrentQuestion].WrongAnswer1, cshuffledQuestionArray[ccurrentQuestion].WrongAnswer2];
+            var cAnswers = shuffleArray(canswerArray);
             
             ckysymysTxt.innerHTML = cshuffledQuestionArray[ccurrentQuestion].Question;
-            cvastaus1Btn.innerHTML = cshuffledQuestionArray[ccurrentQuestion].RightAnswer;
-            cvastaus2Btn.innerHTML = cshuffledQuestionArray[ccurrentQuestion].WrongAnswer1;
-            cvastaus3Btn.innerHTML = cshuffledQuestionArray[ccurrentQuestion].WrongAnswer2;
+            cvastaus1Btn.innerHTML = cAnswers[0];
+            cvastaus2Btn.innerHTML = cAnswers[1];
+            cvastaus3Btn.innerHTML = cAnswers[2];
     
             console.log(ccurrentQuestion);
             console.log(ctotalScore);
