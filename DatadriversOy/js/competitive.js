@@ -36,6 +36,7 @@ const cvastaus1Btn = document.getElementById("cvastaus1");
 const cvastaus2Btn = document.getElementById("cvastaus2");
 const cvastaus3Btn = document.getElementById("cvastaus3");
 const csubmitBtn = document.getElementById("csubmit");
+const ctulosTxt = document.getElementById("ctulokset");
 
 csubmitBtn.addEventListener("click", csubmit);
 
@@ -118,7 +119,8 @@ function startFastQuiz() {
             ckysymysTxt.style.display = 'none';
             cvastaus1Btn.style.display = 'none';
             cvastaus2Btn.style.display = 'none';
-            cvastaus3Btn.style.display = 'none';
+            cvastaus3Btn.style.display = 'none';  
+            ctulosTxt.innerHTML = "Sait " + ctotalScore + "/10 oikein. Aikasi oli " + seconds + " sekuntia.";
 
             // variable viemään tulokset databaseen 
             let tulosDatabaseen =
@@ -133,6 +135,8 @@ function startFastQuiz() {
                 UpdateDatabase();
 
                 checkAndAwardAchievs("competitive", seconds, ctotalScore, 0);
+
+                setTimeout(nextPage, 5000);
     }
     else
     {
@@ -162,6 +166,10 @@ function startFastQuiz() {
         }
     }
 
+    function nextPage() {
+        window.location.href = "./index.php?page=welcome";
+    }
+
     function UpdateDatabase()
     {
         let getDatabaseArray = arrayFromPHP("personalBestForUpdating");
@@ -174,7 +182,7 @@ function startFastQuiz() {
             oldScore = ctotalScore;
         }
         
-        if (seconds > oldTime || oldTime == "")
+        if (seconds < oldTime || oldTime == "")
         {
             oldTime = seconds;
         }
