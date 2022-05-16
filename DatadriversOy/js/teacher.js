@@ -191,7 +191,6 @@ function giveFeedback(scoreID, studentID) {
           Keksi: 1,
           StudentNum: studentID
       }
-      console.log(studentCookieAchiev);
       arrayToPHP(studentCookieAchiev, "giveCookie");
   }
 
