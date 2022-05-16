@@ -189,12 +189,12 @@ function giveFeedback(scoreID, studentID) {
   }
 
   if (cookieMonsterValue) {
-    if (isAchievUnlocked(unlockedAchievsArray, '15') === false) { // && keksi === "1"
-      let unlockAchiev = {
-        StudentID: studentID,
-        AchievementID: 15
+    if (isAchievUnlocked(unlockedAchievsArray, '15') === false) {
+      let studentCookieAchiev = {
+          Keksi: 1,
+          StudentID: studentID
       }
-      arrayToPHP(unlockAchiev, "studentachievements");
+      arrayToPHP(studentCookieAchiev, "giveCookie");
     }
   }
 

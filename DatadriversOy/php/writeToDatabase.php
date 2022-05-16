@@ -36,6 +36,11 @@ else if ($page === 'personalBestToUpdate') {
   $stmt->bind_param("iiii", $phpArray['BestTime'], $phpArray['BestScore'], $phpArray['QuizesDone'], $phpArray['StudentID']);
   $stmt->execute();
 }
+else if ($page === 'giveCookie') {
+  $stmt = $conn->prepare("UPDATE `students` SET Keksi = ? WHERE studentID = ?");
+  $stmt->bind_param("ii", $phpArray['Keksi'], $phpArray['StudentID']);
+  $stmt->execute();
+}
 
 mysqli_close($conn);
 ?>
