@@ -3268,7 +3268,6 @@ body {
 
 #mainNav {
     min-height: 3.5rem;
-    background-color: #fff;
 }
 
 #mainNav .navbar-toggler {
@@ -3329,7 +3328,7 @@ body {
     }
 
     #mainNav.navbar-shrink {
-        background-color: #fff;
+
     }
 
     #mainNav.navbar-shrink .navbar-brand {

@@ -30,6 +30,11 @@ if ($page === 'teacher') {
     ?><script src="./js/teacher.js" defer></script><?php
 }
 
+if ($page === 'scoreboard') {
+    include 'pages/scoreboard.html';
+    ?><script src="./js/scoreboard.js" defer></script><?php
+}
+
 
 if ($page !== 'welcome' && $page !== 'userChoose') {
     require 'includes/footer.php';

@@ -71,6 +71,7 @@ if ($page !== 'welcome' && $page !== 'userChoose') {
                 <li class="nav-item"><a class="nav-link" href="index.php?page=casual">Harjoittelutehtäviä</a></li>
                 <li class="nav-item"><a class="nav-link" href="index.php?page=competitive">Teoriakoeharjoitus</a></li>
                 <li class="nav-item"><a class="nav-link" href="index.php?page=studentachievements">Saavutukset</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.php?page=scoreboard">Tulostaulu</a></li>
             </ul>
         </div>
     </div>
