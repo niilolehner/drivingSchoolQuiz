@@ -14,10 +14,10 @@ function listUnlockedAchievements() {
 // fires main achievements function in admin mode (see $studentId on getDatabaseData.php to select student)
 checkAndAwardAchievs("admin", 0, 0, 0);
 
-// fire this function at the end of competitive quiz mode (see $studentId on getDatabaseData.php to select student)
+// fire THIS function at the end of competitive quiz mode (see $studentId on getDatabaseData.php to select student)
 // checkAndAwardAchievs("competitive", seconds, ctotalScore, 0);
 
-// fire this function at each correct answer in casual quiz mode (see $studentId on getDatabaseData.php to select student)
+// fire THIS function at each correct answer in casual quiz mode (see $studentId on getDatabaseData.php to select student)
 // checkAndAwardAchievs("casual", 0, 0, streak);
 
 // fires the function that populates achievements.html (see $studentId on getDatabaseData.php to select student)
