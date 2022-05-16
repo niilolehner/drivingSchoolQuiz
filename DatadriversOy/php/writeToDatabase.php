@@ -37,7 +37,7 @@ else if ($page === 'personalBestToUpdate') {
   $stmt->execute();
 }
 else if ($page === 'giveCookie') {
-  $stmt = $conn->prepare("UPDATE `students` SET Keksi = ? WHERE studentID = ?");
+  $stmt = $conn->prepare("UPDATE `students` SET Keksi = ? WHERE students.StudentID = ?");
   $stmt->bind_param("ii", $phpArray['Keksi'], $phpArray['StudentNum']);
   $stmt->execute();
 }
