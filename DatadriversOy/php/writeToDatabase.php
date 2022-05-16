@@ -33,7 +33,12 @@ else if ($page === 'endOfCompetitiveQuiz') {
 }
 else if ($page === 'personalBestToUpdate') {
   $stmt = $conn->prepare("UPDATE `students` SET BestTime = ?, BestScore = ?, QuizesDone = ? WHERE studentID = ?");
-  $stmt->bind_param("iiii", $phpArray['oldTime'], $phpArray['oldScore'], $phpArray['oldQuizesDone'], $phpArray[$studentId]);
+  $stmt->bind_param("iiii", $phpArray['BestTime'], $phpArray['BestScore'], $phpArray['QuizesDone'], $phpArray['StudentID']);
+  $stmt->execute();
+}
+else if ($page === 'giveCookie') {
+  $stmt = $conn->prepare("UPDATE `students` SET Keksi = ? WHERE students.StudentID = ?");
+  $stmt->bind_param("ii", $phpArray['Keksi'], $phpArray['StudentNum']);
   $stmt->execute();
 }
 

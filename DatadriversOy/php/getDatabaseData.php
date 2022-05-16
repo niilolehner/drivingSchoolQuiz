@@ -37,7 +37,7 @@ else if ($page === 'feedbackForStudent') {
           WHERE FeedbackGiven = 1 AND studentID = $studentId";
 }
 else if ($page === 'personalBestForUpdating') {
-  $sql = "SELECT BestTime, BestScore, QuizesDone
+  $sql = "SELECT StudentID, BestTime, BestScore, QuizesDone
           FROM students
           WHERE studentID = $studentId";
 }

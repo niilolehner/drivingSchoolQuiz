@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2022 at 09:40 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+-- Generation Time: May 16, 2022 at 01:15 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -145,10 +145,11 @@ CREATE TABLE `scoreboard` (
 --
 
 INSERT INTO `scoreboard` (`ScoreID`, `StudentID`, `Score`, `Time`, `Date`, `Feedback`, `FeedbackGiven`) VALUES
-(1, '1', 50, 90, '2022-05-10', '  Kyllä sinä vielä onnistut!', 1),
-(2, '2', 75, 75, '2022-05-10', '', 0),
+(1, '1', 10, 90, '2022-05-10', '  Kyllä sinä vielä onnistut!', 1),
+(2, '2', 9, 75, '2022-05-10', '', 0),
 (3, '3', 10, 80, '2022-05-10', '', 0),
-(4, '1', 75, 0, '2022-05-14', '', 0);
+(4, '1', 7, 0, '2022-05-14', '', 0),
+(6, '2', 3, 14, '2022-05-16', '', 0);
 
 -- --------------------------------------------------------
 
@@ -182,9 +183,7 @@ INSERT INTO `studentachievements` (`StudentachievementsID`, `StudentID`, `Achiev
 (13, 1, 13),
 (14, 1, 14),
 (15, 1, 15),
-(16, 1, 16),
-(17, 2, 1),
-(21, 3, 1);
+(16, 1, 16);
 
 -- --------------------------------------------------------
 
@@ -197,17 +196,18 @@ CREATE TABLE `students` (
   `Name` text NOT NULL,
   `BestTime` int(11) NOT NULL,
   `BestScore` int(11) NOT NULL,
-  `QuizesDone` int(11) NOT NULL
+  `QuizesDone` int(11) NOT NULL,
+  `Keksi` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`StudentID`, `Name`, `BestTime`, `BestScore`, `QuizesDone`) VALUES
-(1, 'Matti', 60, 100, 2),
-(2, 'Teppo', 47, 50, 5),
-(3, 'Seppo', 10, 0, 10);
+INSERT INTO `students` (`StudentID`, `Name`, `BestTime`, `BestScore`, `QuizesDone`, `Keksi`) VALUES
+(1, 'Matti', 47, 10, 200, 1),
+(2, 'Teppo', 60, 9, 2, 0),
+(3, 'Seppo', 80, 10, 1, 0);
 
 --
 -- Indexes for dumped tables
@@ -264,13 +264,13 @@ ALTER TABLE `quizqa`
 -- AUTO_INCREMENT for table `scoreboard`
 --
 ALTER TABLE `scoreboard`
-  MODIFY `ScoreID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ScoreID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `studentachievements`
 --
 ALTER TABLE `studentachievements`
-  MODIFY `StudentachievementsID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `StudentachievementsID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `students`

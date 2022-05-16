@@ -38,25 +38,20 @@ const csubmitBtn = document.getElementById("csubmit");
 
 csubmitBtn.addEventListener("click", csubmit);
 
-let ccurrentQuestion = 0;
-let wrongclick = 0;
-let cscore = 0;
-let ctotalScore = 0;
-
-function shuffleArray(array) {
-    for (var i = array.length - 1; i > 0; i--) {
-
-        // Generate random number
-        var j = Math.floor(Math.random() * (i + 1));
-
-        var temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-
-    return array;
+     function shuffleArray(array) {
+            for (var i = array.length - 1; i > 0; i--) {
+ 
+                // Generate random number
+                var j = Math.floor(Math.random() * (i + 1));
+ 
+                var temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+ 
+            return array;
 }
-
+    
 function startFastQuiz() {
             ckysymysTxt.style.visibility = 'hidden';
             cvastaus1Btn.style.visibility = 'hidden';
@@ -130,6 +125,8 @@ function startFastQuiz() {
                 arrayToPHP(tulosDatabaseen, "endOfCompetitiveQuiz");
 
                 UpdateDatabase();
+
+                checkAndAwardAchievs("competitive", seconds, ctotalScore, 0);
     }
     else
     {
@@ -183,8 +180,9 @@ function startFastQuiz() {
             BestScore: oldScore,
             BestTime: oldTime,
             QuizesDone: oldQuizesDone,
-            StudentID: 1
+            StudentID: getDatabaseArray[0].StudentID
         }
+        console.log(newBestForDatabase);
         arrayToPHP(newBestForDatabase, "personalBestToUpdate");
     }
 }

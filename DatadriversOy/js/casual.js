@@ -58,6 +58,7 @@
         }
         else if (shuffledQuestionArray[currentQuestion].WrongAnswer1 || shuffledQuestionArray[currentQuestion].WrongAnswer2) {
             vastaus1Btn.setAttribute('class', 'btn btn-primary m-2 incorrect');
+            checkAndAwardAchievs("casual", 0, 0, streak);
             streak = 0;
             wrongAnswers++;
             setTimeout(() => {
@@ -78,6 +79,7 @@
         }
         else if (shuffledQuestionArray[currentQuestion].WrongAnswer1 || shuffledQuestionArray[currentQuestion].WrongAnswer2) {
             vastaus2Btn.setAttribute('class', 'btn btn-primary m-2 incorrect');
+            checkAndAwardAchievs("casual", 0, 0, streak);
             streak = 0;
             wrongAnswers++;
             setTimeout(() => {
@@ -98,6 +100,7 @@
         }
         else if (shuffledQuestionArray[currentQuestion].WrongAnswer1 || shuffledQuestionArray[currentQuestion].WrongAnswer2) {
             vastaus3Btn.setAttribute('class', 'btn btn-primary m-2 incorrect');
+            checkAndAwardAchievs("casual", 0, 0, streak);
             streak = 0;
             wrongAnswers++;
             setTimeout(() => {

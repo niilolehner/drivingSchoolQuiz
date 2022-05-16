@@ -173,8 +173,6 @@ function giveFeedback(scoreID, studentID) {
   let tipValue = tipOutput.options[tipOutput.selectedIndex].value;
   let cookieMonsterValue = cookieMonsterOutput.checked;
 
-  let unlockedAchievsArray = arrayFromPHP2("studentachievementsAesmouVersion", studentID);
-
   if (tipValue === '') {
     Swal.fire({
       title: "Tyhjä kenttä!", 
@@ -189,13 +187,11 @@ function giveFeedback(scoreID, studentID) {
   }
 
   if (cookieMonsterValue) {
-    if (isAchievUnlocked(unlockedAchievsArray, '15') === false) { // && keksi === "1"
-      let unlockAchiev = {
-        StudentID: studentID,
-        AchievementID: 15
+      let studentCookieAchiev = {
+          Keksi: 1,
+          StudentNum: studentID
       }
-      arrayToPHP(unlockAchiev, "studentachievements");
-    }
+      arrayToPHP(studentCookieAchiev, "giveCookie");
   }
 
   let sendFeedback = {
