@@ -29,7 +29,7 @@ var newdate = year + "-" + month + "-" + day;
 
     // shuffling original array (do each time a new set of questions is needed)
     let cshuffledQuestionArray = shuffle(csortedQuestionArray); 
- 
+    
     const ckysymysTxt = document.getElementById("ckysymys");
     const cvastaus1Btn = document.getElementById("cvastaus1");
     const cvastaus2Btn = document.getElementById("cvastaus2");
@@ -42,7 +42,6 @@ var newdate = year + "-" + month + "-" + day;
     let wrongclick = 0;
     let cscore = 0;
     let ctotalScore = 0;
-
 
      function shuffleArray(array) {
             for (var i = array.length - 1; i > 0; i--) {
@@ -131,6 +130,8 @@ function startFastQuiz() {
                 arrayToPHP(tulosDatabaseen, "endOfCompetitiveQuiz");
 
                 UpdateDatabase();
+
+                checkAndAwardAchievs("competitive", seconds, ctotalScore, 0);
     }
     else
     {

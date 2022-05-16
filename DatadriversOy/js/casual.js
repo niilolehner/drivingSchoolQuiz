@@ -53,6 +53,7 @@
             next();
         }
         else if (shuffledQuestionArray[currentQuestion].WrongAnswer1 || shuffledQuestionArray[currentQuestion].WrongAnswer2) {
+            checkAndAwardAchievs("casual", 0, 0, streak);
             streak = 0;
             wrongAnswers++;
         }
@@ -64,6 +65,7 @@
             next();
         }
         else if (shuffledQuestionArray[currentQuestion].WrongAnswer1 || shuffledQuestionArray[currentQuestion].WrongAnswer2) {
+            checkAndAwardAchievs("casual", 0, 0, streak);
             streak = 0;
             wrongAnswers++;
         }
@@ -71,11 +73,11 @@
 
     vastaus3Btn.onclick = () => {
         if (shuffledQuestionArray[currentQuestion].RightAnswer == vastaus3Btn.innerHTML) {
-
             streak++;
             next();
         }
         else if (shuffledQuestionArray[currentQuestion].WrongAnswer1 || shuffledQuestionArray[currentQuestion].WrongAnswer2) {
+            checkAndAwardAchievs("casual", 0, 0, streak);
             streak = 0;
             wrongAnswers++;
         }
