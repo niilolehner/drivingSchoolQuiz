@@ -1,5 +1,6 @@
 "use strict";
 
+// tätä pitää conffata
 var startTime, endTime;
 var seconds;
 
