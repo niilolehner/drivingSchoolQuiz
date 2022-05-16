@@ -87,57 +87,57 @@ function achievAnim(inputPopText, inputAchievNum) {
 // also checks if requirements of locked achievements are satisfied for unlock
 // records unlocked achievements to DB
 // also triggers achievements unlock animation
-// the following parameters need to be set up when fired at the end of a quiz or on the achiev page:
-// ****************************************************************************************************************
-// *modeInput is "admin", "competitive" or "casual" as string, timeInput is seconds as integer                    *
-// *scoreInput is correct answers given as integer, streakInput is correct answer streak on end of quiz as integer*
-// ****************************************************************************************************************
+// the following parameters need to be set up when fired at the end of/in a quiz or on the achiev page:
+// *************************************************************************************************
+// *modeInput is "admin", "competitive" or "casual" as string, timeInput is seconds as integer     *
+// *scoreInput is correct answers given as integer, streakInput is correct answer streak as integer*
+// *************************************************************************************************
 function checkAndAwardAchievs(modeInput, timeInput, scoreInput, streakInput) {
   // the 'students' table entry for QuizesDone needs to be updated on quiz completion, BEFORE checkAndAwardAchievs is fired
   let studentInfo = arrayFromPHP("students");
   let quizesCompleted = Number(studentInfo[0].QuizesDone);
   let unlockedAchievsArray = arrayFromPHP("unlockedAchievements");
-  if (isAchievUnlocked(unlockedAchievsArray, "1") === false && streakInput >= 5) {
+  if (isAchievUnlocked(unlockedAchievsArray, "1") === false && modeInput === "casual" &&  streakInput >= 5) {
     achievUnlock("5x vastaussarja!", 1);
     achievAnim("5x vastaussarja!", "1"); 
   }
-  if (isAchievUnlocked(unlockedAchievsArray, "2") === false && streakInput >= 15) {
+  if (isAchievUnlocked(unlockedAchievsArray, "2") === false && modeInput === "casual" && streakInput >= 15) {
     achievUnlock(studentInfo[0].StudentID, 2);
     achievAnim("15x vastaussarja!", "2");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, "3") === false && streakInput >= 30) {
+  if (isAchievUnlocked(unlockedAchievsArray, "3") === false && modeInput === "casual" && streakInput >= 30) {
     achievUnlock(studentInfo[0].StudentID, 3);
     achievAnim("30x vastaussarja!", "3");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, "4") === false && streakInput >= 50) {
+  if (isAchievUnlocked(unlockedAchievsArray, "4") === false && modeInput === "casual" && streakInput >= 50) {
     achievUnlock(studentInfo[0].StudentID, 4);
     achievAnim("50x vastaussarja!", "4");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, "5") === false && quizesCompleted >= 1) {
+  if (isAchievUnlocked(unlockedAchievsArray, "5") === false && modeInput === "competitive"  && quizesCompleted >= 1) {
     achievUnlock(studentInfo[0].StudentID, 5);
     achievAnim("Ensimmäinen visa suoritettu!", "5");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, "6") === false && quizesCompleted >= 5) {
+  if (isAchievUnlocked(unlockedAchievsArray, "6") === false && modeInput === "competitive"  && quizesCompleted >= 5) {
     achievUnlock(studentInfo[0].StudentID, 6);
     achievAnim("5 visaa suoritettu!", "6");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, "7") === false && quizesCompleted >= 10) {
+  if (isAchievUnlocked(unlockedAchievsArray, "7") === false && modeInput === "competitive"  && quizesCompleted >= 10) {
     achievUnlock(studentInfo[0].StudentID, 7);
     achievAnim("10 visaa suoritettu!", "7");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, "8") === false && quizesCompleted >= 20) {
+  if (isAchievUnlocked(unlockedAchievsArray, "8") === false && modeInput === "competitive"  && quizesCompleted >= 20) {
     achievUnlock(studentInfo[0].StudentID, 8);
     achievAnim("20 visaa suoritettu!", "8");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, "9") === false && quizesCompleted >= 50) {
+  if (isAchievUnlocked(unlockedAchievsArray, "9") === false && modeInput === "competitive"  && quizesCompleted >= 50) {
     achievUnlock(studentInfo[0].StudentID, 9);
     achievAnim("50 visaa suoritettu!", "9");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, "10") === false && quizesCompleted >= 100) {
+  if (isAchievUnlocked(unlockedAchievsArray, "10") === false && modeInput === "competitive"  && quizesCompleted >= 100) {
     achievUnlock(studentInfo[0].StudentID, 10);
     achievAnim("100 visaa suoritettu!", "10");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, "11") === false && quizesCompleted >= 200) {
+  if (isAchievUnlocked(unlockedAchievsArray, "11") === false && modeInput === "competitive"  && quizesCompleted >= 200) {
     achievUnlock(studentInfo[0].StudentID, 11);
     achievAnim("200 visaa suoritettu!", "11");  
   }
