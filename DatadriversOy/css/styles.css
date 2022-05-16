@@ -3430,3 +3430,11 @@ body {
 .footer {
     padding: 5rem 0;
 }
+
+.correct {
+    background: linear-gradient(32deg, rgba(11, 223, 36) 0%, rgb(41, 232, 111) 100%) !important; 
+  }
+  
+  .incorrect {
+    background: linear-gradient(32deg, rgba(230, 29, 1) 0%, rgba(224, 11, 11, 1) 100%) !important;
+  }

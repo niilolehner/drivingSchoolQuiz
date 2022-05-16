@@ -45,39 +45,64 @@
     vastaus1Btn.innerHTML = Answers[0];
     vastaus2Btn.innerHTML = Answers[1];
     vastaus3Btn.innerHTML = Answers[2];
-
         
     vastaus1Btn.onclick = () => {
         if (shuffledQuestionArray[currentQuestion].RightAnswer == vastaus1Btn.innerHTML) {
+            vastaus1Btn.setAttribute('class', 'btn btn-primary m-2 correct');
             streak++;
-            next();
+            setTimeout(() => {
+                vastaus1Btn.classList.remove('correct')
+                vastaus1Btn.setAttribute('class', 'btn btn-primary m-2');
+                next();
+            }, 1000)
         }
         else if (shuffledQuestionArray[currentQuestion].WrongAnswer1 || shuffledQuestionArray[currentQuestion].WrongAnswer2) {
+            vastaus1Btn.setAttribute('class', 'btn btn-primary m-2 incorrect');
             streak = 0;
             wrongAnswers++;
+            setTimeout(() => {
+                vastaus1Btn.classList.remove('incorrect')
+            }, 1000)
         }
     }
 
     vastaus2Btn.onclick = () => {
         if (shuffledQuestionArray[currentQuestion].RightAnswer == vastaus2Btn.innerHTML) {
+            vastaus2Btn.setAttribute('class', 'btn btn-primary m-2 correct');
             streak++;
-            next();
+            setTimeout(() => {
+                vastaus2Btn.classList.remove('correct')
+                vastaus2Btn.setAttribute('class', 'btn btn-primary m-2');
+                next();
+            }, 1000)
         }
         else if (shuffledQuestionArray[currentQuestion].WrongAnswer1 || shuffledQuestionArray[currentQuestion].WrongAnswer2) {
+            vastaus2Btn.setAttribute('class', 'btn btn-primary m-2 incorrect');
             streak = 0;
             wrongAnswers++;
+            setTimeout(() => {
+                vastaus2Btn.classList.remove('incorrect')
+            }, 1000)
         }
     }
 
     vastaus3Btn.onclick = () => {
         if (shuffledQuestionArray[currentQuestion].RightAnswer == vastaus3Btn.innerHTML) {
-
+            vastaus3Btn.setAttribute('class', 'btn btn-primary m-2 correct');
             streak++;
-            next();
+            setTimeout(() => {
+                vastaus3Btn.classList.remove('correct')
+                vastaus3Btn.setAttribute('class', 'btn btn-primary m-2');
+                next();
+            }, 1000)
         }
         else if (shuffledQuestionArray[currentQuestion].WrongAnswer1 || shuffledQuestionArray[currentQuestion].WrongAnswer2) {
+            vastaus3Btn.setAttribute('class', 'btn btn-primary m-2 incorrect');
             streak = 0;
             wrongAnswers++;
+            setTimeout(() => {
+                vastaus3Btn.classList.remove('incorrect')
+            }, 1000)
         }
     }
 

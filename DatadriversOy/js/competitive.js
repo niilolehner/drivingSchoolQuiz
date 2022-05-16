@@ -25,24 +25,37 @@ var year = dateObj.getUTCFullYear();
 var newdate = year + "-" + month + "-" + day; 
   
  // storing array for use
-    let csortedQuestionArray = arrayFromPHP("quizqa");
+let csortedQuestionArray = arrayFromPHP("quizqa");
 
-    // shuffling original array (do each time a new set of questions is needed)
-    let cshuffledQuestionArray = shuffle(csortedQuestionArray); 
- 
-    const ckysymysTxt = document.getElementById("ckysymys");
-    const cvastaus1Btn = document.getElementById("cvastaus1");
-    const cvastaus2Btn = document.getElementById("cvastaus2");
-    const cvastaus3Btn = document.getElementById("cvastaus3");
-    const csubmitBtn = document.getElementById("csubmit");
+// shuffling original array (do each time a new set of questions is needed)
+let cshuffledQuestionArray = shuffle(csortedQuestionArray); 
 
-    csubmitBtn.addEventListener("click", csubmit);
+const ckysymysTxt = document.getElementById("ckysymys");
+const cvastaus1Btn = document.getElementById("cvastaus1");
+const cvastaus2Btn = document.getElementById("cvastaus2");
+const cvastaus3Btn = document.getElementById("cvastaus3");
+const csubmitBtn = document.getElementById("csubmit");
 
-    let ccurrentQuestion = 0;
-    let wrongclick = 0;
-    let cscore = 0;
-    let ctotalScore = 0;
+csubmitBtn.addEventListener("click", csubmit);
 
+let ccurrentQuestion = 0;
+let wrongclick = 0;
+let cscore = 0;
+let ctotalScore = 0;
+
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+
+        // Generate random number
+        var j = Math.floor(Math.random() * (i + 1));
+
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
+    return array;
+}
 
 function startFastQuiz() {
             ckysymysTxt.style.visibility = 'hidden';
@@ -86,14 +99,14 @@ function startFastQuiz() {
             }
         }
 
-        cvastaus3Btn.onclick = () => {
-            if (cshuffledQuestionArray[ccurrentQuestion].RightAnswer == cvastaus3Btn.innerHTML) {
-                next();
-            }
-            else if (cshuffledQuestionArray[ccurrentQuestion].WrongAnswer1 || cshuffledQuestionArray[ccurrentQuestion].WrongAnswer2) {
-            wrongclick++;
-            }
+    cvastaus3Btn.onclick = () => {
+        if (cshuffledQuestionArray[ccurrentQuestion].RightAnswer == cvastaus3Btn.innerHTML) {
+            next();
         }
+        else if (cshuffledQuestionArray[ccurrentQuestion].WrongAnswer1 || cshuffledQuestionArray[ccurrentQuestion].WrongAnswer2) {
+        wrongclick++;
+        }
+    }
 
     function next() {
             if (ccurrentQuestion == 9) {
