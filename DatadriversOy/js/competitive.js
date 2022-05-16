@@ -1,23 +1,20 @@
 "use strict";
 
-// tätä pitää conffata
-var startTime, endTime;
-var seconds;
+let count;
+let seconds = 0;
 
-function start() {
-    startTime = performance.now();
-    };
+function start(){
+ count = setInterval(timer,1000)  /// ajastin käyntiin
+}
 
-function end() {
-  endTime = performance.now();
-  var timeDiff = endTime - startTime; //in ms 
-  // strip the ms 
-  timeDiff /= 1000; 
-  
-  // get seconds 
-  seconds = Math.round(timeDiff);
-  console.log(seconds + " seconds");
-} 
+function timer(){
+    document.getElementById('ctulokset').innerText++;
+    seconds++;
+}
+
+function end(){
+  clearInterval(count)   /// ajastin pysähtyy
+}
 
 var dateObj = new Date();
 var month = dateObj.getUTCMonth() + 1; //months from 1-12
@@ -76,7 +73,7 @@ function startFastQuiz() {
     
     csubmitBtn.onclick = () => {
         start();
-        console.log(startTime);
+        //console.log(startTime);
             ckysymysTxt.style.visibility = 'visible';
             cvastaus1Btn.style.visibility = 'visible';
             cvastaus2Btn.style.visibility = 'visible';
@@ -113,6 +110,7 @@ function startFastQuiz() {
     function next() {
             if (ccurrentQuestion == 9) {
                 ccurrentQuestion++;
+                console.log(count);
                 end();
             
                 console.log(ctotalScore + "/" + ccurrentQuestion);
