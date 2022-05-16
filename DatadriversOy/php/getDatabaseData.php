@@ -16,14 +16,21 @@ if ($page === 'quizqa' || $page === 'achievements') {
 else if ($page === 'students') {
   $sql = "SELECT * FROM students WHERE StudentID = $studentId";
 }
-
+else if ($page === 'scoreboard1') {
+  $sql = "SELECT Name, BestTime FROM students ORDER BY BestTime ASC";
+}
+else if ($page === 'scoreboard2') {
+  $sql = "SELECT Name, BestScore FROM students ORDER BY BestScore DESC";
+}
+else if ($page === 'scoreboard3') {
+  $sql = "SELECT Name, QuizesDone FROM students ORDER BY QuizesDone DESC";
+}
 else if ($page === 'getStudentID') {
   $sql = "SELECT StudentID FROM students WHERE Name = '$id'";
 }
 else if ($page === 'getScoreID') {
   $sql = "SELECT ScoreID FROM scoreboard WHERE StudentID = $id AND FeedbackGiven = 0";
 }
-
 else if ($page === 'scoreboard') {
   $sql = "SELECT students.Name, scoreboard.Score, scoreboard.Time, scoreboard.Date
           FROM scoreboard

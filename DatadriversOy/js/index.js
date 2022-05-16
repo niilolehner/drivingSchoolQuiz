@@ -195,6 +195,11 @@ function animate() {
       tableContainer.classList.add('active');
     }, 800);
   }
+  if(url.includes('?page=scoreboard')){
+    setTimeout(() => {
+      tableScoreboard.classList.add('active');
+    }, 800);
+  }
   if(url.includes('?page=casual')){
     const quizCasual = document.getElementById('quizCasual');
     setTimeout(() => {
