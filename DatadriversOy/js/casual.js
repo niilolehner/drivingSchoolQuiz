@@ -11,6 +11,7 @@
     const vastaus2Btn = document.getElementById("vastaus2");
     const vastaus3Btn = document.getElementById("vastaus3");
     const submitBtn = document.getElementById("submit");
+    const tulosTxt = document.getElementById("tulokset");
 
     submitBtn.addEventListener("click", submit);
 
@@ -114,9 +115,18 @@
         vastaus1Btn.style.display = 'none';
         vastaus2Btn.style.display = 'none';
         vastaus3Btn.style.display = 'none';
+        submitBtn.style.display = 'none';
+
+        tulosTxt.innerHTML = "Sait " + totalScore + "/" + currentQuestion + " oikein."
+
+        setTimeout(nextPage, 5000);
         //visibility = "hidden"
     }
 
+        function nextPage() {
+        window.location.href = "./index.php?page=welcome";
+        }
+        
     function next() {
         currentQuestion++;
          let answerArray = [shuffledQuestionArray[currentQuestion].RightAnswer, shuffledQuestionArray[currentQuestion].WrongAnswer1, shuffledQuestionArray[currentQuestion].WrongAnswer2];
