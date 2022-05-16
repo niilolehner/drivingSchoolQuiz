@@ -185,7 +185,7 @@ function startFastQuiz() {
             BestScore: oldScore,
             BestTime: oldTime,
             QuizesDone: oldQuizesDone,
-            StudentID: 1
+            StudentID: getDatabaseArray[0].StudentID
         }
         console.log(newBestForDatabase);
         arrayToPHP(newBestForDatabase, "personalBestToUpdate");
