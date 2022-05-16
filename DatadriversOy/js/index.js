@@ -98,7 +98,7 @@ function checkAndAwardAchievs(modeInput, timeInput, scoreInput, streakInput) {
   let quizesCompleted = Number(studentInfo[0].QuizesDone);
   let unlockedAchievsArray = arrayFromPHP("unlockedAchievements");
   if (isAchievUnlocked(unlockedAchievsArray, "1") === false && modeInput === "casual" &&  streakInput >= 5) {
-    achievUnlock("5x vastaussarja!", 1);
+    achievUnlock(studentInfo[0].StudentID, 1);
     achievAnim("5x vastaussarja!", "1"); 
   }
   if (isAchievUnlocked(unlockedAchievsArray, "2") === false && modeInput === "casual" && streakInput >= 15) {
