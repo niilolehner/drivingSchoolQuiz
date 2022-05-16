@@ -39,6 +39,11 @@ const csubmitBtn = document.getElementById("csubmit");
 
 csubmitBtn.addEventListener("click", csubmit);
 
+let ccurrentQuestion = 0;
+let wrongclick = 0;
+let cscore = 0;
+let ctotalScore = 0;
+
      function shuffleArray(array) {
             for (var i = array.length - 1; i > 0; i--) {
  
