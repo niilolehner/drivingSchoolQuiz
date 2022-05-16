@@ -11,8 +11,14 @@ function listUnlockedAchievements() {
   }  
 }
 
-// fires main achievements function in admin mode to check and award achievements when achievements.js is loaded (see $studentId on getDatabaseData.php)
+// fires main achievements function in admin mode (see $studentId on getDatabaseData.php to select student)
 checkAndAwardAchievs("admin", 0, 0, 0);
 
-// fires the function that populates unlocked achievements on the achievements.html for the currently selected student (see $studentId on getDatabaseData.php)
+// fire this function at the end of competitive quiz mode (see $studentId on getDatabaseData.php to select student)
+// checkAndAwardAchievs("competitive", seconds, ctotalScore, 0);
+
+// fire this function at each correct answer in casual quiz mode (see $studentId on getDatabaseData.php to select student)
+// checkAndAwardAchievs("casual", 0, 0, streak);
+
+// fires the function that populates achievements.html (see $studentId on getDatabaseData.php to select student)
 listUnlockedAchievements();
