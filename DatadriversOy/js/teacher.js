@@ -192,7 +192,7 @@ function giveFeedback(scoreID, studentID) {
     if (isAchievUnlocked(unlockedAchievsArray, '15') === false) {
       let studentCookieAchiev = {
           Keksi: 1,
-          StudentID: studentID
+          StudentNum: studentID
       }
       arrayToPHP(studentCookieAchiev, "giveCookie");
     }
