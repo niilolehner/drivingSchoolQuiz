@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 isset($_GET['page']) ? $page = $_GET['page'] : $page = '';
 ?>
 <!doctype html>
@@ -39,9 +40,7 @@ isset($_GET['page']) ? $page = $_GET['page'] : $page = '';
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
         
     <!-- Bootstrap core CSS -->
-    <!-- !bug - generates error, asset not existing: <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="./css/index.css">
-
 
     <script src="./js/index.js" defer></script>
 

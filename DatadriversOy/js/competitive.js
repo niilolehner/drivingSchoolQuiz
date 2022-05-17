@@ -192,7 +192,7 @@ function startFastQuiz() {
     }
 
     function nextPage() {
-        window.location.href = "./index.php?page=welcome";
+        window.location.href = "./index.php?page=scoreboard";
     }
 
     function UpdateDatabase()
