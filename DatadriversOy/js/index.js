@@ -168,12 +168,6 @@ function checkAndAwardAchievs(modeInput, timeInput, scoreInput, streakInput) {
     achievAnim("Maraton", "16");  
   }
 }
-// checkAndAwardAchievs("competitive", seconds, ctotalScore, 0);
-// the above function & preset parameters fires at the end of competitive quiz mode
-// see $studentId on getDatabaseData.php to select student
-// checkAndAwardAchievs("casual", 0, 0, streak);
-// the above function & preset parameters fires at each answer in casual quiz mode
-// see $studentId on getDatabaseData.php to select student
 
 //Get elements to animation and content.
 function animate() {
