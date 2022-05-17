@@ -65,11 +65,11 @@ scoreboard.forEach(Data => {
     let studentName = Object.values(Data)[0];
 
     //Get student ID from database.
-    let studentData = arrayFromPHP2('getStudentID', studentName); 
+    let studentData = arrayFromPHP('getStudentID', studentName); 
     let studentID = studentData[0].StudentID;
 
     //Get student Score ID from database.
-    let studentDataScore = arrayFromPHP2('getScoreID', studentID); 
+    let studentDataScore = arrayFromPHP('getScoreID', studentID); 
     let studentScoreID = studentDataScore[0].ScoreID;
 
     //Create button with styles and text.

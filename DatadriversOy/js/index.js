@@ -33,15 +33,6 @@ function arrayFromPHP(pageName, id) {
   return resultArray;
 }
 
-// gets an array from PHP/MySQL (see getDatabaseData.php)
-function arrayFromPHP2(pageName, id) { //// <----- redundant?
-  let xhReq = new XMLHttpRequest();
-  xhReq.open("GET", 'php/getDatabaseData.php?page=' + pageName +'&id=' + id + '', false);
-  xhReq.send(null);
-  let resultArray = JSON.parse(xhReq.responseText);
-  return resultArray;
-}
-
 // posts an array to PHP/MySQL (see writeToDatabase.php)
 function arrayToPHP(inputArray, pageName) {
   let jsonString = JSON.stringify(inputArray);
