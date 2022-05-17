@@ -17,10 +17,11 @@ function shuffle(inputArray) {
   return resultArray;
 }
 
-// gets an array from PHP/MySQL (see getDatabaseData.php)
-function arrayFromPHP(pageName) {
+// gets an array from PHP/MySQL
+// id parameter can be left empty if controlled on the PHP side (see $StudentId on getDatabaseData.php)
+function arrayFromPHP(pageName, id) {
   let xhReq = new XMLHttpRequest();
-  xhReq.open("GET", 'php/getDatabaseData.php?page=' + pageName, false);
+  xhReq.open("GET", 'php/getDatabaseData.php?page=' + pageName + '&id=' + id, false);
   xhReq.send(null);
   let resultArray = {};
   try {
@@ -82,18 +83,18 @@ function achievAnim(inputPopText, inputAchievNum) {
 }
 
 // !!! this is the main achievements function !!!
-// proper studentId needs to be selected on getDatabaseData.php (see $studentId variable)
+// desired studentId needs to be selected on getDatabaseData.php (see $studentId variable)
 // checks DB that achievements are not already unlocked
 // also checks if requirements of locked achievements are satisfied for unlock
 // records unlocked achievements to DB
 // also triggers achievements unlock animation
-// the following parameters need to be set up when fired at the end of/in a quiz or on the achiev page:
-// *************************************************************************************************
-// *modeInput is "admin", "competitive" or "casual" as string, timeInput is seconds as integer     *
-// *scoreInput is correct answers given as integer, streakInput is correct answer streak as integer*
-// *************************************************************************************************
+// the following parameters need to be set up when fired at the end of/in a quiz, or on the achiev page:
+// ***************************************************************************************************************
+// *modeInput is "admin", "competitive" or "casual" as string, timeInput is total seconds as integer             *
+// *scoreInput is total correct answers given as integer, streakInput is highest correct answer streak as integer*
+// ***************************************************************************************************************
 function checkAndAwardAchievs(modeInput, timeInput, scoreInput, streakInput) {
-  // the 'students' table entry for QuizesDone needs to be updated on quiz completion, BEFORE checkAndAwardAchievs is fired
+  // the 'students' table entry for QuizesDone needs to be updated at quiz completion, BEFORE checkAndAwardAchievs is fired
   let studentInfo = arrayFromPHP("students");
   let quizesCompleted = Number(studentInfo[0].QuizesDone);
   let unlockedAchievsArray = arrayFromPHP("unlockedAchievements");
@@ -167,6 +168,12 @@ function checkAndAwardAchievs(modeInput, timeInput, scoreInput, streakInput) {
     achievAnim("Maraton", "16");  
   }
 }
+// checkAndAwardAchievs("competitive", seconds, ctotalScore, 0);
+// the above function & preset parameters fires at the end of competitive quiz mode
+// see $studentId on getDatabaseData.php to select student:
+// checkAndAwardAchievs("casual", 0, 0, streak);
+// the above function & preset parameters fires at each answer in casual quiz mode
+// see $studentId on getDatabaseData.php to select student
 
 //Get elements to animation and content.
 function animate() {
