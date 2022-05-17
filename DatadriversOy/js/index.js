@@ -21,7 +21,7 @@ function shuffle(inputArray) {
 // id parameter can be left empty if controlled on the PHP side (see $StudentId on getDatabaseData.php)
 function arrayFromPHP(pageName, id) {
   let xhReq = new XMLHttpRequest();
-  xhReq.open("GET", 'php/getDatabaseData.php?page=' + pageName + '&id=' + id, false);
+  xhReq.open("GET", 'php/getDatabaseData.php?page=' + pageName + '&id=' + id + '', false);
   xhReq.send(null);
   let resultArray = {};
   try {
