@@ -16,11 +16,6 @@ if ($page === 'feedback') {
   $stmt->bind_param("sis", $phpArray['keyFeedbackText'], $phpArray['keyFeedbackGiven'], $phpArray['keyScoreId']);
   $stmt->execute();
 }
-// else if ($page === 'scoreboard') { // !!!! this statement is non-functional, it's just an example for writing real syntax !!!!
-//   $stmt = $conn->prepare("INSERT INTO $page (example1, example2, example3) VALUES (?, ?, ?)");
-//   $stmt->bind_param("sss", $phpArray['example1'], $phpArray['example2'], $phpArray['example3']);
-//   $stmt->execute();
-// }
 else if ($page === 'unlockAchievements') {
   $stmt = $conn->prepare("INSERT INTO `studentachievements` (`StudentID`, `AchievementID`) VALUES (?, ?)");
   $stmt->bind_param("ii", $phpArray['StudentID'], $phpArray['AchievementID']);
