@@ -4,7 +4,7 @@
 function listUnlockedAchievements() {
   let unlockedAchievsArray = arrayFromPHP("unlockedAchievements");
   if (Object.keys(unlockedAchievsArray).length === 0 && unlockedAchievsArray.constructor === Object) {
-    // array empty, no achievements to load
+    // empty, no achievements to load
   } else {
     unlockedAchievsArray.forEach(({AchievementID, POPtext})=>{ 
     document.getElementById('unlockedAchievsList').innerHTML +='<img class="miniachiev" src="images/' + `${AchievementID}` + '.png">' + ' ' + `${POPtext}`});

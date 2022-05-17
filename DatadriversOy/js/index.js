@@ -34,7 +34,7 @@ function arrayFromPHP(pageName, id) {
 }
 
 // gets an array from PHP/MySQL (see getDatabaseData.php)
-function arrayFromPHP2(pageName, id) {
+function arrayFromPHP2(pageName, id) { //// <----- redundant?
   let xhReq = new XMLHttpRequest();
   xhReq.open("GET", 'php/getDatabaseData.php?page=' + pageName +'&id=' + id + '', false);
   xhReq.send(null);
@@ -54,7 +54,7 @@ function arrayToPHP(inputArray, pageName) {
 // checks unlockedAchievsArray if achiev present, needs AchievementID (for example "1") as a string (see checkAndAwardAchievs() main function)
 function isAchievUnlocked(inputUnlockedAchievsArray, inputAchievementID) {
   if (Object.keys(inputUnlockedAchievsArray).length === 0 && inputUnlockedAchievsArray.constructor === Object) {
-    // empty array, means no achievements are currently unlocked at all for the student
+    // empty, means no achievements are currently unlocked at all for the student
     return false;
   } else {
     return inputUnlockedAchievsArray.some(function(el) {
@@ -170,7 +170,7 @@ function checkAndAwardAchievs(modeInput, timeInput, scoreInput, streakInput) {
 }
 // checkAndAwardAchievs("competitive", seconds, ctotalScore, 0);
 // the above function & preset parameters fires at the end of competitive quiz mode
-// see $studentId on getDatabaseData.php to select student:
+// see $studentId on getDatabaseData.php to select student
 // checkAndAwardAchievs("casual", 0, 0, streak);
 // the above function & preset parameters fires at each answer in casual quiz mode
 // see $studentId on getDatabaseData.php to select student
