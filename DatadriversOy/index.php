@@ -35,10 +35,7 @@ if ($page === 'scoreboard') {
     ?><script src="./js/scoreboard.js" defer></script><?php
 }
 
-
-if ($page !== 'welcome' && $page !== 'userChoose') {
-    require 'includes/footer.php';
-}
+require 'includes/footer.php';
 ?>
 
     
