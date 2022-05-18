@@ -93,6 +93,7 @@
         if (shuffledQuestionArray[currentQuestion].RightAnswer == vastaus3Btn.innerHTML) {
             vastaus3Btn.setAttribute('class', 'btn btn-primary m-2 correct');
             streak++;
+            checkAndAwardAchievs("casual", 0, 0, streak);
             setTimeout(() => {
                 vastaus3Btn.classList.remove('correct')
                 vastaus3Btn.setAttribute('class', 'btn btn-primary m-2');
