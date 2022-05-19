@@ -7,7 +7,7 @@ include 'dbConnection.php';
 $sql = '';
 $rows = [];
 
-$studentId = 8; //testing purpose
+$studentId = 1; //testing purpose
 
 //Get data from database and input it in JSON-format:
 if ($page === 'quizqa' || $page === 'achievements') {
@@ -42,6 +42,16 @@ else if ($page === 'feedbackForStudent') {
   $sql = "SELECT Feedback, FeedbackGiven
           FROM scoreboard
           WHERE FeedbackGiven = 1 AND studentID = $studentId";
+}
+else if ($page === 'quizesDoneData') {
+  $sql = "SELECT StudentID, QuizesDone
+          FROM students
+          WHERE studentID = $studentId";
+}
+else if ($page === 'currentStudentID') {
+  $sql = "SELECT StudentID
+          FROM students
+          WHERE studentID = $studentId";
 }
 else if ($page === 'personalBestForUpdating') {
   $sql = "SELECT StudentID, BestTime, BestScore, QuizesDone

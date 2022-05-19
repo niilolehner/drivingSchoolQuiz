@@ -120,7 +120,7 @@
 
         tulosTxt.innerHTML = "Sait " + totalScore + "/" + currentQuestion + " oikein."
 
-        setTimeout(nextPage, 5000);
+        setTimeout(nextPage, 10000);
         //visibility = "hidden"
     }
 

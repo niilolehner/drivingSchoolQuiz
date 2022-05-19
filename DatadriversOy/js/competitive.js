@@ -147,21 +147,40 @@ function startFastQuiz() {
             cvastaus3Btn.style.display = 'none';  
             ctulosTxt.innerHTML = "Sait " + ctotalScore + "/10 oikein. Aikasi oli " + seconds + " sekuntia.";
 
-            // variable viemään tulokset databaseen 
+            function plusQuizesDone()
+            {
+                let getDatabaseArray = arrayFromPHP("quizesDoneData");
+                let oldQuizesDone = getDatabaseArray[0].QuizesDone;
+
+                oldQuizesDone++;
+
+                let newQuizesDone =
+                {
+                    QuizesDone: oldQuizesDone,
+                    StudentID: getDatabaseArray[0].StudentID
+                }
+                arrayToPHP(newQuizesDone, "plusQuizesDoneData");
+            }
+
+            plusQuizesDone();
+
+            checkAndAwardAchievs("competitive", seconds, ctotalScore, 0);
+
+            // variable viemään tulokset databaseen
+            let getStudentID = arrayFromPHP("currentStudentID");
             let tulosDatabaseen =
             {
-                StudentID: 2,
+                StudentID: getStudentID[0].StudentID,
                 Score: ctotalScore,
                 Time: seconds,
                 Date: newdate
             }
-                arrayToPHP(tulosDatabaseen, "endOfCompetitiveQuiz");
 
-                UpdateDatabase();
+            arrayToPHP(tulosDatabaseen, "endOfCompetitiveQuiz");
 
-                checkAndAwardAchievs("competitive", seconds, ctotalScore, 0);
+            UpdateDatabase();
 
-                setTimeout(nextPage, 5000);
+            setTimeout(nextPage, 10000);
     }
     else
     {
@@ -200,25 +219,25 @@ function startFastQuiz() {
         let getDatabaseArray = arrayFromPHP("personalBestForUpdating");
         let oldScore = getDatabaseArray[0].BestScore;
         let oldTime = getDatabaseArray[0].BestTime;
-        let oldQuizesDone = getDatabaseArray[0].QuizesDone;
+        // let oldQuizesDone = getDatabaseArray[0].QuizesDone;
 
-        if (ctotalScore > oldScore || oldScore == "")
+        if (ctotalScore > oldScore || oldScore === "0")
             {
             oldScore = ctotalScore;
         }
         
-        if (seconds < oldTime || oldTime == "")
+        if (seconds < oldTime || oldTime === "0")
         {
             oldTime = seconds;
         }
         
-        oldQuizesDone++;
+        // oldQuizesDone++;
 
         let newBestForDatabase =
         {
             BestScore: oldScore,
             BestTime: oldTime,
-            QuizesDone: oldQuizesDone,
+            // QuizesDone: oldQuizesDone,
             StudentID: getDatabaseArray[0].StudentID
         }
         console.log(newBestForDatabase);
