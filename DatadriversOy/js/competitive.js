@@ -176,11 +176,11 @@ function startFastQuiz() {
                 Date: newdate
             }
 
-                arrayToPHP(tulosDatabaseen, "endOfCompetitiveQuiz");
+            arrayToPHP(tulosDatabaseen, "endOfCompetitiveQuiz");
 
-                UpdateDatabase();
+            UpdateDatabase();
 
-                setTimeout(nextPage, 10000);
+            setTimeout(nextPage, 10000);
     }
     else
     {
