@@ -1,5 +1,4 @@
 <?php
-
 isset($_GET['page']) ? $page = $_GET['page'] : $page = '';
 ?>
 <!doctype html>

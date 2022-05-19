@@ -160,7 +160,7 @@ function checkAndAwardAchievs(modeInput, timeInput, scoreInput, streakInput) {
   }
 }
 
-//Get elements to animation and content.
+//Get elements and show content after x seconds.
 function animate() {
   let url = window.location.href;
 

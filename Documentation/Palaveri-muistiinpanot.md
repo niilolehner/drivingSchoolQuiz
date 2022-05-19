@@ -137,3 +137,9 @@ Niilo
 
 Ismo
 - Kirjoitteli tämän muistiinpanon omista muistiinpanoista.
+- Korjasi sivustolautaus ongelman (näyttää alatunnisteen, kun painaa nappeja eli kelaa sivun alas).
+
+# 18.05.2022
+Ismo
+-Testaili Oppilaan toiminnallisuuksia siten, kuin asiakas sitä käyttäisi.
+

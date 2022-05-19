@@ -7,7 +7,7 @@ include 'dbConnection.php';
 $sql = '';
 $rows = [];
 
-$studentId = 1; //testing purpose
+$studentId = 6; //testing purpose
 
 //Get data from database and input it in JSON-format:
 if ($page === 'quizqa' || $page === 'achievements') {
@@ -17,13 +17,13 @@ else if ($page === 'students') {
   $sql = "SELECT * FROM students WHERE StudentID = $studentId";
 }
 else if ($page === 'scoreboard1') {
-  $sql = "SELECT Name, BestTime FROM students ORDER BY BestTime ASC";
+  $sql = "SELECT Name, BestTime FROM students WHERE BestTime <> 0 ORDER BY BestTime ASC";
 }
 else if ($page === 'scoreboard2') {
-  $sql = "SELECT Name, BestScore FROM students ORDER BY BestScore DESC";
+  $sql = "SELECT Name, BestScore FROM students WHERE BestScore <> 0 ORDER BY BestScore DESC";
 }
 else if ($page === 'scoreboard3') {
-  $sql = "SELECT Name, QuizesDone FROM students ORDER BY QuizesDone DESC";
+  $sql = "SELECT Name, QuizesDone FROM students WHERE QuizesDone <> 0 ORDER BY QuizesDone DESC";
 }
 else if ($page === 'getStudentID') {
   $sql = "SELECT StudentID FROM students WHERE Name = '$id'";
@@ -55,13 +55,13 @@ else if ($page === 'unlockedAchievements') {
           INNER JOIN achievements ON studentachievements.AchievementID = achievements.AchievementID
           WHERE students.StudentID = $studentId";
 }
-else if ($page === 'studentachievementsAesmouVersion') {
-  $sql = "SELECT students.StudentID, students.Name, achievements.AchievementID, achievements.POPtext
-          FROM studentachievements
-          INNER JOIN students ON studentachievements.studentID = students.studentID
-          INNER JOIN achievements ON studentachievements.AchievementID = achievements.AchievementID
-          WHERE students.StudentID = $id";
-}
+// else if ($page === 'studentachievementsAesmouVersion') {
+//   $sql = "SELECT students.StudentID, students.Name, achievements.AchievementID, achievements.POPtext
+//           FROM studentachievements
+//           INNER JOIN students ON studentachievements.studentID = students.studentID
+//           INNER JOIN achievements ON studentachievements.AchievementID = achievements.AchievementID
+//           WHERE students.StudentID = $id";
+// }
 
 $result = mysqli_query($conn, $sql);
 
