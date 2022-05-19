@@ -7,7 +7,7 @@ include 'dbConnection.php';
 $sql = '';
 $rows = [];
 
-$studentId = 6; //testing purpose
+$studentId = 8; //testing purpose
 
 //Get data from database and input it in JSON-format:
 if ($page === 'quizqa' || $page === 'achievements') {
@@ -15,6 +15,13 @@ if ($page === 'quizqa' || $page === 'achievements') {
 }
 else if ($page === 'students') {
   $sql = "SELECT * FROM students WHERE StudentID = $studentId";
+}
+else if ($page === 'scoreboard') {
+  $sql = "SELECT students.Name, scoreboard.Score, scoreboard.Time, scoreboard.Date
+          FROM scoreboard
+          INNER JOIN students ON scoreboard.studentID = students.studentID
+          WHERE scoreboard.FeedbackGiven = 0
+          ORDER BY scoreboard.Date DESC";
 }
 else if ($page === 'scoreboard1') {
   $sql = "SELECT Name, BestTime FROM students WHERE BestTime <> 0 ORDER BY BestTime ASC";
@@ -30,13 +37,6 @@ else if ($page === 'getStudentID') {
 }
 else if ($page === 'getScoreID') {
   $sql = "SELECT ScoreID FROM scoreboard WHERE StudentID = $id AND FeedbackGiven = 0";
-}
-else if ($page === 'scoreboard') {
-  $sql = "SELECT students.Name, scoreboard.Score, scoreboard.Time, scoreboard.Date
-          FROM scoreboard
-          INNER JOIN students ON scoreboard.studentID = students.studentID
-          WHERE scoreboard.FeedbackGiven = 0
-          ORDER BY scoreboard.Date DESC";
 }
 else if ($page === 'feedbackForStudent') {
   $sql = "SELECT Feedback, FeedbackGiven

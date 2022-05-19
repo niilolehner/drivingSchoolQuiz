@@ -818,8 +818,6 @@ progress {
         --bs-gutter-y: 3rem;
     }
 }
-
-
     
 @media (min-width: 1200px) {
     .col-xl {
@@ -1203,7 +1201,6 @@ progress {
     }
 }
 
-
 .btn-check {
     position: absolute;
     clip: rect(0, 0, 0, 0);
@@ -1570,12 +1567,10 @@ fieldset:disabled .btn {
     background-size: 100%;
 }
 
-.navbar-nav-scroll {
-    max-height: var(--bs-scroll-height, 75vh);
-    overflow-y: auto;
-}
-
-@media (min-width: 576px) {
+@media (min-width: 400px) {
+    main {
+        min-height: 71.8vh;
+    }
     .navbar-expand-sm {
         flex-wrap: nowrap;
         justify-content: flex-start;
@@ -1704,6 +1699,9 @@ fieldset:disabled .btn {
 }
 
 @media (min-width: 992px) {
+    main {
+        min-height: 70.7vh;
+    }
     .navbar-expand-lg {
         flex-wrap: nowrap;
         justify-content: flex-start;
@@ -1893,7 +1891,7 @@ fieldset:disabled .btn {
         padding: 0;
         overflow-y: visible;
     }
-}
+} 
 
 .navbar-expand {
     flex-wrap: nowrap;
@@ -1905,7 +1903,7 @@ fieldset:disabled .btn {
 }
 
 .navbar-expand .navbar-nav .dropdown-menu {
-    position: absolute;
+    position: absolute; 
 }
 
 .navbar-expand .navbar-nav .nav-link {
@@ -2047,38 +2045,6 @@ fieldset:disabled .btn {
 .navbar-dark .navbar-text a:hover,
 .navbar-dark .navbar-text a:focus {
     color: #fff;
-}
-
-.fixed-top {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1030;
-}
-
-.fixed-bottom {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1030;
-}
-
-.stretched-link::after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    content: "";
-}
-
-.text-truncate {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 .vr {
@@ -3251,13 +3217,6 @@ fieldset:disabled .btn {
     background-image: var(--bs-gradient) !important;
 }
 
-@media (min-width: 992px) {
-    .px-lg-5 {
-        padding-right: 3rem !important;
-        padding-left: 3rem !important;
-    }
-}
-
 html {
     scroll-padding-top: calc(4.5rem - 1px);
 }
@@ -3273,8 +3232,8 @@ body {
 #mainNav .navbar-toggler {
     font-size: 80%;
     padding: 0.75rem;
-    color: #64a19d;
-    border: 1px solid #64a19d;
+    color: #020d0c;
+    border: 1px solid #2c5855;
 }
 
 #mainNav .navbar-toggler:focus {
@@ -3300,6 +3259,11 @@ body {
 }
 
 @media (min-width: 992px) {
+    .px-lg-5 {
+        padding-right: 3rem !important;
+        padding-left: 3rem !important;
+    }
+
     #mainNav {
         padding-top: 0;
         padding-bottom: 0;
@@ -3325,10 +3289,6 @@ body {
 
     #mainNav .nav-link:active {
         color: #fff;
-    }
-
-    #mainNav.navbar-shrink {
-
     }
 
     #mainNav.navbar-shrink .navbar-brand {
@@ -3366,17 +3326,25 @@ body {
     border: 0;
 }
 
-.masthead {
-    position: relative;
-    width: 100%;
-    height: auto;
-    min-height: 35rem;
-    padding: 15rem 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%); /* !bug - generates error, asset not existing: url("../assets/img/bg-masthead.jpg"); */
+.header {
+    padding: 1.5rem 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%, #000 100%);
+}
+
+main {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%, #000 100%);
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-size: cover;
+}
+
+.masthead {
+    position: relative;
+    width: 100%;
+    height: auto;
+    /* min-height: 35rem; */
+    padding: 3rem 0;
 }
 
 .masthead h1,
@@ -3408,8 +3376,8 @@ body {
 
 @media (min-width: 992px) {
     .masthead {
-        height: 100vh;
-        padding: 0;
+        /* height: 100vh; */
+        /* padding: 0; */
     }
 
     .masthead h1,
@@ -3427,7 +3395,8 @@ body {
 }
 
 .footer {
-    padding: 5rem 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 0%, #000 100%);
+    padding: 3rem 0;
 }
 
 .correct {

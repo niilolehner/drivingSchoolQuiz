@@ -1,7 +1,6 @@
 "use strict";
 
 function oppilas() {
-   
     let feedbackArray = arrayFromPHP("feedbackForStudent");
 
     let feedback = feedbackArray[0].FeedbackGiven;

@@ -46,7 +46,7 @@ isset($_GET['page']) ? $page = $_GET['page'] : $page = '';
     <title>Datadrivers Oy</title>
 </head>
 
-<body id="page-top">
+<body>
 
 <?php
 if ($page === '') {
@@ -57,23 +57,25 @@ if ($page !== 'welcome' && $page !== 'userChoose') {
 ?>
 
 <!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div id="navBar" class="container px-4 px-lg-5 fade-in">
-        <a class="navbar-brand" href="index.php?page=userChoose">Valitse käyttäjä (demo)</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            Valikko
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="index.php?page=casual">Harjoittelutehtäviä</a></li>
-                <li class="nav-item"><a class="nav-link" href="index.php?page=competitive">Teoriakoeharjoitus</a></li>
-                <li class="nav-item"><a class="nav-link" href="index.php?page=studentachievements">Saavutukset</a></li>
-                <li class="nav-item"><a class="nav-link" href="index.php?page=scoreboard">Tulostaulu</a></li>
-            </ul>
+<header class="header">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div id="navBar" class="container px-4 px-lg-5 fade-in">
+            <a class="navbar-brand" href="index.php?page=userChoose">Valitse käyttäjä (demo)</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Valikko
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.php?page=casual">Harjoittelutehtäviä</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php?page=competitive">Teoriakoeharjoitus</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php?page=studentachievements">Saavutukset</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php?page=scoreboard">Tulostaulu</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+</header>
 <?php
 }
 ?>

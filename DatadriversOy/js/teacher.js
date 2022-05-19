@@ -12,7 +12,6 @@ const overallArray = ['...', 'Loistavaa!', 'Ihan kelpo suoritus!', 'Nyt taisi me
 const thingsToDevelopArray = ['Kertaa liikennemerkkejä.', 'Kertaa ajoneuvonhallintaa.', 'Kiinnitä huomiota jalankulkijoihin.', 'Harjoittele ajoneuvonhallintaa.'];
 const tipsArray = ['Jatka harjoittelua ja muista ajojärjestys.', 'Jatka harjoittelua ja muista ennakoida liikenteessä.', 'Jatka harjoittelua ja älä pidä kiirettä.', 'Jos jatkat harjoittelua, olet ammattilainen liikenteessä.', 'Jos jatkat samaan malliin, olet mestari liikenteessä.', 'Muista myös levätä autokoulun ohessa, että jaksat keskittyä tehtävissä.', 'Suosittelen kertailemaan harjoitustehtäviä.', 'Kyllä sinä vielä onnistut!', 'Uskon, että läpäiset teoriakokeen!'];
 
-
 //Create Column container with header for table.
 let colDiv = document.createElement('div');
 colDiv.setAttribute('class', 'col');

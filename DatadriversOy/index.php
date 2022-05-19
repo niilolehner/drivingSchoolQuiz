@@ -31,5 +31,7 @@ switch ($page) {
         break;
 }
 
-require 'includes/footer.php';
+if ($page !== 'welcome' && $page !== 'userChoose') {
+    require 'includes/footer.php';
+}
 ?>
