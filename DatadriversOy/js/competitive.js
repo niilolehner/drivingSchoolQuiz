@@ -166,10 +166,12 @@ function startFastQuiz() {
 
             checkAndAwardAchievs("competitive", seconds, ctotalScore, 0);
 
-            // variable viemään tulokset databaseen 
+            // variable viemään tulokset databaseen
+            let getStudentID = arrayFromPHP("currentStudentID");
+            console.log(getStudentID[0].StudentID); 
             let tulosDatabaseen =
             {
-                StudentID: 2,
+                StudentID: getStudentID[0].StudentID,
                 Score: ctotalScore,
                 Time: seconds,
                 Date: newdate
