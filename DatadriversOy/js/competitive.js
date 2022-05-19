@@ -168,7 +168,6 @@ function startFastQuiz() {
 
             // variable viemään tulokset databaseen
             let getStudentID = arrayFromPHP("currentStudentID");
-            console.log(getStudentID[0].StudentID); 
             let tulosDatabaseen =
             {
                 StudentID: getStudentID[0].StudentID,
@@ -222,12 +221,12 @@ function startFastQuiz() {
         let oldTime = getDatabaseArray[0].BestTime;
         // let oldQuizesDone = getDatabaseArray[0].QuizesDone;
 
-        if (ctotalScore > oldScore || oldScore == "")
+        if (ctotalScore > oldScore || oldScore === "0")
             {
             oldScore = ctotalScore;
         }
         
-        if (seconds < oldTime || oldTime == "")
+        if (seconds < oldTime || oldTime === "0")
         {
             oldTime = seconds;
         }

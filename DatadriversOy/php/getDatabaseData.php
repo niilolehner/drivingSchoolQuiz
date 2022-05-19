@@ -48,6 +48,11 @@ else if ($page === 'quizesDoneData') {
           FROM students
           WHERE studentID = $studentId";
 }
+else if ($page === 'currentStudentID') {
+  $sql = "SELECT StudentID
+          FROM students
+          WHERE studentID = $studentId";
+}
 else if ($page === 'personalBestForUpdating') {
   $sql = "SELECT StudentID, BestTime, BestScore, QuizesDone
           FROM students
