@@ -11,8 +11,9 @@ function oppilas() {
     }
 
     else {
-    
-        if (feedback == 1) {
+        if (feedback !== 1) {
+            // empty, nothing.
+        } else {
             Swal.fire({
                 text: feedbackTxt,
                 confirmButtonColor: '#27804c',
@@ -22,6 +23,19 @@ function oppilas() {
                 imageAlt: 'Custom image',
             });
         }
+        
+        
+
+        // if (feedback == 1) {
+        //     Swal.fire({
+        //         text: feedbackTxt,
+        //         confirmButtonColor: '#27804c',
+        //         imageUrl: 'images/feedback.png',
+        //         imageWidth: 300,
+        //         imageHeight: 300,
+        //         imageAlt: 'Custom image',
+        //     });
+        // }
     }
 
     function nextPage() {

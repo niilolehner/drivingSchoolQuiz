@@ -1,15 +1,50 @@
 "use strict";
 
-let count;
-let seconds = 0;
+// let count;
+// let seconds = 0;
 
-function start(){
- count = setInterval(timer,1000)  /// ajastin käyntiin
+// function start(){
+//  count = setInterval(timer,1000)  /// ajastin käyntiin
+// }
+
+// function timer(){
+//     document.getElementById('ctulokset').innerText++;
+//     seconds++;
+// }
+
+// function end(){
+//   clearInterval(count)   /// ajastin pysähtyy
+// }
+
+let count = 0,
+    minutesSeconds = 0, 
+    seconds = 0, 
+    minutes = 0,
+    totalSeconds = 0;
+
+//Ajastin, joka tulostaa näytölle kuluvan ajan.
+function timer() {
+	seconds += 1;
+        if (seconds == 60) {
+            seconds = 0;
+            minutes += 1;
+        }
+    let sec = seconds < 10 ? "0" + seconds : seconds;
+    let min = minutes < 10 ? "0" + minutes : minutes;
+	document.getElementById("ctulokset").innerHTML = min + ":" + sec;
 }
 
-function timer(){
-    document.getElementById('ctulokset').innerText++;
-    seconds++;
+//Laskee kokonaisajan 
+function minutesToSeconds() {
+    while (minutes > 0) {
+        minutesSeconds += 60;
+        minutes--;
+    }
+    return minutesSeconds;
+}
+
+function start(){
+    count = setInterval(timer, 1000);  /// ajastin käyntiin
 }
 
 function end(){
@@ -42,18 +77,18 @@ let wrongclick = 0;
 let cscore = 0;
 let ctotalScore = 0;
 
-     function shuffleArray(array) {
-            for (var i = array.length - 1; i > 0; i--) {
- 
-                // Generate random number
-                var j = Math.floor(Math.random() * (i + 1));
- 
-                var temp = array[i];
-                array[i] = array[j];
-                array[j] = temp;
-            }
- 
-            return array;
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+
+        // Generate random number
+        var j = Math.floor(Math.random() * (i + 1));
+
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
+    return array;
 }
     
 function startFastQuiz() {
@@ -145,7 +180,17 @@ function startFastQuiz() {
             cvastaus1Btn.style.display = 'none';
             cvastaus2Btn.style.display = 'none';
             cvastaus3Btn.style.display = 'none';  
-            ctulosTxt.innerHTML = "Sait " + ctotalScore + "/10 oikein. Aikasi oli " + seconds + " sekuntia.";
+            // ctulosTxt.innerHTML = "Sait " + ctotalScore + "/10 oikein. Aikasi oli " + seconds + " sekuntia.";
+            let sec = seconds < 10 ? "0" + seconds : seconds;
+            let min = minutes < 10 ? "0" + minutes : minutes;  
+            ctulosTxt.innerHTML = minutes > 0 ? 
+                                    "Sait " + ctotalScore + "/10 oikein. Aikasi oli " + min + ":" + sec + "."
+                                    : 
+                                    "Sait " + ctotalScore + "/10 oikein. Aikasi oli " + sec + " sekuntia.";
+            
+            minutesToSeconds();
+            totalSeconds = minutesSeconds + seconds;
+            console.log(totalSeconds);
 
             function plusQuizesDone()
             {
@@ -164,7 +209,8 @@ function startFastQuiz() {
 
             plusQuizesDone();
 
-            checkAndAwardAchievs("competitive", seconds, ctotalScore, 0);
+            // checkAndAwardAchievs("competitive", seconds, ctotalScore, 0);
+            checkAndAwardAchievs("competitive", totalSeconds, ctotalScore, 0);
 
             // variable viemään tulokset databaseen
             let getStudentID = arrayFromPHP("currentStudentID");
@@ -172,7 +218,7 @@ function startFastQuiz() {
             {
                 StudentID: getStudentID[0].StudentID,
                 Score: ctotalScore,
-                Time: seconds,
+                Time: totalSeconds,
                 Date: newdate
             }
 
@@ -226,9 +272,9 @@ function startFastQuiz() {
             oldScore = ctotalScore;
         }
         
-        if (seconds < oldTime || oldTime === "0")
+        if (totalSeconds < oldTime || oldTime === "0")
         {
-            oldTime = seconds;
+            oldTime = totalSeconds;
         }
         
         // oldQuizesDone++;
