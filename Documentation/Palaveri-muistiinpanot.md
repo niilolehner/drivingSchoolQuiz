@@ -141,5 +141,8 @@ Ismo
 
 # 18.05.2022
 Ismo
--Testaili Oppilaan toiminnallisuuksia siten, kuin asiakas sitä käyttäisi.
+-Testaili oppilaan toiminnallisuuksia siten, kuin asiakas sitä käyttäisi.
 
+# 19.05.2022
+Ismo
+- Muutti sivuston ulkonäön yhteensopivaksi syötettävien tietojen kanssa.
