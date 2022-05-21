@@ -70,35 +70,22 @@ scoreboard.forEach(Data => {
       //Insert table data.
       Object.values(Data).forEach(contentText => {
         if (Object.keys(Data)[1] === 'BestTime') {
-          if (contentText > 59 && Object.values(Data)[1] === contentText) {  
-              let minuteDecimal = Object.values(Data)[1] / 60; 
-              let integer = parseInt(minuteDecimal.toString().split('.')[0]);
-              let decimalNumber = minuteDecimal - integer;
-              let seconds = Math.round(decimalNumber * 60);
-              contentText = integer + ' min ' + seconds + ' s';
-          } else if (Object.values(Data)[1] === contentText) {
-              contentText += ' s';
-          }
-          // console.log(Object.values(Data)[1] === contentText);
+            if (contentText > 59 && Object.values(Data)[1] === contentText) {  
+                let minuteDecimal = Object.values(Data)[1] / 60; 
+                let integer = parseInt(minuteDecimal.toString().split('.')[0]);
+                let decimalNumber = minuteDecimal - integer;
+                let seconds = Math.round(decimalNumber * 60);
+                contentText = integer + ' min ' + seconds + ' s';
+            } else if (Object.values(Data)[1] === contentText) {
+                contentText += ' s';
+            }
         } else if (Object.keys(Data)[1] === 'BestScore') {
-
+            if (Object.values(Data)[1] === contentText)
+                contentText += '/10'
         }
-
-      //   if (contentText > 59 && Object.values(Data)[1] === contentText) {  
-      //     let minuteDecimal = Object.values(Data)[1] / 60; 
-      //     let integer = parseInt(minuteDecimal.toString().split(w'.')[0]);
-      //     let decimalNumber = minuteDecimal - integer;
-      //     let seconds = Math.round(decimalNumber * 60);
-      //     contentText = integer + ' min ' + seconds + ' s';
-      // } else if (Object.values(Data)[1] === contentText) {
-      //     contentText += ' s'
-      // } else if (Object.values(Data)[1] === contentText) {
-      //     contentText += '/10'
-      // }
-
+        
         let content = document.createElement('td');
         content.setAttribute('class', 'p-2');
-        
         let textNode = document.createTextNode(contentText);
         content.appendChild(textNode);
         row.appendChild(content);
