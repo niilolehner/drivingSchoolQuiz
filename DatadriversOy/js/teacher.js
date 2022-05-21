@@ -16,7 +16,7 @@ const tipsArray = ['Jatka harjoittelua ja muista ajojärjestys.', 'Jatka harjoit
 let colDiv = document.createElement('div');
 colDiv.setAttribute('class', 'col');
 let headerH3 = document.createElement('h3');
-headerH3.setAttribute('class', 'text-white-50');
+headerH3.setAttribute('class', 'text-white-50 text-center pb-3');
 let h3Text = 'Teoriakoeharjoitusten tulokset';
 let h3Node = document.createTextNode(h3Text);
 headerH3.appendChild(h3Node);
@@ -37,6 +37,7 @@ tableContainer.appendChild(colDiv);
 let tableHead = document.createElement('thead');
 let tableBody = document.createElement('tbody');
 let headerRow = document.createElement('tr');
+headerRow.setAttribute('class', 'text-center');
 
 //Insert header-array items in th-elements.
 headers.forEach(headerText => {
@@ -53,11 +54,26 @@ table.appendChild(tableHead);
 //Get scoreboard-data from database and create td-element for each data.
 scoreboard.forEach(Data => {
     let row = document.createElement('tr');
+    row.setAttribute('class', 'align-middle text-center');
+
     Object.values(Data).forEach(contentText => {
-      let content = document.createElement('td');
-      let textNode = document.createTextNode(contentText);
-      content.appendChild(textNode);
-      row.appendChild(content);
+        if (contentText > 59 && Object.values(Data)[2] === contentText) {  
+            let minuteDecimal = Object.values(Data)[2] / 60; 
+            let integer = parseInt(minuteDecimal.toString().split('.')[0]);
+            let decimalNumber = minuteDecimal - integer;
+            let seconds = Math.round(decimalNumber * 60);
+            contentText = integer + ' min ' + seconds + ' s';
+        } else if (Object.values(Data)[2] === contentText) {
+            contentText += ' s'
+        } else if (Object.values(Data)[1] === contentText) {
+            contentText += '/10'
+        }
+        
+        let content = document.createElement('td');
+        content.setAttribute('class', 'p-1');
+        let textNode = document.createTextNode(contentText);
+        content.appendChild(textNode);
+        row.appendChild(content);
     });
 
     //Get student name from object.
@@ -79,7 +95,6 @@ scoreboard.forEach(Data => {
     tableBody.appendChild(row);
     table.appendChild(tableBody);
 });
-
 
 //Creates Modal for each score result
 let modalWrap = null;

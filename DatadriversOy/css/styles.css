@@ -493,7 +493,7 @@ progress {
     .container-md,
     .container-sm,
     .container {
-        max-width: 720px;
+        max-width: 850px;
     }
 }
 
@@ -653,7 +653,7 @@ progress {
     width: 100%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 800px) {
     .col-md {
         flex: 1 0 0%;
     }
@@ -1567,7 +1567,7 @@ fieldset:disabled .btn {
     background-size: 100%;
 }
 
-@media (min-width: 400px) {
+@media (min-width: 350px) {
     main {
         min-height: 71.8vh;
     }
@@ -3343,7 +3343,6 @@ main {
     position: relative;
     width: 100%;
     height: auto;
-    /* min-height: 35rem; */
     padding: 3rem 0;
 }
 
@@ -3375,10 +3374,6 @@ main {
 }
 
 @media (min-width: 992px) {
-    .masthead {
-        /* height: 100vh; */
-        /* padding: 0; */
-    }
 
     .masthead h1,
     .masthead .h1 {

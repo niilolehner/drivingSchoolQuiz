@@ -9,7 +9,7 @@ const scoreboard2 = arrayFromPHP('scoreboard2');
 const scoreboard3 = arrayFromPHP('scoreboard3');
 
 //Create array for scoreboard headers.
-const headers1 = ['#', 'Nimi', 'Aika (s)'];
+const headers1 = ['#', 'Nimi', 'Aika'];
 const headers2 = ['#', 'Nimi', 'Tulos'];
 const headers3 = ['#', 'Nimi', 'Kpl'];
 const tableHeaders = ['Paras aika', 'Paras tulos', 'Tehdyt tentit']
@@ -17,10 +17,9 @@ const tableHeaders = ['Paras aika', 'Paras tulos', 'Tehdyt tentit']
 function createTable(scoreboard, tableName, header) {
   //Create Column container with header for table.
 let colDiv = document.createElement('div');
-colDiv.setAttribute('class', 'col-md-4 themed-grid-col');
+colDiv.setAttribute('class', 'container col-md-4 themed-grid-col p-1 m-0');
 let headerH3 = document.createElement('h3');
-headerH3.setAttribute('class', 'text-white-50');
-headerH3.setAttribute('style', 'width: 200px;');
+headerH3.setAttribute('class', 'text-white-50 px-4');
 let h3Text = tableName;
 let h3Node = document.createTextNode(h3Text);
 headerH3.appendChild(h3Node);
@@ -41,6 +40,7 @@ tableScoreboard.appendChild(colDiv);
 let tableHead = document.createElement('thead');
 let tableBody = document.createElement('tbody');
 let headerRow = document.createElement('tr');
+headerRow.setAttribute('class', 'text-center');
 
 //Insert header-array items in th-elements.
 header.forEach(headerText => {
@@ -58,15 +58,47 @@ let number = 0;
 //Get scoreboard-data from database and create td-element for each data.
 scoreboard.forEach(Data => {
     let row = document.createElement('tr');
+    row.setAttribute('class', 'align-middle text-center');
     number++;
     let numberContent = document.createElement('td');
     let textNode = document.createTextNode(number);
     numberContent.appendChild(textNode);
     row.appendChild(numberContent);
 
+    console.log(Object.keys(Data)[1]);
+
       //Insert table data.
       Object.values(Data).forEach(contentText => {
+        if (Object.keys(Data)[1] === 'BestTime') {
+          if (contentText > 59 && Object.values(Data)[1] === contentText) {  
+              let minuteDecimal = Object.values(Data)[1] / 60; 
+              let integer = parseInt(minuteDecimal.toString().split('.')[0]);
+              let decimalNumber = minuteDecimal - integer;
+              let seconds = Math.round(decimalNumber * 60);
+              contentText = integer + ' min ' + seconds + ' s';
+          } else if (Object.values(Data)[1] === contentText) {
+              contentText += ' s';
+          }
+          // console.log(Object.values(Data)[1] === contentText);
+        } else if (Object.keys(Data)[1] === 'BestScore') {
+
+        }
+
+      //   if (contentText > 59 && Object.values(Data)[1] === contentText) {  
+      //     let minuteDecimal = Object.values(Data)[1] / 60; 
+      //     let integer = parseInt(minuteDecimal.toString().split(w'.')[0]);
+      //     let decimalNumber = minuteDecimal - integer;
+      //     let seconds = Math.round(decimalNumber * 60);
+      //     contentText = integer + ' min ' + seconds + ' s';
+      // } else if (Object.values(Data)[1] === contentText) {
+      //     contentText += ' s'
+      // } else if (Object.values(Data)[1] === contentText) {
+      //     contentText += '/10'
+      // }
+
         let content = document.createElement('td');
+        content.setAttribute('class', 'p-2');
+        
         let textNode = document.createTextNode(contentText);
         content.appendChild(textNode);
         row.appendChild(content);

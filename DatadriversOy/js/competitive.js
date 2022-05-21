@@ -31,7 +31,7 @@ function timer() {
         }
     let sec = seconds < 10 ? "0" + seconds : seconds;
     let min = minutes < 10 ? "0" + minutes : minutes;
-	document.getElementById("ctulokset").innerHTML = min + ":" + sec;
+	document.getElementById("ctulokset").innerHTML = min + "." + sec;
 }
 
 //Laskee kokonaisajan 
@@ -184,7 +184,7 @@ function startFastQuiz() {
             let sec = seconds < 10 ? "0" + seconds : seconds;
             let min = minutes < 10 ? "0" + minutes : minutes;  
             ctulosTxt.innerHTML = minutes > 0 ? 
-                                    "Sait " + ctotalScore + "/10 oikein. Aikasi oli " + min + ":" + sec + "."
+                                    "Sait " + ctotalScore + "/10 oikein. Aikasi oli " + min + "." + sec + "."
                                     : 
                                     "Sait " + ctotalScore + "/10 oikein. Aikasi oli " + sec + " sekuntia.";
             
