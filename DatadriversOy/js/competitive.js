@@ -63,11 +63,11 @@ function CheckAvailability()
     let feedbackGiven;
     let AvailabilityArray = arrayFromPHP("AvailabilityForCompetitive");
 
-    console.log(AvailabilityArray[0]);
+    console.log(AvailabilityArray[AvailabilityArray.length - 1]);
 
-    if (AvailabilityArray[0] !== undefined)
+    if (AvailabilityArray[AvailabilityArray.length - 1] !== undefined)
     {
-        feedbackGiven = AvailabilityArray[0].FeedbackGiven;
+        feedbackGiven = AvailabilityArray[AvailabilityArray.length - 1].FeedbackGiven;
     }
     else
     {
@@ -265,7 +265,7 @@ function startFastQuiz() {
 
             UpdateDatabase();
 
-            setTimeout(nextPage, 10000);
+            setTimeout(nextPage, 5000);
     }
     else
     {
