@@ -7,7 +7,7 @@ include 'dbConnection.php';
 $sql = '';
 $rows = [];
 
-$studentId = 1; //testing purpose
+$studentId = 6; //testing purpose
 
 //Get data from database and input it in JSON-format:
 if ($page === 'quizqa' || $page === 'achievements') {
@@ -70,13 +70,6 @@ else if ($page === 'unlockedAchievements') {
           INNER JOIN achievements ON studentachievements.AchievementID = achievements.AchievementID
           WHERE students.StudentID = $studentId";
 }
-// else if ($page === 'studentachievementsAesmouVersion') {
-//   $sql = "SELECT students.StudentID, students.Name, achievements.AchievementID, achievements.POPtext
-//           FROM studentachievements
-//           INNER JOIN students ON studentachievements.studentID = students.studentID
-//           INNER JOIN achievements ON studentachievements.AchievementID = achievements.AchievementID
-//           WHERE students.StudentID = $id";
-// }
 
 $result = mysqli_query($conn, $sql);
 

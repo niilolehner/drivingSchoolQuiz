@@ -196,7 +196,7 @@ function startFastQuiz() {
             if (ccurrentQuestion == 9) {
                 ccurrentQuestion++;
 
-                 if (wrongclick == 0) {
+            if (wrongclick == 0) {
             cscore = 1;
             }
             else {
@@ -215,6 +215,12 @@ function startFastQuiz() {
             // ctulosTxt.innerHTML = "Sait " + ctotalScore + "/10 oikein. Aikasi oli " + seconds + " sekuntia.";
             let sec = seconds < 10 ? "0" + seconds : seconds;
             let min = minutes < 10 ? "0" + minutes : minutes;  
+
+            if (minutes === 0) {
+                sec = seconds;
+                min = '';
+            }
+
             ctulosTxt.innerHTML = minutes > 0 ? 
                                     "Sait " + ctotalScore + "/" + ccurrentQuestion + " oikein. Aikasi oli " + min + "." + sec + "."
                                     : 
@@ -222,15 +228,12 @@ function startFastQuiz() {
             
             minutesToSeconds();
             totalSeconds = minutesSeconds + seconds;
-            console.log(totalSeconds);
 
             function plusQuizesDone()
             {
                 let getDatabaseArray = arrayFromPHP("quizesDoneData");
                 let oldQuizesDone = getDatabaseArray[0].QuizesDone;
-
                 oldQuizesDone++;
-
                 let newQuizesDone =
                 {
                     QuizesDone: oldQuizesDone,
@@ -255,9 +258,7 @@ function startFastQuiz() {
             }
 
             arrayToPHP(tulosDatabaseen, "endOfCompetitiveQuiz");
-
             UpdateDatabase();
-
             setTimeout(nextPage, 5000);
     }
     else
@@ -297,7 +298,6 @@ function startFastQuiz() {
         let getDatabaseArray = arrayFromPHP("personalBestForUpdating");
         let oldScore = getDatabaseArray[0].BestScore;
         let oldTime = getDatabaseArray[0].BestTime;
-        // let oldQuizesDone = getDatabaseArray[0].QuizesDone;
 
         if (ctotalScore > oldScore || oldScore === "0")
             {
@@ -308,14 +308,11 @@ function startFastQuiz() {
         {
             oldTime = totalSeconds;
         }
-        
-        // oldQuizesDone++;
 
         let newBestForDatabase =
         {
             BestScore: oldScore,
             BestTime: oldTime,
-            // QuizesDone: oldQuizesDone,
             StudentID: getDatabaseArray[0].StudentID
         }
         console.log(newBestForDatabase);

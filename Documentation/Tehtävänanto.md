@@ -25,3 +25,10 @@ Tärkeimpinä elementteinä palautteenanto ja palautteen vastaanotto (Ryhmä voi
 - Frontend => JavaScript, CSS (Bootstrap suositeltavaa)
 
 # Demotus tai GitHub-linkki iso PLUS! #
+
+# Jos olisi ollut enemmän aikaa, mitä ominaisuuksia olisimme vielä tehneet?
+1. Vaikeustasot teoriakoeharjoitukselle
+2. Kysymyksiä erittely eri kategorioihin.
+3. Opettajalle kommenttien lisäys, muokkaus ja poisto.
+4. Oppilaalle kategorian valinta mahdollisuus.
+5. Ansaittavia oljenkorsia.

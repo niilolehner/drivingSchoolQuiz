@@ -164,7 +164,7 @@ function checkAndAwardAchievs(modeInput, timeInput, scoreInput, streakInput) {
 function animate() {
   let url = window.location.href;
 
-  if(url.includes('?page=welcome') === false && url.includes('?page=userChoose') === false ){  
+  if(url.includes('?page=welcome') === false && url.includes('?page=userChoose') === false && url.includes('index') === true){  
     setTimeout(() => {
       navBar.classList.add('active');
     }, 200)
@@ -205,7 +205,7 @@ function animate() {
     }, 800);
   }
 
-  if(url.includes('?page=welcome') === false && url.includes('?page=userChoose') === false ){  
+  if(url.includes('?page=welcome') === false && url.includes('?page=userChoose') === false && url.includes('index') === true){  
     setTimeout(() => {
       footerId.classList.add('active');
     }, 1200);

@@ -3396,8 +3396,19 @@ main {
 
 .correct {
     background: linear-gradient(32deg, rgb(44, 97, 84) 0%, rgb(27, 177, 139) 100%) !important; 
-  }
-  
-  .incorrect {
-    background: linear-gradient(32deg, rgba(131, 15, 54, 0.411) 0%, rgb(226, 86, 109) 100%) !important;
-  }
+}
+
+.incorrect {
+background: linear-gradient(32deg, rgba(131, 15, 54, 0.411) 0%, rgb(226, 86, 109) 100%) !important;
+}
+
+.fade-in {
+opacity: 0;
+visibility: hidden;
+}
+
+.active {
+visibility: visible;
+opacity: 1;
+transition: 1.5s;
+}

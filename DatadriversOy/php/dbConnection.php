@@ -11,5 +11,4 @@ $conn = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
 if (!$conn) {
     die("Database connection failed!");
 }
-
 ?>

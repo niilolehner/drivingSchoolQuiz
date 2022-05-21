@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2022 at 01:15 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- Generation Time: May 21, 2022 at 09:31 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -145,11 +145,12 @@ CREATE TABLE `scoreboard` (
 --
 
 INSERT INTO `scoreboard` (`ScoreID`, `StudentID`, `Score`, `Time`, `Date`, `Feedback`, `FeedbackGiven`) VALUES
-(1, '1', 10, 90, '2022-05-10', '  Kyllä sinä vielä onnistut!', 1),
-(2, '2', 9, 75, '2022-05-10', '', 0),
-(3, '3', 10, 80, '2022-05-10', '', 0),
-(4, '1', 7, 0, '2022-05-14', '', 0),
-(6, '2', 3, 14, '2022-05-16', '', 0);
+(1, '1', 5, 67, '2022-05-21', '', 0),
+(2, '2', 4, 32, '2022-05-21', 'Ihan kelpo suoritus! Harjoittele ajoneuvonhallintaa. Kyllä sinä vielä onnistut!', 2),
+(3, '2', 2, 25, '2022-05-21', '', 0),
+(4, '3', 6, 127, '2022-05-21', '', 0),
+(5, '4', 10, 32, '2022-05-21', '', 0),
+(6, '5', 8, 46, '2022-05-21', '', 0);
 
 -- --------------------------------------------------------
 
@@ -183,7 +184,12 @@ INSERT INTO `studentachievements` (`StudentachievementsID`, `StudentID`, `Achiev
 (13, 1, 13),
 (14, 1, 14),
 (15, 1, 15),
-(16, 1, 16);
+(16, 1, 16),
+(17, 2, 5),
+(18, 3, 5),
+(19, 4, 5),
+(20, 4, 12),
+(21, 5, 5);
 
 -- --------------------------------------------------------
 
@@ -205,9 +211,16 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`StudentID`, `Name`, `BestTime`, `BestScore`, `QuizesDone`, `Keksi`) VALUES
-(1, 'Matti', 47, 10, 200, 1),
-(2, 'Teppo', 60, 9, 2, 0),
-(3, 'Seppo', 80, 10, 1, 0);
+(1, 'Matti', 67, 5, 1, 1),
+(2, 'Teppo', 25, 4, 2, 0),
+(3, 'Seppo', 127, 6, 1, 0),
+(4, 'Liisa', 32, 10, 1, 0),
+(5, 'Maisa', 46, 8, 1, 0),
+(6, 'Kaisa', 0, 0, 0, 0),
+(7, 'Lasse', 0, 0, 0, 0),
+(8, 'Minna', 0, 0, 0, 0),
+(9, 'Manu', 0, 0, 0, 0),
+(10, 'Minttu', 0, 0, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -264,19 +277,19 @@ ALTER TABLE `quizqa`
 -- AUTO_INCREMENT for table `scoreboard`
 --
 ALTER TABLE `scoreboard`
-  MODIFY `ScoreID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ScoreID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `studentachievements`
 --
 ALTER TABLE `studentachievements`
-  MODIFY `StudentachievementsID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `StudentachievementsID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `StudentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `StudentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

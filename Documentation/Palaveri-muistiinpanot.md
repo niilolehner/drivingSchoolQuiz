@@ -146,3 +146,7 @@ Ismo
 # 19.05.2022
 Ismo
 - Muutti sivuston ulkonäön yhteensopivaksi syötettävien tietojen kanssa.
+- Uudelleen järjesteli ajastimen näyttämisen teoriakoeharjoitus sivulle.
+- Tulostaulutietojen näyttämistä muutettu.
+- Opiskelijaharjoitustietojen näyttämistä muutettu opettajan sivulla.
+- Skaalautumista säädetty.

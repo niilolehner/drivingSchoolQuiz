@@ -65,8 +65,6 @@ scoreboard.forEach(Data => {
     numberContent.appendChild(textNode);
     row.appendChild(numberContent);
 
-    console.log(Object.keys(Data)[1]);
-
       //Insert table data.
       Object.values(Data).forEach(contentText => {
         if (Object.keys(Data)[1] === 'BestTime') {
