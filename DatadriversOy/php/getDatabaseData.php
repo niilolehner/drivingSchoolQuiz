@@ -39,7 +39,7 @@ else if ($page === 'getScoreID') {
   $sql = "SELECT ScoreID FROM scoreboard WHERE StudentID = $id AND FeedbackGiven = 0";
 }
 else if ($page === 'feedbackForStudent') {
-  $sql = "SELECT Feedback, FeedbackGiven
+  $sql = "SELECT Feedback, FeedbackGiven, StudentID
           FROM scoreboard
           WHERE FeedbackGiven = 1 AND studentID = $studentId";
 }
