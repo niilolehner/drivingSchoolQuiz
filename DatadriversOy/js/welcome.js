@@ -6,16 +6,10 @@ let studentId;
 function oppilas() {
     let feedbackArray = arrayFromPHP("feedbackForStudent");
 
-    if (feedback !== undefined)
+    if (feedbackArray[0] !== undefined)
     {
         feedback = feedbackArray[0].FeedbackGiven;
-    }
-    if (feedbackTxt !== undefined)
-    {
         feedbackTxt = feedbackArray[0].Feedback;
-    }
-    if (studentId !== undefined)
-    {
         studentId = feedbackArray[0].StudentID;
     }
  

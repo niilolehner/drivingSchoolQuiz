@@ -63,7 +63,9 @@ function CheckAvailability()
     let feedbackGiven;
     let AvailabilityArray = arrayFromPHP("AvailabilityForCompetitive");
 
-    if (feedbackGiven !== undefined)
+    console.log(AvailabilityArray[0]);
+
+    if (AvailabilityArray[0] !== undefined)
     {
         feedbackGiven = AvailabilityArray[0].FeedbackGiven;
     }
@@ -71,6 +73,8 @@ function CheckAvailability()
     {
         feedbackGiven = "2";
     }
+
+    console.log(feedbackGiven);
  
         if (feedbackGiven === "2") {
             //nothing
@@ -140,8 +144,6 @@ function startFastQuiz() {
     cvastaus1Btn.innerHTML = cAnswers[0];
     cvastaus2Btn.innerHTML = cAnswers[1];
     cvastaus3Btn.innerHTML = cAnswers[2];
-
-    CheckAvailability();
     
     csubmitBtn.onclick = () => {
         start();
@@ -327,5 +329,6 @@ function startFastQuiz() {
         arrayToPHP(newBestForDatabase, "personalBestToUpdate");
     }
 }
-    
+
+CheckAvailability();
 startFastQuiz();
