@@ -23,12 +23,12 @@ function arrayFromPHP(pageName, id) {
   let xhReq = new XMLHttpRequest();
   xhReq.open("GET", 'php/getDatabaseData.php?page=' + pageName + '&id=' + id + '', false);
   xhReq.send(null);
-  let resultArray = {};
+  let resultArray = [];
   try {
     resultArray = JSON.parse(xhReq.responseText);
   }
   catch(e) {
-    // array empty
+    // no data in array of objects
   }
   return resultArray;
 }
@@ -44,7 +44,7 @@ function arrayToPHP(inputArray, pageName) {
 
 // checks unlockedAchievsArray if achiev present, needs AchievementID (for example "1") as a string (see checkAndAwardAchievs() main function)
 function isAchievUnlocked(inputUnlockedAchievsArray, inputAchievementID) {
-  if (Object.keys(inputUnlockedAchievsArray).length === 0 && inputUnlockedAchievsArray.constructor === Object) {
+  if (inputUnlockedAchievsArray.length === 0) {
     // empty, means no achievements are currently unlocked at all for the student
     return false;
   } else {
@@ -134,12 +134,12 @@ function checkAndAwardAchievs(modeInput, timeInput, scoreInput, streakInput) {
     achievAnim("200 visaa suoritettu!", "11");  
   }
   // suoritti visan alle X minuutissa, 100% oikein
-  if (isAchievUnlocked(unlockedAchievsArray, "12") === false && modeInput === "competitive" && timeInput <= 300 && scoreInput === 10) {
+  if (isAchievUnlocked(unlockedAchievsArray, "12") === false && modeInput === "competitive" && timeInput <= 200 && scoreInput === 10) {
     achievUnlock(studentInfo[0].StudentID, 12);
     achievAnim("Salama", "12");  
   }
   // visaan vastaaminen kesti yli X minuuttia, mutta 100% oikein
-  if (isAchievUnlocked(unlockedAchievsArray, "13") === false && modeInput === "competitive" && timeInput >= 600 && scoreInput === 10) {
+  if (isAchievUnlocked(unlockedAchievsArray, "13") === false && modeInput === "competitive" && timeInput >= 400 && scoreInput === 10) {
     achievUnlock(studentInfo[0].StudentID, 13);
     achievAnim("Hitaasti, mutta varmasti...", "13");  
   }

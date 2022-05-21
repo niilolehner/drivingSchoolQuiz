@@ -3,7 +3,7 @@
 // populates achievements.html with unlocked achievements
 function listUnlockedAchievements() {
   let unlockedAchievsArray = arrayFromPHP("unlockedAchievements");
-  if (Object.keys(unlockedAchievsArray).length === 0 && unlockedAchievsArray.constructor === Object) {
+  if (unlockedAchievsArray.length === 0) {
     // empty, no achievements to load
   } else {
     unlockedAchievsArray.forEach(({AchievementID, POPtext})=>{ 
