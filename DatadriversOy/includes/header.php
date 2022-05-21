@@ -53,7 +53,7 @@ if ($page === '') {
     $page = 'userChoose';
 }
 
-if ($page !== 'welcome' && $page !== 'userChoose') {
+//if ($page !== 'welcome' && $page !== 'userChoose') {
 ?>
 
 <!-- Navigation-->
@@ -77,5 +77,5 @@ if ($page !== 'welcome' && $page !== 'userChoose') {
     </nav>
 </header>
 <?php
-}
+//}
 ?>

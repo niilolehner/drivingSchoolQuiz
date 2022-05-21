@@ -1700,7 +1700,7 @@ fieldset:disabled .btn {
 
 @media (min-width: 992px) {
     main {
-        min-height: 70.7vh;
+        height: auto;
     }
     .navbar-expand-lg {
         flex-wrap: nowrap;
@@ -3395,9 +3395,9 @@ main {
 }
 
 .correct {
-    background: linear-gradient(32deg, rgba(11, 223, 36) 0%, rgb(41, 232, 111) 100%) !important; 
+    background: linear-gradient(32deg, rgb(44, 97, 84) 0%, rgb(27, 177, 139) 100%) !important; 
   }
   
   .incorrect {
-    background: linear-gradient(32deg, rgba(230, 29, 1) 0%, rgba(224, 11, 11, 1) 100%) !important;
+    background: linear-gradient(32deg, rgba(131, 15, 54, 0.411) 0%, rgb(226, 86, 109) 100%) !important;
   }
