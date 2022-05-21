@@ -1567,7 +1567,7 @@ fieldset:disabled .btn {
     background-size: 100%;
 }
 
-@media (min-width: 350px) {
+@media (min-width: 149px) {
     main {
         min-height: 71.8vh;
     }
