@@ -211,6 +211,15 @@ function startFastQuiz() {
     function next() {
             if (ccurrentQuestion == 9) {
                 ccurrentQuestion++;
+
+                 if (wrongclick == 0) {
+            cscore = 1;
+            }
+            else {
+            cscore = 0;
+            }
+                ctotalScore = ctotalScore + cscore;
+                
                 console.log(count);
                 end();
             
@@ -223,9 +232,9 @@ function startFastQuiz() {
             let sec = seconds < 10 ? "0" + seconds : seconds;
             let min = minutes < 10 ? "0" + minutes : minutes;  
             ctulosTxt.innerHTML = minutes > 0 ? 
-                                    "Sait " + ctotalScore + "/10 oikein. Aikasi oli " + min + "." + sec + "."
+                                    "Sait " + ctotalScore + "/" + ccurrentQuestion + " oikein. Aikasi oli " + min + "." + sec + "."
                                     : 
-                                    "Sait " + ctotalScore + "/10 oikein. Aikasi oli " + sec + " sekuntia.";
+                                    "Sait " + ctotalScore + "/" + ccurrentQuestion + " oikein. Aikasi oli " + sec + " sekuntia.";
             
             minutesToSeconds();
             totalSeconds = minutesSeconds + seconds;
