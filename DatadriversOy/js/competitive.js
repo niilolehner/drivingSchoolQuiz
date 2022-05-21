@@ -59,30 +59,38 @@ var newdate = year + "-" + month + "-" + day;
 
 //checkup is the student can do the quiz
 function CheckAvailability()
-    {
+{
+    let feedbackGiven;
     let AvailabilityArray = arrayFromPHP("AvailabilityForCompetitive");
-    let feedbackGiven = AvailabilityArray[0].FeedbackGiven;
 
-    if (feedbackGiven === "2")
+    if (feedbackGiven !== undefined)
     {
-        //nothing
+        feedbackGiven = AvailabilityArray[0].FeedbackGiven;
     }
     else
     {
-            Swal.fire({
-            text: "Olet jo tehnyt testin! Odota, että saat palautetta ennen uutta yritystä.",
-            confirmButtonColor: '#27804c',
-            imageUrl: 'images/stop.png',
-            imageWidth: 300,
-            imageHeight: 300,
-            imageAlt: 'Custom image',
-        }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.href = "./index.php?page=welcome";
+        feedbackGiven = "2";
+    }
+ 
+        if (feedbackGiven === "2") {
+            //nothing
         }
-    })
+        else {
+            Swal.fire({
+                text: "Olet jo tehnyt testin! Odota, että saat palautetta ennen uutta yritystä.",
+                confirmButtonColor: '#27804c',
+                imageUrl: 'images/stop.png',
+                imageWidth: 300,
+                imageHeight: 300,
+                imageAlt: 'Custom image',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "./index.php?page=welcome";
+                }
+            })
         }
     }
+    
   
  // storing array for use
 let csortedQuestionArray = arrayFromPHP("quizqa");

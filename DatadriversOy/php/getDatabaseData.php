@@ -7,7 +7,7 @@ include 'dbConnection.php';
 $sql = '';
 $rows = [];
 
-$studentId = 1; //testing purpose
+$studentId = 4; //testing purpose
 
 //Get data from database and input it in JSON-format:
 if ($page === 'quizqa' || $page === 'achievements') {

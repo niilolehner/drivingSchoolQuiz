@@ -1,11 +1,24 @@
 "use strict";
+let feedback;
+let feedbackTxt;
+let studentId;
 
 function oppilas() {
     let feedbackArray = arrayFromPHP("feedbackForStudent");
-    let feedback = feedbackArray[0].FeedbackGiven;
-    let feedbackTxt = feedbackArray[0].Feedback;
-    let studentId = feedbackArray[0].StudentID;
 
+    if (feedback !== undefined)
+    {
+        feedback = feedbackArray[0].FeedbackGiven;
+    }
+    if (feedbackTxt !== undefined)
+    {
+        feedbackTxt = feedbackArray[0].Feedback;
+    }
+    if (studentId !== undefined)
+    {
+        studentId = feedbackArray[0].StudentID;
+    }
+ 
     let palauteSaatu =
 {
     FeedbackGiven: 2,
@@ -29,6 +42,7 @@ function oppilas() {
     })
     }
 }
+
 setTimeout(() => {
     oppilas(); 
   }, 500);
