@@ -63,8 +63,12 @@ function CheckAvailability()
     let AvailabilityArray = arrayFromPHP("AvailabilityForCompetitive");
     let feedbackGiven = AvailabilityArray[0].FeedbackGiven;
 
-    if (feedbackGiven === "0")
-        {
+    if (feedbackGiven === "2")
+    {
+        //nothing
+    }
+    else
+    {
             Swal.fire({
             text: "Olet jo tehnyt testin! Odota, että saat palautetta ennen uutta yritystä.",
             confirmButtonColor: '#27804c',
