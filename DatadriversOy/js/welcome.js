@@ -6,40 +6,18 @@ function oppilas() {
     let feedback = feedbackArray[0].FeedbackGiven;
     let feedbackTxt = feedbackArray[0].Feedback;
 
-    if (feedback == 0) {
-        nextPage();
-    }
-
-    else {
-        if (feedback !== 1) {
-            // empty, nothing.
-        } else {
-            Swal.fire({
-                text: feedbackTxt,
-                confirmButtonColor: '#27804c',
-                imageUrl: 'images/feedback.png',
-                imageWidth: 300,
-                imageHeight: 300,
-                imageAlt: 'Custom image',
-            });
-        }
-        
-        
-
-        // if (feedback == 1) {
-        //     Swal.fire({
-        //         text: feedbackTxt,
-        //         confirmButtonColor: '#27804c',
-        //         imageUrl: 'images/feedback.png',
-        //         imageWidth: 300,
-        //         imageHeight: 300,
-        //         imageAlt: 'Custom image',
-        //     });
-        // }
-    }
-
-    function nextPage() {
-        window.location.href = "./index.php?page=welcome";
+    
+    if (feedback === "0" || feedback === "2") {
+        // empty, nothing.
+    } else if (feedback === "1") {
+        Swal.fire({
+            text: feedbackTxt,
+            confirmButtonColor: '#27804c',
+            imageUrl: 'images/feedback.png',
+            imageWidth: 300,
+            imageHeight: 300,
+            imageAlt: 'Custom image',
+        });
     }
 }
 setTimeout(() => {
