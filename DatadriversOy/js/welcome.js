@@ -1,11 +1,23 @@
 "use strict";
+let feedback;
+let feedbackTxt;
+let studentId;
 
 function oppilas() {
     let feedbackArray = arrayFromPHP("feedbackForStudent");
 
-    let feedback = feedbackArray[0].FeedbackGiven;
-    let feedbackTxt = feedbackArray[0].Feedback;
-
+    if (feedbackArray[0] !== undefined)
+    {
+        feedback = feedbackArray[0].FeedbackGiven;
+        feedbackTxt = feedbackArray[0].Feedback;
+        studentId = feedbackArray[0].StudentID;
+    }
+ 
+    let palauteSaatu =
+{
+    FeedbackGiven: 2,
+    StudentID: studentId
+}
     
     if (feedback === "0" || feedback === "2") {
         // empty, nothing.
@@ -17,9 +29,14 @@ function oppilas() {
             imageWidth: 300,
             imageHeight: 300,
             imageAlt: 'Custom image',
-        });
+        }).then((result) => {
+        if (result.isConfirmed) {
+            arrayToPHP(palauteSaatu, "feedbackGot");
+        }
+    })
     }
 }
+
 setTimeout(() => {
     oppilas(); 
   }, 500);
