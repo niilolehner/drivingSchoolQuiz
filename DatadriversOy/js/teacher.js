@@ -3,28 +3,28 @@
 //Get elements to animation and content.
 const tableContainer = document.getElementById('tableContainer');
 
-// //Get data from scoreboard;
-const scoreboard = arrayFromPHP('scoreboard');
-// if (scoreboard.length === 0) {
-//   // empty, no achievements to load
-//   //Create Column container with header for table.
-//   let colDiv = document.createElement('div');
-//   colDiv.setAttribute('class', 'col');
-//   let headerH3 = document.createElement('h3');
-//   headerH3.setAttribute('class', 'text-white-50 text-center');
-//   let h3Text = 'Ei löytynyt teoriakoeharjoituksten tuloksia tietokannasta.';
-//   let h3Node = document.createTextNode(h3Text);
-//   headerH3.appendChild(h3Node);
-//   colDiv.appendChild(headerH3);
-//   tableContainer.appendChild(colDiv);
-//   window.stop();
-// }
+//Create array for headers and teacher comments.
+const headers = ['Nimi', 'Pisteet', 'Aika', 'Päivämäärä','Palaute'];
+const overallArray = ['...', 'Loistavaa!', 'Ihan kelpo suoritus!', 'Nyt taisi mennä vähän penkin alle.', 'Hyhhyh...'];
+const thingsToDevelopArray = ['Kertaa liikennemerkkejä.', 'Kertaa ajoneuvonhallintaa.', 'Kiinnitä huomiota jalankulkijoihin.', 'Harjoittele ajoneuvonhallintaa.'];
+const tipsArray = ['Jatka harjoittelua ja muista ajojärjestys.', 'Jatka harjoittelua ja muista ennakoida liikenteessä.', 'Jatka harjoittelua ja älä pidä kiirettä.', 'Jos jatkat harjoittelua, olet ammattilainen liikenteessä.', 'Jos jatkat samaan malliin, olet mestari liikenteessä.', 'Muista myös levätä autokoulun ohessa, että jaksat keskittyä tehtävissä.', 'Suosittelen kertailemaan harjoitustehtäviä.', 'Kyllä sinä vielä onnistut!', 'Uskon, että läpäiset teoriakokeen!'];
 
-  //Create array for headers and teacher comments.
-  const headers = ['Nimi', 'Pisteet', 'Aika', 'Päivämäärä','Palaute'];
-  const overallArray = ['...', 'Loistavaa!', 'Ihan kelpo suoritus!', 'Nyt taisi mennä vähän penkin alle.', 'Hyhhyh...'];
-  const thingsToDevelopArray = ['Kertaa liikennemerkkejä.', 'Kertaa ajoneuvonhallintaa.', 'Kiinnitä huomiota jalankulkijoihin.', 'Harjoittele ajoneuvonhallintaa.'];
-  const tipsArray = ['Jatka harjoittelua ja muista ajojärjestys.', 'Jatka harjoittelua ja muista ennakoida liikenteessä.', 'Jatka harjoittelua ja älä pidä kiirettä.', 'Jos jatkat harjoittelua, olet ammattilainen liikenteessä.', 'Jos jatkat samaan malliin, olet mestari liikenteessä.', 'Muista myös levätä autokoulun ohessa, että jaksat keskittyä tehtävissä.', 'Suosittelen kertailemaan harjoitustehtäviä.', 'Kyllä sinä vielä onnistut!', 'Uskon, että läpäiset teoriakokeen!'];
+//Get data from scoreboard;
+const scoreboard = arrayFromPHP('scoreboard');
+
+if (scoreboard.length === 0) {
+    // empty, no achievements to load
+    //Create Column container with header for table.
+    let colDiv = document.createElement('div');
+    colDiv.setAttribute('class', 'col');
+    let headerH3 = document.createElement('h3');
+    headerH3.setAttribute('class', 'text-white-50 text-center');
+    let h3Text = 'Ei valmistuneita teoriakoeharjoituksia.';
+    let h3Node = document.createTextNode(h3Text);
+    headerH3.appendChild(h3Node);
+    colDiv.appendChild(headerH3);
+    tableContainer.appendChild(colDiv);
+} else {
 
   //Create Column container with header for table.
   let colDiv = document.createElement('div');
@@ -109,143 +109,144 @@ const scoreboard = arrayFromPHP('scoreboard');
       tableBody.appendChild(row);
       table.appendChild(tableBody);
   });
+}
 
-  //Creates Modal for each score result
-  let modalWrap = null;
-  const showModal = (
-    scoreID,
-    studentID
-  ) => {
-      if (modalWrap !== null){
-          modalWrap.remove();
-      }
-      modalWrap = document.createElement('div');
-      modalWrap.innerHTML = '<div class="modal fade" id="exampleModal" tabindex="-1">\
-      <div class="modal-dialog modal-dialog-centered ">\
-        <div class="modal-content">\
-          <div class="modal-header">\
-            <h3 class="modal-title" id="exampleModalLabel">Oppilaan palaute</h3>\
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\
-          </div>\
-          <div class="modal-body">\
-            <p>Pakollinen merkitty *</p>\
-            <form id="sendFeedback">\
-              <div class="row g-3">\
-                <div class="col-12 mb-2">\
-                  <label for="overall">Suoriutuminen</label>\
-                  <select id="inputOverall" class="form-select" required>\
-                    <option>' + '' + '</option>\
-                    <option>' + overallArray[1] + '</option>\
-                    <option>' + overallArray[2] + '</option>\
-                    <option>' + overallArray[3] + '</option>\
-                    <option>' + overallArray[4] + '</option>\
+//Creates Modal for each score result
+let modalWrap = null;
+const showModal = (
+  scoreID,
+  studentID
+) => {
+    if (modalWrap !== null){
+        modalWrap.remove();
+    }
+    modalWrap = document.createElement('div');
+    modalWrap.innerHTML = '<div class="modal fade" id="exampleModal" tabindex="-1">\
+    <div class="modal-dialog modal-dialog-centered ">\
+      <div class="modal-content">\
+        <div class="modal-header">\
+          <h3 class="modal-title" id="exampleModalLabel">Oppilaan palaute</h3>\
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\
+        </div>\
+        <div class="modal-body">\
+          <p>Pakollinen merkitty *</p>\
+          <form id="sendFeedback">\
+            <div class="row g-3">\
+              <div class="col-12 mb-2">\
+                <label for="overall">Suoriutuminen</label>\
+                <select id="inputOverall" class="form-select" required>\
+                  <option>' + '' + '</option>\
+                  <option>' + overallArray[1] + '</option>\
+                  <option>' + overallArray[2] + '</option>\
+                  <option>' + overallArray[3] + '</option>\
+                  <option>' + overallArray[4] + '</option>\
+                </select>\
+              </div>\
+              <div class="col-12 mb-2">\
+                <label for="thingsToDevelop">\Kehitettävää</label>\
+                <select id="inputThingsToDevelop" class="form-select">\
+                  <option>' + '' + '</option>\
+                  <option>' + thingsToDevelopArray[0] + '</option>\
+                  <option>' + thingsToDevelopArray[1] + '</option>\
+                  <option>' + thingsToDevelopArray[2] + '</option>\
+                  <option>' + thingsToDevelopArray[3] + '</option>\
+                </select>\
+              </div>\
+              <div class="col-12 mb-2">\
+                <label for="tip">Tsemppi*</label>\
+                <select id="inputTip" class="form-select">\
+                  <option>' + ' ' + '</option>\
+                  <option>' + tipsArray[0] + '</option>\
+                  <option>' + tipsArray[1] + '</option>\
+                  <option>' + tipsArray[2] + '</option>\
+                  <option>' + tipsArray[3] + '</option>\
+                  <option>' + tipsArray[4] + '</option>\
+                  <option>' + tipsArray[5] + '</option>\
+                  <option>' + tipsArray[6] + '</option>\
+                  <option>' + tipsArray[7] + '</option>\
+                  <option>' + tipsArray[8] + '</option>\
                   </select>\
-                </div>\
-                <div class="col-12 mb-2">\
-                  <label for="thingsToDevelop">\Kehitettävää</label>\
-                  <select id="inputThingsToDevelop" class="form-select">\
-                    <option>' + '' + '</option>\
-                    <option>' + thingsToDevelopArray[0] + '</option>\
-                    <option>' + thingsToDevelopArray[1] + '</option>\
-                    <option>' + thingsToDevelopArray[2] + '</option>\
-                    <option>' + thingsToDevelopArray[3] + '</option>\
-                  </select>\
-                </div>\
-                <div class="col-12 mb-2">\
-                  <label for="tip">Tsemppi*</label>\
-                  <select id="inputTip" class="form-select">\
-                    <option>' + ' ' + '</option>\
-                    <option>' + tipsArray[0] + '</option>\
-                    <option>' + tipsArray[1] + '</option>\
-                    <option>' + tipsArray[2] + '</option>\
-                    <option>' + tipsArray[3] + '</option>\
-                    <option>' + tipsArray[4] + '</option>\
-                    <option>' + tipsArray[5] + '</option>\
-                    <option>' + tipsArray[6] + '</option>\
-                    <option>' + tipsArray[7] + '</option>\
-                    <option>' + tipsArray[8] + '</option>\
-                    </select>\
-                </div>\
-                <div class="col-12 mb-2">\
-                  <div class="form-check">\
-                    <input class="form-check-input" type="checkbox" value="15" id="cookieMonster">\
-                    <label class="form-check-label" for="cookieMonster">\
-                      Anna Keksihirviö palkinto!\
-                    </label>\
-                  </div>\
+              </div>\
+              <div class="col-12 mb-2">\
+                <div class="form-check">\
+                  <input class="form-check-input" type="checkbox" value="15" id="cookieMonster">\
+                  <label class="form-check-label" for="cookieMonster">\
+                    Anna Keksihirviö palkinto!\
+                  </label>\
                 </div>\
               </div>\
-              <div class="modal-footer">\
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Sulje</button>\
-                <button id="sendFeedbackBtn" type="button" class="btn btn-success modal-success-btn" data-bs-dismiss="modal" onclick="giveFeedback(' + scoreID + ', ' + studentID +')">Lähetä palaute</button>\
-              </div>\
-            </form>\
-          </div>\
+            </div>\
+            <div class="modal-footer">\
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Sulje</button>\
+              <button id="sendFeedbackBtn" type="button" class="btn btn-success modal-success-btn" data-bs-dismiss="modal" onclick="giveFeedback(' + scoreID + ', ' + studentID +')">Lähetä palaute</button>\
+            </div>\
+          </form>\
         </div>\
       </div>\
-    </div>';
+    </div>\
+  </div>';
 
-    document.body.append(modalWrap);
-    const modal = new bootstrap.Modal(modalWrap.querySelector('.modal'));
-    modal.show();
+  document.body.append(modalWrap);
+  const modal = new bootstrap.Modal(modalWrap.querySelector('.modal'));
+  modal.show();
+}
+
+function giveFeedback(scoreID, studentID) {
+  let OverallOutput = document.getElementById('inputOverall');
+  let thingsToDevelopOutput = document.getElementById('inputThingsToDevelop');
+  let tipOutput = document.getElementById('inputTip');
+  let cookieMonsterOutput = document.getElementById('cookieMonster');
+
+  let overallValue = OverallOutput.options[OverallOutput.selectedIndex].value;
+  let thingsToDevelopValue = thingsToDevelopOutput.options[thingsToDevelopOutput.selectedIndex].value;
+  let tipValue = tipOutput.options[tipOutput.selectedIndex].value;
+  let cookieMonsterValue = cookieMonsterOutput.checked;
+
+  if (tipValue === '') {
+    Swal.fire({
+      title: "Tyhjä kenttä!", 
+      text: 'Anna vähintään tsemppi palaute', 
+      icon: "error",
+      showConfirmButton: false,
+      timer: 2000});
+    setTimeout(() => {
+      showModal(scoreID, studentID);
+    }, 2300);
+    return false;
   }
 
-  function giveFeedback(scoreID, studentID) {
-    let OverallOutput = document.getElementById('inputOverall');
-    let thingsToDevelopOutput = document.getElementById('inputThingsToDevelop');
-    let tipOutput = document.getElementById('inputTip');
-    let cookieMonsterOutput = document.getElementById('cookieMonster');
+  if (cookieMonsterValue) {
+      let studentCookieAchiev = {
+          Keksi: 1,
+          StudentNum: studentID
+      }
+      arrayToPHP(studentCookieAchiev, "giveCookie");
+  }
 
-    let overallValue = OverallOutput.options[OverallOutput.selectedIndex].value;
-    let thingsToDevelopValue = thingsToDevelopOutput.options[thingsToDevelopOutput.selectedIndex].value;
-    let tipValue = tipOutput.options[tipOutput.selectedIndex].value;
-    let cookieMonsterValue = cookieMonsterOutput.checked;
+  let sendFeedback = {
+    keyScoreId: scoreID,
+    keyFeedbackGiven: 1,
+    keyFeedbackText: overallValue + ' ' + thingsToDevelopValue + ' ' + tipValue
+  }
 
-    if (tipValue === '') {
-      Swal.fire({
-        title: "Tyhjä kenttä!", 
-        text: 'Anna vähintään tsemppi palaute', 
-        icon: "error",
-        showConfirmButton: false,
-        timer: 2000});
-      setTimeout(() => {
-        showModal(scoreID, studentID);
-      }, 2300);
-      return false;
-    }
+  let alertText = '';
 
-    if (cookieMonsterValue) {
-        let studentCookieAchiev = {
-            Keksi: 1,
-            StudentNum: studentID
-        }
-        arrayToPHP(studentCookieAchiev, "giveCookie");
-    }
+  if (overallValue !== '' && thingsToDevelopValue !== '') {
+    alertText = '"' + overallValue + ' <br> ' + thingsToDevelopValue + ' <br> ' + tipValue + '"';
+  } else if (overallValue !== '') {
+    alertText = alertText = '"' + overallValue + ' <br> ' + tipValue + '"';
+  } else if (thingsToDevelopValue !== '') {
+    alertText = alertText = '"' + thingsToDevelopValue + ' <br> ' + tipValue + '"';
+  } else {
+    alertText = '"' + tipValue + '"';
+  }
 
-    let sendFeedback = {
-      keyScoreId: scoreID,
-      keyFeedbackGiven: 1,
-      keyFeedbackText: overallValue + ' ' + thingsToDevelopValue + ' ' + tipValue
-    }
-
-    let alertText = '';
-
-    if (overallValue !== '' && thingsToDevelopValue !== '') {
-      alertText = '"' + overallValue + ' <br> ' + thingsToDevelopValue + ' <br> ' + tipValue + '"';
-    } else if (overallValue !== '') {
-      alertText = alertText = '"' + overallValue + ' <br> ' + tipValue + '"';
-    } else if (thingsToDevelopValue !== '') {
-      alertText = alertText = '"' + thingsToDevelopValue + ' <br> ' + tipValue + '"';
-    } else {
-      alertText = '"' + tipValue + '"';
-    }
-
-    arrayToPHP(sendFeedback, "feedback");
-      
-    Swal.fire("Palaute lähetetty!", alertText, "success").then((result) => {
-        if (result.isConfirmed) {
-            location.reload();
-        }
-    });
+  arrayToPHP(sendFeedback, "feedback");
     
-  }
+  Swal.fire("Palaute lähetetty!", alertText, "success").then((result) => {
+      if (result.isConfirmed) {
+          location.reload();
+      }
+  });
+  
+}
