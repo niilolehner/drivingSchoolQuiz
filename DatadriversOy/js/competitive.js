@@ -1,21 +1,5 @@
 "use strict";
 
-// let count;
-// let seconds = 0;
-
-// function start(){
-//  count = setInterval(timer,1000)  /// ajastin käyntiin
-// }
-
-// function timer(){
-//     document.getElementById('ctulokset').innerText++;
-//     seconds++;
-// }
-
-// function end(){
-//   clearInterval(count)   /// ajastin pysähtyy
-// }
-
 let count = 0,
     minutesSeconds = 0, 
     seconds = 0, 

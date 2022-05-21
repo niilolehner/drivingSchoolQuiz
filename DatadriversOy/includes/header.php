@@ -29,14 +29,6 @@ isset($_GET['page']) ? $page = $_GET['page'] : $page = '';
     <!-- SweetAlerts2-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
-    
-    <!-- Bootstrap core JS-->
-    <!-- Core theme JS-->
-    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-    <!-- * *                               SB Forms JS                               * *-->
-    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
         
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="./css/index.css">
@@ -52,8 +44,6 @@ isset($_GET['page']) ? $page = $_GET['page'] : $page = '';
 if ($page === '') {
     $page = 'userChoose';
 }
-
-//if ($page !== 'welcome' && $page !== 'userChoose') {
 ?>
 
 <!-- Navigation-->
@@ -76,6 +66,3 @@ if ($page === '') {
         </div>
     </nav>
 </header>
-<?php
-//}
-?>
