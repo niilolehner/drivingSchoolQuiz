@@ -56,6 +56,29 @@ var month = dateObj.getUTCMonth() + 1; //months from 1-12
 var day = dateObj.getUTCDate();
 var year = dateObj.getUTCFullYear();
 var newdate = year + "-" + month + "-" + day; 
+
+//checkup is the student can do the quiz
+function CheckAvailability()
+    {
+    let AvailabilityArray = arrayFromPHP("AvailabilityForCompetitive");
+    let feedbackGiven = AvailabilityArray[0].FeedbackGiven;
+
+    if (feedbackGiven === "0")
+        {
+            Swal.fire({
+            text: "Olet jo tehnyt testin! Odota, että saat palautetta ennen uutta yritystä.",
+            confirmButtonColor: '#27804c',
+            imageUrl: 'images/stop.png',
+            imageWidth: 300,
+            imageHeight: 300,
+            imageAlt: 'Custom image',
+        }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = "./index.php?page=welcome";
+        }
+    })
+        }
+    }
   
  // storing array for use
 let csortedQuestionArray = arrayFromPHP("quizqa");
@@ -105,6 +128,8 @@ function startFastQuiz() {
     cvastaus1Btn.innerHTML = cAnswers[0];
     cvastaus2Btn.innerHTML = cAnswers[1];
     cvastaus3Btn.innerHTML = cAnswers[2];
+
+    CheckAvailability();
     
     csubmitBtn.onclick = () => {
         start();
