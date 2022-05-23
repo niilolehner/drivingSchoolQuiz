@@ -1,5 +1,6 @@
 "use strict";
 
+//variablet ajastinta varten
 let count = 0,
     minutesSeconds = 0, 
     seconds = 0, 
@@ -27,28 +28,30 @@ function minutesToSeconds() {
     return minutesSeconds;
 }
 
+//ajastin käytiin
 function start(){
-    count = setInterval(timer, 1000);  /// ajastin käyntiin
+    count = setInterval(timer, 1000); 
 }
 
+// ajastin pysähtyy
 function end(){
-  clearInterval(count)   /// ajastin pysähtyy
+  clearInterval(count)   
 }
 
+//päivämäärän asetus oikeaan muotoon databasea varten
 var dateObj = new Date();
-var month = dateObj.getUTCMonth() + 1; //months from 1-12
+var month = dateObj.getUTCMonth() + 1;
 var day = dateObj.getUTCDate();
 var year = dateObj.getUTCFullYear();
 var newdate = year + "-" + month + "-" + day; 
 
-//checkup is the student can do the quiz
+//tarkistetaan onko oppilas oikeutettu tekemään competitive quizin (jos on jo tehnyt eikä ole saanut vielä palautetta, ei pääse sivulle)
 function CheckAvailability()
 {
     let feedbackGiven;
     let AvailabilityArray = arrayFromPHP("AvailabilityForCompetitive");
 
-    console.log(AvailabilityArray[AvailabilityArray.length - 1]);
-
+    //jos ei ole mitään tietoa (uusi pelaaja), pääsee pelaamaan
     if (AvailabilityArray[AvailabilityArray.length - 1] !== undefined)
     {
         feedbackGiven = AvailabilityArray[AvailabilityArray.length - 1].FeedbackGiven;
@@ -58,8 +61,7 @@ function CheckAvailability()
         feedbackGiven = "2";
     }
 
-    console.log(feedbackGiven);
- 
+        //jos on uusi tai on saanut palautteen (=2), pääsee pelaamaan. Muutoin estetään pelaamiseen pääsy
         if (feedbackGiven === "2") {
             //nothing
         }
@@ -79,66 +81,73 @@ function CheckAvailability()
         }
     }
     
-  
- // storing array for use
+ // kysymys-vastaus-array tietokannasta
 let csortedQuestionArray = arrayFromPHP("quizqa");
 
-// shuffling original array (do each time a new set of questions is needed)
+// sekoitetaan kysymykset
 let cshuffledQuestionArray = shuffle(csortedQuestionArray); 
 
+//etsitään peliä varten tarvittavat elementit html:sta
 const ckysymysTxt = document.getElementById("ckysymys");
 const cvastaus1Btn = document.getElementById("cvastaus1");
 const cvastaus2Btn = document.getElementById("cvastaus2");
 const cvastaus3Btn = document.getElementById("cvastaus3");
 const csubmitBtn = document.getElementById("csubmit");
 const ctulosTxt = document.getElementById("ctulokset");
+const cnavbarResponsive = document.getElementById("navbarResponsive");
+const cbtnChoose = document.getElementById("btnChoose");
 
-csubmitBtn.addEventListener("click", csubmit);
+csubmitBtn.addEventListener("click", csubmit); //toiminta aloitusnappiin
 
+//variablet tuloksia varten
 let ccurrentQuestion = 0;
 let wrongclick = 0;
 let cscore = 0;
 let ctotalScore = 0;
 
+//sekoitusfunktio vastauksia varten
 function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
-
-        // Generate random number
         var j = Math.floor(Math.random() * (i + 1));
-
         var temp = array[i];
         array[i] = array[j];
         array[j] = temp;
     }
-
     return array;
 }
     
+//alla oleva oli tarkoitus rikkoa pienempiin osiin ja funktiohin, sekä viedä omalle sivulleen, mutta aika loppui kesken
+//tästä alkaa varsinainen pelinaloitusfunktio
 function startFastQuiz() {
+            //piilotetaan kysymys ja vastaukset
             ckysymysTxt.style.visibility = 'hidden';
             cvastaus1Btn.style.visibility = 'hidden';
             cvastaus2Btn.style.visibility = 'hidden';
             cvastaus3Btn.style.visibility = 'hidden';
     
+    //tehdään vastausarray ja sekoitetaan vastaukset arrayn sisällä
     let canswerArray = [cshuffledQuestionArray[ccurrentQuestion].RightAnswer, cshuffledQuestionArray[ccurrentQuestion].WrongAnswer1, cshuffledQuestionArray[ccurrentQuestion].WrongAnswer2];
-    
     var cAnswers = shuffleArray(canswerArray);
 
+    //asetetaan kysymys ja sekoitetut vastaukset paikoilleen html:n
     ckysymysTxt.innerHTML = cshuffledQuestionArray[ccurrentQuestion].Question;
     cvastaus1Btn.innerHTML = cAnswers[0];
     cvastaus2Btn.innerHTML = cAnswers[1];
     cvastaus3Btn.innerHTML = cAnswers[2];
     
+    //käynnistetään peli napista; kysymys ja vastaukset tulevat näkyviin, navigointipalkista nappulat piiloon, ja aika lähtee käyntiin
     csubmitBtn.onclick = () => {
         start();
-        //console.log(startTime);
             ckysymysTxt.style.visibility = 'visible';
             cvastaus1Btn.style.visibility = 'visible';
             cvastaus2Btn.style.visibility = 'visible';
             cvastaus3Btn.style.visibility = 'visible';
             csubmitBtn.style.visibility = 'hidden';
+            cnavbarResponsive.style.visibility = 'hidden';
+            cbtnChoose.style.visibility = 'hidden';
     }
 
+    //tarkistetaan onko vastaus oikein vai väärin, asetetaan nappulan väri sen mukaan, ja mennään eteenpäin/pysytään paikallaan
     cvastaus1Btn.onclick = () => {
         if (cshuffledQuestionArray[ccurrentQuestion].RightAnswer == cvastaus1Btn.innerHTML) {
             cvastaus1Btn.setAttribute('class', 'btn btn-primary m-2 correct');
@@ -173,7 +182,6 @@ function startFastQuiz() {
             }, 1000)
         }
     }
-
     cvastaus3Btn.onclick = () => {
         if (cshuffledQuestionArray[ccurrentQuestion].RightAnswer == cvastaus3Btn.innerHTML) {
             cvastaus3Btn.setAttribute('class', 'btn btn-primary m-2 correct');
@@ -192,9 +200,12 @@ function startFastQuiz() {
         }
     }  
 
+    //kun vastaus yllä on oikein.. 
     function next() {
-            if (ccurrentQuestion == 9) {
-                ccurrentQuestion++;
+    //jos on 10 kysymystä täynnä, lopetetaan peli
+        if (ccurrentQuestion == 9) {
+            //lisätään variableihin tulokset
+            ccurrentQuestion++;
 
             if (wrongclick == 0) {
             cscore = 1;
@@ -202,17 +213,17 @@ function startFastQuiz() {
             else {
             cscore = 0;
             }
-                ctotalScore = ctotalScore + cscore;
+            ctotalScore = ctotalScore + cscore;
                 
-                console.log(count);
-                end();
+            end(); //ajastin kiinni
             
-                console.log(ctotalScore + "/" + ccurrentQuestion);
+            //kysymykset ja vastaukset piiloon
             ckysymysTxt.style.display = 'none';
             cvastaus1Btn.style.display = 'none';
             cvastaus2Btn.style.display = 'none';
             cvastaus3Btn.style.display = 'none';  
-            // ctulosTxt.innerHTML = "Sait " + ctotalScore + "/10 oikein. Aikasi oli " + seconds + " sekuntia.";
+
+            //käännetään aikaa oikeaan muotoon
             let sec = seconds < 10 ? "0" + seconds : seconds;
             let min = minutes < 10 ? "0" + minutes : minutes;  
 
@@ -221,14 +232,16 @@ function startFastQuiz() {
                 min = '';
             }
 
+            //tulokset näkyviin oppilaalle
             ctulosTxt.innerHTML = minutes > 0 ? 
                                     "Sait " + ctotalScore + "/" + ccurrentQuestion + " oikein. Aikasi oli " + min + "." + sec + "."
                                     : 
                                     "Sait " + ctotalScore + "/" + ccurrentQuestion + " oikein. Aikasi oli " + sec + " sekuntia.";
             
-            minutesToSeconds();
-            totalSeconds = minutesSeconds + seconds;
+            minutesToSeconds(); //käänetään minuutit sekunneiksi db:ta varten
+            totalSeconds = minutesSeconds + seconds; //lasketaan kokonaissekunnit
 
+            //lisätään oppilaalle yksi quiz tehdyksi (lisää) databaseen
             function plusQuizesDone()
             {
                 let getDatabaseArray = arrayFromPHP("quizesDoneData");
@@ -241,10 +254,9 @@ function startFastQuiz() {
                 }
                 arrayToPHP(newQuizesDone, "plusQuizesDoneData");
             }
-
             plusQuizesDone();
 
-            // checkAndAwardAchievs("competitive", seconds, ctotalScore, 0);
+            //tarkistetaan tulokset achievemenetteja varten
             checkAndAwardAchievs("competitive", totalSeconds, ctotalScore, 0);
 
             // variable viemään tulokset databaseen
@@ -256,13 +268,15 @@ function startFastQuiz() {
                 Time: totalSeconds,
                 Date: newdate
             }
-
+            //tulokset databaseen
             arrayToPHP(tulosDatabaseen, "endOfCompetitiveQuiz");
             UpdateDatabase();
             setTimeout(nextPage, 5000);
     }
     else
-    {
+    //jos ei ole kymmentä kysymystä täynnä, jatketaan peliä uudella kierroksella
+        {
+            //lasketaan kierroksen pisteet ja tallennetaan variableihin
             ccurrentQuestion++;
 
             if (wrongclick == 0) {
@@ -273,6 +287,7 @@ function startFastQuiz() {
             }
                 ctotalScore = ctotalScore + cscore;
                 
+            //sufflataan taas (uuden kysymyksen) vastaukset ja laitetaan kaikki oikeille paikoilleen html:n
             let canswerArray = [cshuffledQuestionArray[ccurrentQuestion].RightAnswer, cshuffledQuestionArray[ccurrentQuestion].WrongAnswer1, cshuffledQuestionArray[ccurrentQuestion].WrongAnswer2];
             var cAnswers = shuffleArray(canswerArray);
             
@@ -280,19 +295,19 @@ function startFastQuiz() {
             cvastaus1Btn.innerHTML = cAnswers[0];
             cvastaus2Btn.innerHTML = cAnswers[1];
             cvastaus3Btn.innerHTML = cAnswers[2];
-    
-            console.log(ccurrentQuestion);
-            console.log(ctotalScore);
 
+            //nollataan uudelle kierrokselle klikintarkistusvariablet
             cscore = 0;
             wrongclick = 0;
         }
     }
 
+    //vaihtaa sivulta pois quizin jälkeen
     function nextPage() {
         window.location.href = "./index.php?page=scoreboard";
     }
 
+    //päivittää tietokantaan opiskelijan "personal best" -tiedot
     function UpdateDatabase()
     {
         let getDatabaseArray = arrayFromPHP("personalBestForUpdating");
@@ -315,10 +330,10 @@ function startFastQuiz() {
             BestTime: oldTime,
             StudentID: getDatabaseArray[0].StudentID
         }
-        console.log(newBestForDatabase);
         arrayToPHP(newBestForDatabase, "personalBestToUpdate");
     }
 }
 
+//sivulle mentäessä tarkistaa ensin onko sivulle oikeutta mennä. Sen jälkeen käynnistää nappulasta itse quizin.
 CheckAvailability();
 startFastQuiz();

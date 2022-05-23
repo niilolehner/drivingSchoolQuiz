@@ -169,7 +169,6 @@ function animate() {
       navBar.classList.add('active');
     }, 200)
   }
-  
   if(url.includes('?page=welcome')){
     const welcomePage = document.getElementById('welcomePage');
     setTimeout(() => {
@@ -204,13 +203,11 @@ function animate() {
         achievementID.classList.add('active');
     }, 800);
   }
-
   if(url.includes('?page=welcome') === false && url.includes('?page=userChoose') === false && url.includes('index') === true){  
     setTimeout(() => {
       footerId.classList.add('active');
     }, 1200);
-  }
-  
+  } 
 }
 
 animate()
