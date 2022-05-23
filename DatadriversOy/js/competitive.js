@@ -152,51 +152,51 @@ function startFastQuiz() {
         if (cshuffledQuestionArray[ccurrentQuestion].RightAnswer == cvastaus1Btn.innerHTML) {
             cvastaus1Btn.setAttribute('class', 'btn btn-primary m-2 correct');
             setTimeout(() => {
-                cvastaus1Btn.classList.remove('correct')
+                cvastaus1Btn.classList.remove('correct');
                 cvastaus1Btn.setAttribute('class', 'btn btn-primary m-2');
                 next();
-            }, 300)
+            }, 300);
         }
         else if (cshuffledQuestionArray[ccurrentQuestion].WrongAnswer1 || cshuffledQuestionArray[ccurrentQuestion].WrongAnswer2) {
             cvastaus1Btn.setAttribute('class', 'btn btn-primary m-2 incorrect');
             wrongclick++;
             setTimeout(() => {
-                cvastaus1Btn.classList.remove('incorrect')
-            }, 1000)
+                cvastaus1Btn.classList.remove('incorrect');
+            }, 1000);
         }
     }
     cvastaus2Btn.onclick = () => {
         if (cshuffledQuestionArray[ccurrentQuestion].RightAnswer == cvastaus2Btn.innerHTML) {
             cvastaus2Btn.setAttribute('class', 'btn btn-primary m-2 correct');
             setTimeout(() => {
-                cvastaus2Btn.classList.remove('correct')
+                cvastaus2Btn.classList.remove('correct');
                 cvastaus2Btn.setAttribute('class', 'btn btn-primary m-2');
                 next();
-            }, 300)
+            }, 300);
         }
         else if (cshuffledQuestionArray[ccurrentQuestion].WrongAnswer1 || cshuffledQuestionArray[ccurrentQuestion].WrongAnswer2) {
             cvastaus2Btn.setAttribute('class', 'btn btn-primary m-2 incorrect');
             wrongclick++;
             setTimeout(() => {
-                cvastaus2Btn.classList.remove('incorrect')
-            }, 1000)
+                cvastaus2Btn.classList.remove('incorrect');
+            }, 1000);
         }
     }
     cvastaus3Btn.onclick = () => {
         if (cshuffledQuestionArray[ccurrentQuestion].RightAnswer == cvastaus3Btn.innerHTML) {
             cvastaus3Btn.setAttribute('class', 'btn btn-primary m-2 correct');
             setTimeout(() => {
-                cvastaus3Btn.classList.remove('correct')
+                cvastaus3Btn.classList.remove('correct');
                 cvastaus3Btn.setAttribute('class', 'btn btn-primary m-2');
                 next();
-            }, 300)
+            }, 300);
         }
         else if (cshuffledQuestionArray[ccurrentQuestion].WrongAnswer1 || cshuffledQuestionArray[ccurrentQuestion].WrongAnswer2) {
             cvastaus3Btn.setAttribute('class', 'btn btn-primary m-2 incorrect');
             wrongclick++;
             setTimeout(() => {
-                cvastaus3Btn.classList.remove('incorrect')
-            }, 1000)
+                cvastaus3Btn.classList.remove('incorrect');
+            }, 1000);
         }
     }  
 
@@ -251,7 +251,7 @@ function startFastQuiz() {
                 {
                     QuizesDone: oldQuizesDone,
                     StudentID: getDatabaseArray[0].StudentID
-                }
+                };
                 arrayToPHP(newQuizesDone, "plusQuizesDoneData");
             }
             plusQuizesDone();
@@ -267,7 +267,7 @@ function startFastQuiz() {
                 Score: ctotalScore,
                 Time: totalSeconds,
                 Date: newdate
-            }
+            };
             //tulokset databaseen
             arrayToPHP(tulosDatabaseen, "endOfCompetitiveQuiz");
             UpdateDatabase();
@@ -329,7 +329,7 @@ function startFastQuiz() {
             BestScore: oldScore,
             BestTime: oldTime,
             StudentID: getDatabaseArray[0].StudentID
-        }
+        };
         arrayToPHP(newBestForDatabase, "personalBestToUpdate");
     }
 }

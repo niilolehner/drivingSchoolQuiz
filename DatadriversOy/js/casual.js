@@ -117,7 +117,7 @@
         vastaus3Btn.style.display = 'none';
         submitBtn.style.display = 'none';
 
-        tulosTxt.innerHTML = "Sait " + totalScore + "/" + currentQuestion + " oikein."
+        tulosTxt.innerHTML = "Sait " + totalScore + "/" + currentQuestion + " oikein.";
 
         setTimeout(nextPage, 5000);
         //visibility = "hidden"

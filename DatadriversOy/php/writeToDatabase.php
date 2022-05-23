@@ -3,7 +3,6 @@ isset($_GET['page']) ? $page = $_GET['page'] : $page = '';
 isset($_GET['studentId']) ? $studentId = $_GET['studentId'] : $studentId = '';
 
 include 'dbConnection.php';
-
 $sql = '';
 
 //Get data in JSON-format and insert/update into database through prepared statements:

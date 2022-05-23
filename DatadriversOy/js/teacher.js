@@ -1,32 +1,31 @@
 "use strict";
 
-//Get elements to animation and content.
+//Get element to animations and contexts.
 const tableContainer = document.getElementById('tableContainer');
 
-//Create array for headers and teacher comments.
+//Create arrays for table headers and teacher comments.
 const headers = ['Nimi', 'Pisteet', 'Aika', 'Päivämäärä','Palaute'];
 const overallArray = ['...', 'Loistavaa!', 'Ihan kelpo suoritus!', 'Nyt taisi mennä vähän penkin alle.', 'Hyhhyh...'];
 const thingsToDevelopArray = ['Kertaa liikennemerkkejä.', 'Kertaa ajoneuvonhallintaa.', 'Kiinnitä huomiota jalankulkijoihin.', 'Harjoittele ajoneuvonhallintaa.'];
 const tipsArray = ['Jatka harjoittelua ja muista ajojärjestys.', 'Jatka harjoittelua ja muista ennakoida liikenteessä.', 'Jatka harjoittelua ja älä pidä kiirettä.', 'Jos jatkat harjoittelua, olet ammattilainen liikenteessä.', 'Jos jatkat samaan malliin, olet mestari liikenteessä.', 'Muista myös levätä autokoulun ohessa, että jaksat keskittyä tehtävissä.', 'Suosittelen kertailemaan harjoitustehtäviä.', 'Kyllä sinä vielä onnistut!', 'Uskon, että läpäiset teoriakokeen!'];
 
-//Get data from scoreboard;
+//Get data from scoreboard-table;
 const scoreboard = arrayFromPHP('scoreboard');
 
+//Create Column with header to the page, if there is no database data.
 if (scoreboard.length === 0) {
-    // empty, no achievements to load
-    //Create Column container with header for table.
-    let colDiv = document.createElement('div');
-    colDiv.setAttribute('class', 'col');
-    let headerH3 = document.createElement('h3');
-    headerH3.setAttribute('class', 'text-white-50 text-center');
-    let h3Text = 'Ei valmistuneita teoriakoeharjoituksia.';
-    let h3Node = document.createTextNode(h3Text);
-    headerH3.appendChild(h3Node);
-    colDiv.appendChild(headerH3);
-    tableContainer.appendChild(colDiv);
+  let colDiv = document.createElement('div');
+  colDiv.setAttribute('class', 'col');
+  let headerH3 = document.createElement('h3');
+  headerH3.setAttribute('class', 'text-white-50 text-center');
+  let h3Text = 'Ei valmistuneita teoriakoeharjoituksia.';
+  let h3Node = document.createTextNode(h3Text);
+  headerH3.appendChild(h3Node);
+  colDiv.appendChild(headerH3);
+  tableContainer.appendChild(colDiv);
 } else {
 
-  //Create Column container with header for table.
+  //Create Column container with header.
   let colDiv = document.createElement('div');
   colDiv.setAttribute('class', 'col');
   let headerH3 = document.createElement('h3');
@@ -34,26 +33,26 @@ if (scoreboard.length === 0) {
   let h3Text = 'Teoriakoeharjoitusten tulokset';
   let h3Node = document.createTextNode(h3Text);
   headerH3.appendChild(h3Node);
-  let divTable = document.createElement('div');
-  divTable.setAttribute('class', 'table-responsive');
 
   //Create table for tabledata.
+  let divTable = document.createElement('div');
+  divTable.setAttribute('class', 'table-responsive');
   let table = document.createElement('table');
   table.setAttribute('class', 'table table-striped table-sm');
 
-  //Print out column.
+  //Print out column with header and table.
   divTable.appendChild(table);
   colDiv.appendChild(headerH3);
   colDiv.appendChild(divTable);
   tableContainer.appendChild(colDiv);
 
-  //Create table structure.
+  //Create table data-structure.
   let tableHead = document.createElement('thead');
   let tableBody = document.createElement('tbody');
   let headerRow = document.createElement('tr');
   headerRow.setAttribute('class', 'text-center');
 
-  //Insert header-array items in th-elements.
+  //Insert header-array items in the th-elements.
   headers.forEach(headerText => {
       let header = document.createElement('th');
       let textNode = document.createTextNode(headerText);
@@ -61,53 +60,56 @@ if (scoreboard.length === 0) {
       headerRow.appendChild(header);
   });
 
-  //Print out header.
+  //Print out th-elements.
   tableHead.appendChild(headerRow);
   table.appendChild(tableHead);
 
   //Get scoreboard-data from database and create td-element for each data.
   scoreboard.forEach(Data => {
-      let row = document.createElement('tr');
-      row.setAttribute('class', 'align-middle text-center');
+    let row = document.createElement('tr');
+    row.setAttribute('class', 'align-middle text-center');
 
-      Object.values(Data).forEach(contentText => {
-          if (contentText > 59 && Object.values(Data)[2] === contentText) {  
-              let minuteDecimal = Object.values(Data)[2] / 60; 
-              let integer = parseInt(minuteDecimal.toString().split('.')[0]);
-              let decimalNumber = minuteDecimal - integer;
-              let seconds = Math.round(decimalNumber * 60);
-              contentText = integer + ' min ' + seconds + ' s';
-          } else if (Object.values(Data)[2] === contentText) {
-              contentText += ' s'
-          } else if (Object.values(Data)[1] === contentText) {
-              contentText += '/10'
-          }
-          
-          let content = document.createElement('td');
-          content.setAttribute('class', 'p-1');
-          let textNode = document.createTextNode(contentText);
-          content.appendChild(textNode);
-          row.appendChild(content);
-      });
+    //Check each data condition and do modification depends on the value.
+    Object.values(Data).forEach(contentText => {
+      if (contentText > 59 && Object.values(Data)[2] === contentText) {  
+        let minuteDecimal = Object.values(Data)[2] / 60; 
+        let integer = parseInt(minuteDecimal.toString().split('.')[0]);
+        let decimalNumber = minuteDecimal - integer;
+        let seconds = Math.round(decimalNumber * 60);
+        contentText = integer + ' min ' + seconds + ' s';
+      } else if (Object.values(Data)[2] === contentText) {
+        contentText += ' s';
+      } else if (Object.values(Data)[1] === contentText) {
+        contentText += '/10';
+      }
+      
+      //Print out results.
+      let content = document.createElement('td');
+      content.setAttribute('class', 'p-1');
+      let textNode = document.createTextNode(contentText);
+      content.appendChild(textNode);
+      row.appendChild(content);
+    });
 
-      //Get student name from object.
-      let studentName = Object.values(Data)[0];
+    //Get student name from object.
+    let studentName = Object.values(Data)[0];
 
-      //Get student ID from database.
-      let studentData = arrayFromPHP('getStudentID', studentName); 
-      let studentID = studentData[0].StudentID;
+    //Get student ID from database.
+    let studentData = arrayFromPHP('getStudentID', studentName); 
+    let studentID = studentData[0].StudentID;
 
-      //Get student Score ID from database.
-      let studentDataScore = arrayFromPHP('getScoreID', studentID); 
-      let studentScoreID = studentDataScore[0].ScoreID;
+    //Get student Score ID from database.
+    let studentDataScore = arrayFromPHP('getScoreID', studentID); 
+    let studentScoreID = studentDataScore[0].ScoreID;
 
-      //Create button with styles and text.
-      let buttonFeedback = document.createElement('div');
-      buttonFeedback.innerHTML = '<button class="btn btn-secondary p-2 m-2" type="button" onclick="showModal('+ studentScoreID +', ' + studentID +')">Anna <br> Palaute</button>';
+    //Create button with styleclass, method and text.
+    let buttonFeedback = document.createElement('div');
+    buttonFeedback.innerHTML = '<button class="btn btn-secondary p-2 m-2" type="button" onclick="showModal('+ studentScoreID +', ' + studentID +')">Anna <br> Palaute</button>';
 
-      row.appendChild(buttonFeedback);
-      tableBody.appendChild(row);
-      table.appendChild(tableBody);
+    //Print out button.
+    row.appendChild(buttonFeedback);
+    tableBody.appendChild(row);
+    table.appendChild(tableBody);
   });
 }
 
@@ -118,7 +120,7 @@ const showModal = (
   studentID
 ) => {
     if (modalWrap !== null){
-        modalWrap.remove();
+      modalWrap.remove();
     }
     modalWrap = document.createElement('div');
     modalWrap.innerHTML = '<div class="modal fade" id="exampleModal" tabindex="-1">\
@@ -191,6 +193,7 @@ const showModal = (
   modal.show();
 }
 
+//Pick dropdown-elements, parameters and input.
 function giveFeedback(scoreID, studentID) {
   let OverallOutput = document.getElementById('inputOverall');
   let thingsToDevelopOutput = document.getElementById('inputThingsToDevelop');
@@ -202,6 +205,7 @@ function giveFeedback(scoreID, studentID) {
   let tipValue = tipOutput.options[tipOutput.selectedIndex].value;
   let cookieMonsterValue = cookieMonsterOutput.checked;
 
+  //Give error, if empty field.
   if (tipValue === '') {
     Swal.fire({
       title: "Tyhjä kenttä!", 
@@ -215,20 +219,23 @@ function giveFeedback(scoreID, studentID) {
     return false;
   }
 
+  //If teacher give cookie-monster, update database.
   if (cookieMonsterValue) {
-      let studentCookieAchiev = {
-          Keksi: 1,
-          StudentNum: studentID
-      }
-      arrayToPHP(studentCookieAchiev, "giveCookie");
+    let studentCookieAchiev = {
+      Keksi: 1,
+      StudentNum: studentID
+    };
+    arrayToPHP(studentCookieAchiev, "giveCookie");
   }
 
+  //Create feedback object
   let sendFeedback = {
     keyScoreId: scoreID,
     keyFeedbackGiven: 1,
     keyFeedbackText: overallValue + ' ' + thingsToDevelopValue + ' ' + tipValue
-  }
+  };
 
+  //Creating a text field depends on the drop-down menu entries.
   let alertText = '';
 
   if (overallValue !== '' && thingsToDevelopValue !== '') {
@@ -240,13 +247,13 @@ function giveFeedback(scoreID, studentID) {
   } else {
     alertText = '"' + tipValue + '"';
   }
-
   arrayToPHP(sendFeedback, "feedback");
-    
+  
+  //Give successful notification.
   Swal.fire("Palaute lähetetty!", alertText, "success").then((result) => {
-      if (result.isConfirmed) {
-          location.reload();
-      }
+    if (result.isConfirmed) {
+      location.reload();
+    }
   });
   
 }

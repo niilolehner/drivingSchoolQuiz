@@ -59,7 +59,7 @@ function achievUnlock(inputStudentID, inputAchievementID) {
   let unlockArray = {
     StudentID: inputStudentID,
     AchievementID: inputAchievementID
-  }
+  };
   arrayToPHP(unlockArray, "unlockAchievements");
 }
 
@@ -70,7 +70,7 @@ function achievAnim(inputPopText, inputAchievNum) {
     text: inputPopText,
     imageUrl: "images/" + inputAchievNum + ".png",
     imageWidth: 200,
-  })
+  });
 }
 
 // !!! this is the main achievements function !!!
@@ -167,7 +167,7 @@ function animate() {
   if(url.includes('?page=welcome') === false && url.includes('?page=userChoose') === false && url.includes('index') === true){  
     setTimeout(() => {
       navBar.classList.add('active');
-    }, 200)
+    }, 200);
   }
   if(url.includes('?page=welcome')){
     const welcomePage = document.getElementById('welcomePage');

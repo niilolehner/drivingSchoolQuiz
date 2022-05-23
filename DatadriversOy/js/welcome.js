@@ -23,7 +23,7 @@ function oppilas() {
     {
     FeedbackGiven: 2,
     StudentID: studentId
-    }
+    };
 
     //jos palautetta ei ole, mitään ei tapahdu
     if (feedback === "0" || feedback === "2") {
@@ -41,7 +41,7 @@ function oppilas() {
         if (result.isConfirmed) {
             arrayToPHP(palauteSaatu, "feedbackGot");
         }
-    })
+        });
     }
 }
 
