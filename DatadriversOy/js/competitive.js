@@ -255,10 +255,9 @@ function startFastQuiz() {
                 arrayToPHP(newQuizesDone, "plusQuizesDoneData");
             }
             plusQuizesDone();
-
+            
             //tarkistetaan tulokset achievemenetteja varten
             checkAndAwardAchievs("competitive", totalSeconds, ctotalScore, 0);
-
             // variable viemään tulokset databaseen
             let getStudentID = arrayFromPHP("currentStudentID");
             let tulosDatabaseen =
