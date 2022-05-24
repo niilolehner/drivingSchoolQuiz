@@ -105,7 +105,7 @@ function checkAndAwardAchievs(modeInput, timeInput, scoreInput, streakInput) {
     achievUnlock(studentInfo[0].StudentID, 4);
     achievAnim("50x vastaussarja!", "4");  
   }
-  if (isAchievUnlocked(unlockedAchievsArray, "5") === false && modeInput === "competitive"  && quizesCompleted >= 1) {
+  if (isAchievUnlocked(unlockedAchievsArray, "5") === false && modeInput === "competitive"  && quizesCompleted > 0) {
     achievUnlock(studentInfo[0].StudentID, 5);
     achievAnim("Ensimmäinen visa suoritettu!", "5");  
   }
