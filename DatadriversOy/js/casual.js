@@ -52,6 +52,7 @@
         if (shuffledQuestionArray[currentQuestion].RightAnswer == vastaus1Btn.innerHTML) {
             vastaus1Btn.setAttribute('class', 'btn btn-primary m-2 correct');
             streak++;
+            checkAndAwardAchievs("casual", 0, 0, streak); 
             setTimeout(() => {
                 vastaus1Btn.classList.remove('correct')
                 vastaus1Btn.setAttribute('class', 'btn btn-primary m-2');
@@ -60,7 +61,7 @@
         }
         else if (shuffledQuestionArray[currentQuestion].WrongAnswer1 || shuffledQuestionArray[currentQuestion].WrongAnswer2) {
             vastaus1Btn.setAttribute('class', 'btn btn-primary m-2 incorrect');
-            checkAndAwardAchievs("casual", 0, 0, streak); 
+            streak = 0;
             wrongAnswers++;
             setTimeout(() => {
                 vastaus1Btn.classList.remove('incorrect')
@@ -71,6 +72,7 @@
         if (shuffledQuestionArray[currentQuestion].RightAnswer == vastaus2Btn.innerHTML) {
             vastaus2Btn.setAttribute('class', 'btn btn-primary m-2 correct');
             streak++;
+            checkAndAwardAchievs("casual", 0, 0, streak); 
             setTimeout(() => {
                 vastaus2Btn.classList.remove('correct')
                 vastaus2Btn.setAttribute('class', 'btn btn-primary m-2');
@@ -79,7 +81,6 @@
         }
         else if (shuffledQuestionArray[currentQuestion].WrongAnswer1 || shuffledQuestionArray[currentQuestion].WrongAnswer2) {
             vastaus2Btn.setAttribute('class', 'btn btn-primary m-2 incorrect');
-            checkAndAwardAchievs("casual", 0, 0, streak); 
             streak = 0;
             wrongAnswers++;
             setTimeout(() => {
@@ -100,7 +101,6 @@
         }
         else if (shuffledQuestionArray[currentQuestion].WrongAnswer1 || shuffledQuestionArray[currentQuestion].WrongAnswer2) {
             vastaus3Btn.setAttribute('class', 'btn btn-primary m-2 incorrect');
-            checkAndAwardAchievs("casual", 0, 0, streak); 
             streak = 0;
             wrongAnswers++;
             setTimeout(() => {
@@ -120,7 +120,6 @@
         tulosTxt.innerHTML = "Sait " + totalScore + "/" + currentQuestion + " oikein.";
 
         setTimeout(nextPage, 5000);
-        //visibility = "hidden"
     }
 
         //siirrytään pois sivulta
